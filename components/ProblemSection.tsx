@@ -1,7 +1,7 @@
 const ProblemSection = () => {
   return (
-    <section className="bg-white text-slate-900">
-      <div className="mx-auto max-w-[900px] px-6 py-28 sm:px-10 lg:px-0">
+  <section className="bg-slate-100 text-slate-900">
+  <div className="mx-auto max-w-[900px] px-6 pt-2 pb-20 sm:px-10 lg:px-0">
         <div className="space-y-8">
           <h2
             className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
