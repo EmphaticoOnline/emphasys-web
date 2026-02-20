@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const navItems = [
+  { label: "Inicio", href: "/" },
   { label: "Método", href: "#metodo" },
   { label: "Impacto", href: "#impacto" },
   { label: "Casos", href: "#casos" },
@@ -12,11 +14,12 @@ const navItems = [
 
 const solutions = [
   { label: "Radiografía Empresarial 360°", href: "/radiografia-empresarial" },
-  { label: "ERP Empresarial", href: "/erp-empresarial" },
-  { label: "CRM Empresarial", href: "/crm-empresarial" },
+  { label: "Sistema Operativo Empresarial", href: "/sistema-operativo-empresarial" },
+  { label: "Arquitectura Comercial Integrada", href: "/arquitectura-comercial-integrada" },
 ];
 
 const Header = () => {
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(() => {
     if (typeof window === "undefined") return false;
     const current = window.scrollY || window.pageYOffset;
@@ -30,14 +33,21 @@ const Header = () => {
     setScrolled((window.scrollY || window.pageYOffset) > 10);
   }, []);
 
-  const handleNav = useCallback((hash: string) => {
-    const id = hash.replace("#", "");
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-    setOpen(false);
-  }, []);
+  const handleNav = useCallback(
+    (href: string) => {
+      if (href.startsWith("#")) {
+        const id = href.replace("#", "");
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      } else {
+        router.push(href);
+      }
+      setOpen(false);
+    },
+    [router],
+  );
 
   useEffect(() => {
     window.addEventListener("scroll", handleScrollState, { passive: true });
