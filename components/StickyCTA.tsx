@@ -3,7 +3,11 @@
 import { useEffect, useState, useCallback } from "react";
 
 const StickyCTA = () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const scrollY = window.scrollY || window.pageYOffset;
+    return scrollY > 400;
+  });
   const [contactInView, setContactInView] = useState(false);
 
   const evaluateVisibility = useCallback(() => {
@@ -12,7 +16,6 @@ const StickyCTA = () => {
   }, []);
 
   useEffect(() => {
-    evaluateVisibility();
     window.addEventListener("scroll", evaluateVisibility, { passive: true });
     return () => {
       window.removeEventListener("scroll", evaluateVisibility);

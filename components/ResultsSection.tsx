@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const ResultsSection = () => {
   const cases = [
     {
@@ -52,9 +54,11 @@ const ResultsSection = () => {
               className="rounded-xl border border-slate-200 bg-white p-8 shadow-sm"
             >
               <div className="flex flex-col space-y-3">
-                <img
+                <Image
                   src={item.logo}
                   alt={item.company}
+                  width={220}
+                  height={64}
                   className="h-14 w-auto object-contain opacity-80"
                 />
                 <p className="text-sm font-semibold text-slate-900">{item.company}</p>
