@@ -78,7 +78,7 @@ const InvestmentBlock = () => (
       Inversión
     </h2>
     <p className="text-lg leading-relaxed text-slate-600 md:text-xl">
-      Inversión referencial: <span className="font-semibold text-slate-900">$25,000 MXN</span>
+      Inversión referencial: <span className="font-semibold text-slate-900">$30,000 MXN</span>
     </p>
     <p className="text-base leading-relaxed text-slate-600">
       Se ajusta según tamaño y complejidad.
