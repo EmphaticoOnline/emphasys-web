@@ -16,7 +16,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Falta configurar RESEND_API_KEY." }, { status: 500 });
     }
 
-    const toEmail = process.env.CONTACT_TO_EMAIL || "adiaz@emphasys.mx";
+    const toEmail = process.env.CONTACT_TO_EMAIL || "diazantonio37@emphaticoonline.com";
     const subject = `Nuevo contacto: ${name}${topic ? ` | ${topic}` : ""}`;
 
     await resend.emails.send({
