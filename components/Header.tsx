@@ -14,7 +14,7 @@ const navItems = [
 
 const solutions = [
   { label: "Radiografía Empresarial 360°", href: "/radiografia-empresarial" },
-  { label: "Sistema Operativo Empresarial", href: "/sistema-operativo-empresarial" },
+  { label: "Plataforma Integral de Negocios", href: "/sistema-operativo-empresarial" },
   { label: "Arquitectura Comercial Integrada", href: "/arquitectura-comercial-integrada" },
 ];
 

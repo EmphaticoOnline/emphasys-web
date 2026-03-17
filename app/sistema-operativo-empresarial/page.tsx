@@ -3,11 +3,11 @@ import type { ReactNode } from "react";
 import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
-  title: "Sistema Operativo Empresarial | Emphasys",
+  title: "Plataforma Integral de Negocios | Emphasys",
   description:
     "Infraestructura digital diseñada sobre la Radiografía Empresarial 360° para conectar finanzas, operación y dirección con una sola arquitectura.",
   openGraph: {
-    title: "Sistema Operativo Empresarial | Emphasys",
+    title: "Plataforma Integral de Negocios | Emphasys",
     description:
       "Infraestructura estratégica que se construye únicamente después de la Radiografía 360° para traducir la arquitectura empresarial en tecnología viva.",
     url: "https://emphasys.mx/sistema-operativo-empresarial",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sistema Operativo Empresarial | Emphasys",
+    title: "Plataforma Integral de Negocios | Emphasys",
     description:
       "Del plano arquitectónico a la infraestructura digital: solo después de la Radiografía Empresarial 360°.",
   },
@@ -131,7 +131,7 @@ const Hero = () => (
         <span className="block mt-2">La diferencia es si está diseñado... o improvisado."</span>
       </h1>
       <p className="mt-8 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl">
-        El Sistema Operativo Empresarial Emphasys es la infraestructura digital que materializa la arquitectura definida en la Radiografía 360°.
+        El Plataforma Integral de Negocios Emphasys es la infraestructura digital que materializa la arquitectura definida en la Radiografía 360°.
       </p>
       <div className="mt-10">
         <CTAButton />
@@ -218,7 +218,7 @@ const DefinitionSection = () => (
         className="text-xs font-semibold uppercase tracking-[0.3em]"
         style={{ color: "var(--color-emphasys-blue)", opacity: 0.6 }}
       >
-        ¿Qué es el Sistema Operativo Empresarial?
+        ¿Qué es el Plataforma Integral de Negocios?
       </p>
       <p className="max-w-4xl text-2xl font-semibold leading-normal text-slate-800">
         Una infraestructura digital que conecta finanzas, operación y dirección bajo una arquitectura coherente.
