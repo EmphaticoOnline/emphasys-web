@@ -156,7 +156,7 @@ export default function RadiografiaEmpresarialPage() {
       <SectionWrapper background="bg-white">
         <SectionBlock
           title="¿Por qué una radiografía?"
-          description="Una radiografía o diagnóstico integral de 360 gracos revela lo que los síntomas diarios ocultan."
+          description="Una radiografía o diagnóstico integral de 360 grados revela lo que los síntomas diarios ocultan."
           items={content.why}
         />
       </SectionWrapper>
