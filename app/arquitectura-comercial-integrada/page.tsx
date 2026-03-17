@@ -65,7 +65,7 @@ const structuralComponents = [
   {
     title: "Coherencia con el Sistema Operativo",
     description:
-      "La arquitectura comercial alimenta la capa financiera y operativa cuando se integra al Plataforma Integral de Negocios completo.",
+      "La arquitectura comercial alimenta la capa financiera y operativa cuando se integra a la Plataforma Integral de Negocios completa.",
   },
 ];
 
@@ -194,7 +194,7 @@ const ProposalSection = () => (
         ))}
       </ul>
       <p className="text-base leading-relaxed text-slate-600">
-        Puede implementarse como iniciativa independiente, pero es parte natural del Plataforma Integral de Negocios cuando la empresa decide integrar todo su modelo.
+        Puede implementarse como iniciativa independiente, pero es parte natural de la Plataforma Integral de Negocios cuando la empresa decide integrar todo su modelo.
       </p>
     </div>
   </Section>
@@ -239,7 +239,7 @@ const IntegrationSection = () => (
         El ingreso como eje estructural.
       </h2>
       <p className="max-w-4xl text-lg leading-relaxed text-slate-600">
-        Cuando la Arquitectura Comercial Integrada se conecta con finanzas y operación dentro del Plataforma Integral de Negocios, cada decisión comercial impacta tableros financieros y capacidad operativa en tiempo real. No es un módulo aislado, es la columna vertebral de cómo entra el dinero a la organización.
+        Cuando la Arquitectura Comercial Integrada se conecta con finanzas y operación dentro de la Plataforma Integral de Negocios, cada decisión comercial impacta tableros financieros y capacidad operativa en tiempo real. No es un módulo aislado, es la columna vertebral de cómo entra el dinero a la organización.
       </p>
     </div>
   </Section>

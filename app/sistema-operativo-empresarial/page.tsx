@@ -131,7 +131,7 @@ const Hero = () => (
         <span className="block mt-2">La diferencia es si está diseñado... o improvisado."</span>
       </h1>
       <p className="mt-8 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl">
-        El Plataforma Integral de Negocios Emphasys es la infraestructura digital que materializa la arquitectura definida en la Radiografía 360°.
+        La Plataforma Integral de Negocios Emphasys es la infraestructura digital que materializa la arquitectura definida en la Radiografía 360°.
       </p>
       <div className="mt-10">
         <CTAButton />
@@ -218,7 +218,7 @@ const DefinitionSection = () => (
         className="text-xs font-semibold uppercase tracking-[0.3em]"
         style={{ color: "var(--color-emphasys-blue)", opacity: 0.6 }}
       >
-        ¿Qué es el Plataforma Integral de Negocios?
+        ¿Qué es la Plataforma Integral de Negocios?
       </p>
       <p className="max-w-4xl text-2xl font-semibold leading-normal text-slate-800">
         Una infraestructura digital que conecta finanzas, operación y dirección bajo una arquitectura coherente.
