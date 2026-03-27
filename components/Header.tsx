@@ -13,9 +13,12 @@ const navItems = [
 ];
 
 const solutions = [
+  { label: "ERP a la medida", href: "/erp-a-la-medida" },
+  { label: "Automatización de ventas", href: "/automatizacion-ventas" },
+  { label: "Control de costos", href: "/control-de-costos" },
   { label: "Radiografía Empresarial 360°", href: "/radiografia-empresarial" },
-  { label: "Plataforma Integral de Negocios", href: "/sistema-operativo-empresarial" },
   { label: "Arquitectura Comercial Integrada", href: "/arquitectura-comercial-integrada" },
+  { label: "Plataforma Integral de Negocios", href: "/sistema-operativo-empresarial" },
 ];
 
 const Header = () => {
