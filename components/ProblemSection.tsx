@@ -16,9 +16,11 @@ const ProblemSection = () => {
             <p>
               Cuando una empresa comienza a crecer, lo que antes funcionaba deja de ser suficiente.
             </p>
-            <p>
-              Las decisiones se vuelven más complejas. La información se dispersa. El dueño carga con todo.
-            </p>
+            <ul className="list-disc space-y-2 pl-5">
+              <li>Las decisiones se vuelven más complejas</li>
+              <li>La información se dispersa</li>
+              <li>El dueño carga con todo</li>
+            </ul>
             <p>
               No es falta de esfuerzo. No es falta de tecnología. Es falta de arquitectura.
             </p>
