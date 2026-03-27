@@ -26,7 +26,7 @@ const StickyWhatsApp = () => {
         href={WHATSAPP_URL}
         target="_blank"
         rel="noreferrer"
-        className="pointer-events-auto flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-sm font-semibold text-white shadow-xl transition-all duration-200 ease-out hover:brightness-95 hover:-translate-y-0.5 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+        className="pointer-events-auto flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-sm font-semibold text-white shadow-xl transition-all duration-200 ease-out hover:brightness-95 hover:-translate-y-0.5 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-white whitespace-nowrap"
         aria-label="Revisar mi negocio por WhatsApp"
       >
         <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32" className="h-5 w-5" fill="currentColor">

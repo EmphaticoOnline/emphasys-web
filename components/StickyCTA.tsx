@@ -56,7 +56,7 @@ const StickyCTA = () => {
       <button
         type="button"
         onClick={handleClick}
-        className="pointer-events-auto rounded-full bg-[var(--color-emphasys-green)] px-6 py-3 text-sm font-semibold text-white shadow-xl transition-all duration-200 ease-out hover:brightness-90 hover:-translate-y-0.5 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+        className="pointer-events-auto rounded-full bg-[var(--color-emphasys-green)] px-6 py-3 text-sm font-semibold text-white shadow-xl transition-all duration-200 ease-out hover:brightness-90 hover:-translate-y-0.5 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white whitespace-nowrap"
         aria-label="Agendar Conversación"
       >
         Agendar Conversación
