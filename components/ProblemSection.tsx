@@ -7,7 +7,7 @@ const ProblemSection = () => {
             className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
             style={{ color: "var(--color-emphasys-blue)" }}
           >
-            <span className="block">Automatizar sin orden solo escala el problema.</span>
+            <span className="block">Si hoy sientes que tu negocio te está rebasando, no es casualidad</span>
             <span className="block">
               El crecimiento no ahorca a las empresas. La falta de estructura sí.
             </span>
