@@ -170,7 +170,7 @@ const Header = () => {
               rel="noreferrer"
               className="rounded-full bg-[var(--color-emphasys-green)] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 ease-out hover:brightness-90 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white whitespace-nowrap"
             >
-              Revisar mi negocio por WhatsApp
+              Agendar una conversación
             </a>
           </div>
 

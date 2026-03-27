@@ -75,7 +75,7 @@ const CTA = () => (
     rel="noreferrer"
     className="inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold text-white shadow-md transition duration-200 ease-out hover:brightness-90 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
   >
-    Revisar mi negocio por WhatsApp
+  Agendar una conversación
   </a>
 );
 
