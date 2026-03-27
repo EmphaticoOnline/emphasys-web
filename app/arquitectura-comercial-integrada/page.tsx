@@ -3,21 +3,38 @@ import type { ReactNode } from "react";
 import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
-  title: "Arquitectura Comercial Integrada | Emphasys",
+  title: "Arquitectura Comercial Integrada | Automatización de ventas y ERP a la medida",
   description:
-    "La arquitectura que ordena ingreso, criterios comerciales y conexión con operación antes de digitalizar cualquier CRM.",
+    "Ordena ingreso, márgenes y trazabilidad antes de digitalizar. Automatización de ventas con control de costos y conexión a ERP a la medida.",
+  keywords: [
+    "automatización de ventas",
+    "arquitectura comercial",
+    "ERP a la medida",
+    "control de costos",
+    "trazabilidad comercial",
+    "software empresarial",
+  ],
   openGraph: {
-    title: "Arquitectura Comercial Integrada | Emphasys",
+    title: "Arquitectura Comercial Integrada | Automatización de ventas y ERP a la medida",
     description:
-      "Estructura estratégica para el ingreso: reglas comerciales, trazabilidad y control antes de automatizar.",
+      "Estructura estratégica para automatizar ventas, proteger margen y conectar con ERP/finanzas.",
     url: "https://emphasys.mx/arquitectura-comercial-integrada",
     type: "article",
+    images: [
+      {
+        url: "/social-card.svg",
+        width: 1200,
+        height: 630,
+        alt: "Arquitectura Comercial Integrada | Automatización de ventas y ERP a la medida",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arquitectura Comercial Integrada | Emphasys",
+    title: "Arquitectura Comercial Integrada | Automatización de ventas y ERP a la medida",
     description:
-      "El ingreso requiere arquitectura: claridad en márgenes, integración con operación y trazabilidad completa.",
+      "Arquitectura comercial que protege margen, automatiza ventas y conecta con operación y finanzas.",
+    images: ["/social-card.svg"],
   },
 };
 
@@ -103,10 +120,10 @@ const Hero = () => (
         className="mt-6 text-[34px] font-extrabold leading-tight tracking-tight md:text-5xl"
         style={{ color: "var(--color-emphasys-blue)" }}
       >
-        La gestión comercial también requiere arquitectura.
+        Arquitectura Comercial (Diseño sobre el Core)
       </h1>
       <p className="mt-8 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl">
-        La Arquitectura Comercial Integrada de Emphasys ordena criterios, márgenes y trazabilidad del ingreso antes de pensar en herramientas. No se digitaliza el desorden.
+        Diseñamos las reglas y flujos comerciales que se conectan al Emphasys Core. Así, cada módulo (CRM, WhatsApp, facturación) hereda la misma estructura y control de margen.
       </p>
       <div className="mt-10">
         <CTAButton />
@@ -260,12 +277,25 @@ export default function ArquitecturaComercialIntegradaPage() {
   return (
     <>
       <Hero />
+      <div id="metodo" className="sr-only" aria-hidden="true" />
+      <div id="impacto" className="sr-only" aria-hidden="true" />
       <ProblemSection />
       <BreakPointSection />
       <ProposalSection />
       <StructuralSection />
       <IntegrationSection />
       <ClosingSection />
+      <Section background="bg-white">
+        <div className="space-y-3">
+          <h3 className="text-2xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>
+            Rutas relacionadas
+          </h3>
+          <p className="text-base leading-relaxed text-slate-700">
+            También te puede interesar <a className="text-[var(--color-emphasys-green)] font-semibold" href="/erp-a-la-medida">ERP a la medida</a> o
+            <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/control-de-costos">Control de costos</a>.
+          </p>
+        </div>
+      </Section>
       <ContactSection />
     </>
   );

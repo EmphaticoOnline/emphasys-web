@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import StickyCTA from "@/components/StickyCTA";
+import StickyWhatsApp from "@/components/StickyWhatsApp";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,21 +19,21 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://emphasys.mx"),
   title: "Emphasys | Arquitectura empresarial para crecer con claridad",
   description:
-    "Diseñamos la arquitectura empresarial que brinda claridad estratégica, control financiero y ejecución disciplinada para empresas en crecimiento.",
+    "ERP a la medida y software empresarial que integra ventas, compras y finanzas. Controla costos, automatiza ventas y gana claridad estratégica.",
   keywords: [
+    "ERP a la medida",
+    "software empresarial",
+    "automatización de ventas",
+    "control de costos",
     "arquitectura empresarial",
-    "estrategia",
-    "claridad financiera",
-    "rentabilidad",
-    "operaciones",
-    "gobernanza",
-    "Emphasys",
+    "sistema operativo de negocios",
+    "integración ventas finanzas",
   ],
   authors: [{ name: "Emphasys" }],
   openGraph: {
-    title: "Emphasys | Arquitectura empresarial para crecer con claridad",
+    title: "Emphasys | ERP a la medida y software empresarial para controlar costos",
     description:
-      "Diseñamos la arquitectura empresarial que brinda claridad estratégica, control financiero y ejecución disciplinada para empresas en crecimiento.",
+      "Implementamos software empresarial que integra ventas, compras y finanzas. Controla costos, automatiza ventas y toma decisiones con claridad.",
     siteName: "Emphasys",
     locale: "es_MX",
     type: "website",
@@ -41,15 +42,15 @@ export const metadata: Metadata = {
         url: "/social-card.svg",
         width: 1200,
         height: 630,
-        alt: "Emphasys | Arquitectura empresarial para crecer con claridad",
+        alt: "Emphasys | ERP a la medida y software empresarial para controlar costos",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Emphasys | Arquitectura empresarial para crecer con claridad",
+    title: "Emphasys | ERP a la medida y software empresarial",
     description:
-      "Diseñamos la arquitectura empresarial que brinda claridad estratégica, control financiero y ejecución disciplinada para empresas en crecimiento.",
+      "Software empresarial que integra ventas, compras y finanzas. Controla costos y automatiza ventas con claridad estratégica.",
     images: ["/social-card.svg"],
   },
 };
@@ -73,6 +74,7 @@ export default function RootLayout({
               {children}
             </main>
             <StickyCTA />
+            <StickyWhatsApp />
           </div>
         </div>
       </body>

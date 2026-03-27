@@ -3,21 +3,38 @@ import type { ReactNode } from "react";
 import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
-  title: "Plataforma Integral de Negocios | Emphasys",
+  title: "Plataforma Integral de Negocios | ERP a la medida y software empresarial",
   description:
-    "Infraestructura digital diseñada sobre la Radiografía Empresarial 360° para conectar finanzas, operación y dirección con una sola arquitectura.",
+    "Infraestructura digital que integra ventas, compras y finanzas con ERP a la medida. Control de costos y automatización alineada a la Radiografía 360°.",
+  keywords: [
+    "ERP a la medida",
+    "software empresarial",
+    "plataforma integral de negocios",
+    "automatización de ventas",
+    "control de costos",
+    "arquitectura operativa",
+  ],
   openGraph: {
-    title: "Plataforma Integral de Negocios | Emphasys",
+    title: "Plataforma Integral de Negocios | ERP a la medida y software empresarial",
     description:
-      "Infraestructura estratégica que se construye únicamente después de la Radiografía 360° para traducir la arquitectura empresarial en tecnología viva.",
+      "Infraestructura estratégica que integra ventas, compras y finanzas con ERP a la medida, posterior a la Radiografía 360°.",
     url: "https://emphasys.mx/sistema-operativo-empresarial",
     type: "article",
+    images: [
+      {
+        url: "/social-card.svg",
+        width: 1200,
+        height: 630,
+        alt: "Plataforma Integral de Negocios | ERP a la medida y software empresarial",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Plataforma Integral de Negocios | Emphasys",
+    title: "Plataforma Integral de Negocios | ERP a la medida y software empresarial",
     description:
-      "Del plano arquitectónico a la infraestructura digital: solo después de la Radiografía Empresarial 360°.",
+      "ERP a la medida para integrar ventas, compras y finanzas sobre arquitectura definida en Radiografía 360°.",
+    images: ["/social-card.svg"],
   },
 };
 
@@ -127,11 +144,11 @@ const Hero = () => (
         className="mt-6 text-[34px] font-extrabold leading-tight tracking-tight md:text-5xl"
         style={{ color: "var(--color-emphasys-blue)" }}
       >
-        <span className="block">"Toda empresa opera bajo un sistema.</span>
-        <span className="block mt-2">La diferencia es si está diseñado... o improvisado."</span>
+        <span className="block">Sistema Operativo Empresarial (Implementación)</span>
+        <span className="block mt-2">Emphasys Core + módulos conectados para operar sin islas.</span>
       </h1>
       <p className="mt-8 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl">
-        La Plataforma Integral de Negocios Emphasys es la infraestructura digital que materializa la arquitectura definida en la Radiografía 360°.
+        Implementamos sobre el Core: ERP, CRM, WhatsApp e integraciones que comparten reglas, datos y gobierno. Nada se construye aislado.
       </p>
       <div className="mt-10">
         <CTAButton />
@@ -328,6 +345,8 @@ export default function SistemaOperativoEmpresarialPage() {
   return (
     <>
       <Hero />
+      <div id="metodo" className="sr-only" aria-hidden="true" />
+      <div id="impacto" className="sr-only" aria-hidden="true" />
       <ProblemSection />
       <FocusShiftSection />
       <DefinitionSection />
@@ -335,6 +354,18 @@ export default function SistemaOperativoEmpresarialPage() {
       <MethodologySection />
       <PolicySection />
       <ClosingSection />
+      <Section background="bg-white">
+        <div className="space-y-3">
+          <h3 className="text-2xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>
+            Pasos siguientes
+          </h3>
+          <p className="text-base leading-relaxed text-slate-700">
+            Si buscas entrar por otra ruta, revisa <a className="text-[var(--color-emphasys-green)] font-semibold" href="/erp-a-la-medida">ERP a la medida</a>,
+            <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/automatizacion-ventas">Automatización de ventas</a> o
+            <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/control-de-costos">Control de costos</a>.
+          </p>
+        </div>
+      </Section>
       <ContactSection />
     </>
   );

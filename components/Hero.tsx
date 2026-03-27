@@ -1,13 +1,6 @@
 "use client";
 
 const Hero = () => {
-  const scrollToContact = () => {
-    const el = document.getElementById("contacto");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
   return (
     <section id="inicio" className="relative bg-[#F7F9FB] text-slate-900">
   <div className="mx-auto w-full max-w-[900px] px-6 sm:px-10 lg:px-0 pt-20 pb-16">
@@ -23,21 +16,22 @@ const Hero = () => {
           className="mt-6 max-w-[820px] text-[32px] font-extrabold leading-[1.06] tracking-tight md:text-4xl lg:text-5xl"
           style={{ color: "var(--color-emphasys-blue)" }}
         >
-          Las empresas en crecimiento necesitan <span className="font-black">claridad</span>, no más herramientas.
+          Una sola plataforma para ordenar todo tu negocio
         </h1>
 
         <p className="mt-8 max-w-[780px] text-lg leading-relaxed text-slate-600 md:text-xl">
-          Escuchamos primero. Estructuramos después. Implementamos solo cuando hay claridad.
+          Emphasys es una plataforma empresarial con un Core común que conecta ventas, operaciones y finanzas. Sin desarrollos aislados, todo crece sobre el mismo sistema.
         </p>
 
-        <button
-          type="button"
-          onClick={scrollToContact}
+        <a
+          href="https://wa.me/523312889584?text=Hola%2C%20quiero%20ordenar%20mi%20negocio%20y%20mejorar%20mi%20control%20de%20ventas%20y%20costos.%20%C2%BFPodemos%20revisar%20mi%20caso%3F"
+          target="_blank"
+          rel="noreferrer"
           className="mt-12 inline-block rounded-full px-10 py-4 text-base font-semibold text-white shadow-md transition duration-200 hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F9FB]"
           style={{ backgroundColor: "var(--color-emphasys-green)" }}
         >
-          Agendar Conversación
-        </button>
+          Revisar mi negocio por WhatsApp
+        </a>
 
         <div className="mt-16 h-px w-full bg-slate-200" />
       </div>

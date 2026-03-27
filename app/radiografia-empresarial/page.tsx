@@ -3,21 +3,38 @@ import type { ReactNode } from "react";
 import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
-  title: "Radiografía Empresarial 360° | Emphasys",
+  title: "Radiografía Empresarial 360° | ERP a la medida y control de costos",
   description:
-    "Diagnóstico integral que revela cuellos de botella, riesgos y oportunidades antes de invertir en nuevas herramientas. Claridad accionable para decidir con criterio.",
+    "Diagnóstico integral para empresas que buscan ERP a la medida, automatización de ventas y control de costos. Claridad accionable antes de invertir en software.",
+  keywords: [
+    "Radiografía empresarial",
+    "ERP a la medida",
+    "automatización de ventas",
+    "control de costos",
+    "diagnóstico de procesos",
+    "software empresarial",
+  ],
   openGraph: {
-    title: "Radiografía Empresarial 360° | Emphasys",
+    title: "Radiografía Empresarial 360° | ERP a la medida y control de costos",
     description:
-      "Diagnóstico integral que revela cuellos de botella, riesgos y oportunidades antes de invertir en nuevas herramientas. Claridad accionable para decidir con criterio.",
+      "Diagnóstico integral para empresas que buscan ERP a la medida, automatización de ventas y control de costos.",
     url: "https://emphasys.mx/radiografia-empresarial",
     type: "article",
+    images: [
+      {
+        url: "/social-card.svg",
+        width: 1200,
+        height: 630,
+        alt: "Radiografía Empresarial 360° | ERP a la medida y control de costos",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Radiografía Empresarial 360° | Emphasys",
+    title: "Radiografía Empresarial 360° | ERP a la medida y control de costos",
     description:
-      "Diagnóstico integral que revela cuellos de botella, riesgos y oportunidades antes de invertir en nuevas herramientas.",
+      "Diagnóstico integral para empresas que buscan ERP a la medida, automatización de ventas y control de costos.",
+    images: ["/social-card.svg"],
   },
 };
 
@@ -107,10 +124,10 @@ const Hero = () => (
         className="mt-6 max-w-[820px] text-[32px] font-extrabold leading-[1.06] tracking-tight md:text-4xl lg:text-5xl"
         style={{ color: "var(--color-emphasys-blue)" }}
       >
-        Radiografía Empresarial 360°
+        Radiografía Empresarial 360° (Diagnóstico de entrada)
       </h1>
       <p className="mt-6 max-w-[720px] text-lg leading-relaxed text-slate-600 md:text-xl">
-        Antes de cambiar herramientas, entiende cómo está funcionando realmente tu empresa.
+        Punto de partida para activar Emphasys Core: entendemos cómo opera tu empresa antes de conectar módulos.
       </p>
       <p className="mt-4 text-base font-semibold leading-relaxed text-slate-800 md:text-lg">
         El crecimiento no se improvisa. Se diseña.
@@ -153,6 +170,9 @@ export default function RadiografiaEmpresarialPage() {
     <>
       <Hero />
 
+      <div id="metodo" className="sr-only" aria-hidden="true" />
+      <div id="impacto" className="sr-only" aria-hidden="true" />
+
       <SectionWrapper background="bg-white">
         <SectionBlock
           title="¿Por qué una radiografía?"
@@ -179,6 +199,23 @@ export default function RadiografiaEmpresarialPage() {
 
       <SectionWrapper background="bg-slate-50">
         <InvestmentBlock />
+      </SectionWrapper>
+
+      <SectionWrapper background="bg-white">
+        <div className="space-y-3">
+          <h2 className="text-2xl font-semibold text-slate-900" style={{ color: "var(--color-emphasys-blue)" }}>
+            ¿Listo para avanzar?
+          </h2>
+          <div className="space-y-2 text-base leading-relaxed text-slate-700">
+            <p>
+              Explora nuestras soluciones específicas:
+              <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/erp-a-la-medida">ERP a la medida</a>,
+              <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/automatizacion-ventas">Automatización de ventas</a>
+              <span className="ml-2">y</span>
+              <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/control-de-costos">Control de costos</a>.
+            </p>
+          </div>
+        </div>
       </SectionWrapper>
 
       <ContactSection />
