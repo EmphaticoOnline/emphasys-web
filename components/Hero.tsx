@@ -16,11 +16,11 @@ const Hero = () => {
           className="mt-6 max-w-[820px] text-[32px] font-extrabold leading-[1.06] tracking-tight md:text-4xl lg:text-5xl"
           style={{ color: "var(--color-emphasys-blue)" }}
         >
-          Una sola plataforma para ordenar todo tu negocio
+          Recupera el control de tu negocio
         </h1>
 
         <p className="mt-8 max-w-[780px] text-lg leading-relaxed text-slate-600 md:text-xl">
-          Emphasys es una plataforma empresarial con un Core común que conecta ventas, operaciones y finanzas. Sin desarrollos aislados, todo crece sobre el mismo sistema.
+          Elimina desorden, fugas de dinero y decisiones a ciegas con una estructura clara y una plataforma que conecta todas las áreas.
         </p>
 
         <a
@@ -30,7 +30,7 @@ const Hero = () => {
           className="mt-12 inline-block rounded-full px-10 py-4 text-base font-semibold text-white shadow-md transition duration-200 hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F9FB]"
           style={{ backgroundColor: "var(--color-emphasys-green)" }}
         >
-          Revisar mi negocio por WhatsApp
+          Agendar una conversación
         </a>
 
         <div className="mt-16 h-px w-full bg-slate-200" />
