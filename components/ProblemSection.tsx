@@ -22,7 +22,7 @@ const ProblemSection = () => {
               <li>El dueño carga con todo</li>
             </ul>
             <p>
-              No es falta de esfuerzo. No es falta de tecnología. Es falta de arquitectura.
+              <strong>No es falta de esfuerzo. No es falta de tecnología. Es falta de arquitectura.</strong>
             </p>
           </div>
         </div>
