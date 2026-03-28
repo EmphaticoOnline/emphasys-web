@@ -27,7 +27,7 @@ const ServiceLinks = () => {
             className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
             style={{ color: "var(--color-emphasys-blue)" }}
           >
-            Soluciones para controlar costos y crecer con claridad
+            Elige por dónde empezar. Nosotros nos encargamos de estructurar tu negocio.
           </h2>
           <p className="text-base leading-relaxed text-slate-600">
             Elige el punto de entrada según tu reto principal. Todas las rutas conectan con nuestro enfoque de arquitectura empresarial.
