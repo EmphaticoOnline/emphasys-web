@@ -25,22 +25,39 @@ const StickyCTA = () => {
   }, [evaluateVisibility]);
 
   useEffect(() => {
-  const contact = document.getElementById("contact-section") || document.getElementById("contacto");
+    const contact = document.getElementById("contact-section") || document.getElementById("contacto");
     if (!contact) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setContactInView(entry?.isIntersecting || false);
+      },
+      {
+        root: null,
+        rootMargin: "0px 0px -35% 0px",
+        threshold: 0,
+      },
+    );
+
+    observer.observe(contact);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const hero = document.getElementById("inicio");
-    if (hero) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const entry = entries[0];
-          setHeroInView(entry?.isIntersecting || false);
-        },
-        { threshold: 0.1 },
-      );
-      observer.observe(hero);
-      return () => observer.disconnect();
-    }
+    if (!hero) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setHeroInView(entry?.isIntersecting || false);
+      },
+      { threshold: 0.1 },
+    );
+
+    observer.observe(hero);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -60,22 +77,6 @@ const StickyCTA = () => {
     );
 
     observer.observe(footer);
-    return () => observer.disconnect();
-  }, []);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        setContactInView(entry?.isIntersecting || false);
-      },
-      {
-        root: null,
-        rootMargin: "0px 0px -35% 0px",
-        threshold: 0,
-      }
-    );
-
-    observer.observe(contact);
     return () => observer.disconnect();
   }, []);
 
