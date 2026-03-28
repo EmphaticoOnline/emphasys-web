@@ -25,7 +25,7 @@ const StickyCTA = () => {
   }, [evaluateVisibility]);
 
   useEffect(() => {
-    const contact = document.getElementById("contact-section") || document.getElementById("contacto");
+    const contact = document.getElementById("contacto") || document.getElementById("contact-section");
     if (!contact) return;
 
     const observer = new IntersectionObserver(
@@ -35,8 +35,8 @@ const StickyCTA = () => {
       },
       {
         root: null,
-        rootMargin: "0px",
-        threshold: 0.1,
+        rootMargin: "0px 0px -45% 0px",
+        threshold: 0,
       },
     );
 
@@ -71,8 +71,8 @@ const StickyCTA = () => {
       },
       {
         root: null,
-        rootMargin: "0px",
-        threshold: 0.1,
+        rootMargin: "0px 0px -20% 0px",
+        threshold: 0,
       },
     );
 
