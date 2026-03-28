@@ -6,13 +6,15 @@ const StickyCTA = () => {
   const [visible, setVisible] = useState(() => {
     if (typeof window === "undefined") return false;
     const scrollY = window.scrollY || window.pageYOffset;
-    return scrollY > 400;
+    return scrollY > 200;
   });
   const [contactInView, setContactInView] = useState(false);
+  const [heroInView, setHeroInView] = useState(true);
+  const [footerInView, setFooterInView] = useState(false);
 
   const evaluateVisibility = useCallback(() => {
     const scrollY = window.scrollY || window.pageYOffset;
-    setVisible(scrollY > 400);
+    setVisible(scrollY > 200);
   }, []);
 
   useEffect(() => {
@@ -23,8 +25,43 @@ const StickyCTA = () => {
   }, [evaluateVisibility]);
 
   useEffect(() => {
-    const contact = document.getElementById("contact-section") || document.getElementById("contacto");
+  const contact = document.getElementById("contact-section") || document.getElementById("contacto");
     if (!contact) return;
+
+  useEffect(() => {
+    const hero = document.getElementById("inicio");
+    if (hero) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          setHeroInView(entry?.isIntersecting || false);
+        },
+        { threshold: 0.1 },
+      );
+      observer.observe(hero);
+      return () => observer.disconnect();
+    }
+  }, []);
+
+  useEffect(() => {
+    const footer = document.querySelector("footer");
+    if (!footer) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setFooterInView(entry?.isIntersecting || false);
+      },
+      {
+        root: null,
+        rootMargin: "0px 0px -20% 0px",
+        threshold: 0,
+      },
+    );
+
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -43,13 +80,13 @@ const StickyCTA = () => {
   }, []);
 
   const handleClick = () => {
-    const target = document.getElementById("contacto");
+    const target = document.getElementById("contact-section") || document.getElementById("contacto");
     if (target) {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
-  if (!visible || contactInView) return null;
+  if (!visible || heroInView || contactInView || footerInView) return null;
 
   return (
       <div className="pointer-events-none fixed bottom-6 right-6 z-40 hidden md:block">
