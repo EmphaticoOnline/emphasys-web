@@ -1,28 +1,11 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 
 const StickyCTA = () => {
-  const [visible, setVisible] = useState(() => {
-    if (typeof window === "undefined") return false;
-    const scrollY = window.scrollY || window.pageYOffset;
-    return scrollY > 200;
-  });
   const [contactInView, setContactInView] = useState(false);
   const [heroInView, setHeroInView] = useState(true);
   const [footerInView, setFooterInView] = useState(false);
-
-  const evaluateVisibility = useCallback(() => {
-    const scrollY = window.scrollY || window.pageYOffset;
-    setVisible(scrollY > 200);
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("scroll", evaluateVisibility, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", evaluateVisibility);
-    };
-  }, [evaluateVisibility]);
 
   useEffect(() => {
     const contact = document.getElementById("contacto") || document.getElementById("contact-section");
@@ -35,8 +18,7 @@ const StickyCTA = () => {
       },
       {
         root: null,
-        rootMargin: "0px 0px -45% 0px",
-        threshold: 0,
+        threshold: 0.2,
       },
     );
 
@@ -61,7 +43,7 @@ const StickyCTA = () => {
   }, []);
 
   useEffect(() => {
-    const footer = document.querySelector("footer");
+    const footer = document.querySelector("footer") || document.getElementById("page-end");
     if (!footer) return;
 
     const observer = new IntersectionObserver(
@@ -71,8 +53,7 @@ const StickyCTA = () => {
       },
       {
         root: null,
-        rootMargin: "0px 0px -20% 0px",
-        threshold: 0,
+        threshold: 0.1,
       },
     );
 
@@ -87,7 +68,7 @@ const StickyCTA = () => {
     }
   };
 
-  if (!visible || heroInView || contactInView || footerInView) return null;
+  if (heroInView || contactInView || footerInView) return null;
 
   return (
       <div className="pointer-events-none fixed bottom-6 right-6 z-40 hidden md:block">
