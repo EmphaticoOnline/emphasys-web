@@ -24,21 +24,35 @@ const StickyCTA = () => {
   }, [evaluateVisibility]);
 
   useEffect(() => {
-    const contact = document.getElementById("contacto") || document.getElementById("contact-section");
-    if (!contact) return;
+    let observer: IntersectionObserver | null = null;
+    let retry: ReturnType<typeof setTimeout> | null = null;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        setContactInView(entry?.isIntersecting || false);
-      },
-      {
-        threshold: 0.2,
-      },
-    );
+    const setupObserver = () => {
+      const contact = document.getElementById("contacto") || document.getElementById("contact-section");
+      if (!contact) {
+        retry = setTimeout(setupObserver, 200);
+        return;
+      }
 
-    observer.observe(contact);
-    return () => observer.disconnect();
+      observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          setContactInView(entry?.isIntersecting || false);
+        },
+        {
+          threshold: 0.2,
+        },
+      );
+
+      observer.observe(contact);
+    };
+
+    setupObserver();
+
+    return () => {
+      if (retry) clearTimeout(retry);
+      if (observer) observer.disconnect();
+    };
   }, []);
 
   useEffect(() => {
