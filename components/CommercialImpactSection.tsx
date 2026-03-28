@@ -7,7 +7,7 @@ const CommercialImpactSection = () => {
             className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
             style={{ color: "var(--color-emphasys-blue)" }}
           >
-            La estructura también impacta tus ventas.
+            Tus ventas no dependen solo de tu equipo. Dependen de tu estructura.
           </h2>
 
           <div className="space-y-4 text-lg leading-relaxed text-slate-600">

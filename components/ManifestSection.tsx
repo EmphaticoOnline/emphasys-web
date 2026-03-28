@@ -21,7 +21,7 @@ const ManifestSection = () => {
               Identificamos dónde se dispersa la información. Dónde se diluyen las responsabilidades. Dónde el
               crecimiento empieza a convertirse en fricción.
             </p>
-            <p>Después simplificamos.</p>
+            <p>Después, simplificamos.</p>
             <p>
               No automatizamos el desorden. {" "}
               <span className="font-semibold text-slate-900">Diseñamos estructura.</span>
