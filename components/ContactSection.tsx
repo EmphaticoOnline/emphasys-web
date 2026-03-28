@@ -55,7 +55,8 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contacto" className="bg-white text-slate-900 scroll-mt-28 md:scroll-mt-32">
+    <section id="contacto" className="relative bg-white text-slate-900 scroll-mt-28 md:scroll-mt-32">
+      <div id="contact-section" className="absolute -top-4 h-px w-px" aria-hidden="true" />
       <div className="mx-auto max-w-[900px] px-6 pt-16 pb-24 sm:px-10 lg:px-0">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-start">
           <div className="space-y-4">

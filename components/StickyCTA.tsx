@@ -35,8 +35,8 @@ const StickyCTA = () => {
       },
       {
         root: null,
-        rootMargin: "0px 0px -35% 0px",
-        threshold: 0,
+        rootMargin: "0px",
+        threshold: 0.1,
       },
     );
 
@@ -71,8 +71,8 @@ const StickyCTA = () => {
       },
       {
         root: null,
-        rootMargin: "0px 0px -20% 0px",
-        threshold: 0,
+        rootMargin: "0px",
+        threshold: 0.1,
       },
     );
 
