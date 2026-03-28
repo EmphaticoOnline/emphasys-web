@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "save": "git add . && git commit -m \"update\" && git push",
     "deploy:emphasys-web-mac": "ssh -t ubuntu@148.113.192.7 'cd /var/www/emphasys-web && ./deploy.sh'",
-    "deploy:emphasys-web": "ssh -t ubuntu@148.113.192.7 \"cd /var/www/emphasys-web && ./deploy.sh\""
+    "deploy:emphasys-web": "git add . && git diff --cached --quiet || git commit -m \"deploy auto\" && git push && ssh -t ubuntu@148.113.192.7 \"cd /var/www/emphasys-web && ./deploy.sh\""
   },
   "dependencies": {
     "next": "16.1.6",
