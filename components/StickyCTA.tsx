@@ -1,11 +1,27 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 const StickyCTA = () => {
+  const [visible, setVisible] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const scrollY = window.scrollY || window.pageYOffset;
+    return scrollY > 200;
+  });
   const [contactInView, setContactInView] = useState(false);
   const [heroInView, setHeroInView] = useState(true);
-  const [footerInView, setFooterInView] = useState(false);
+
+  const evaluateVisibility = useCallback(() => {
+    const scrollY = window.scrollY || window.pageYOffset;
+    setVisible(scrollY > 200);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", evaluateVisibility, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", evaluateVisibility);
+    };
+  }, [evaluateVisibility]);
 
   useEffect(() => {
     const contact = document.getElementById("contacto") || document.getElementById("contact-section");
@@ -17,7 +33,6 @@ const StickyCTA = () => {
         setContactInView(entry?.isIntersecting || false);
       },
       {
-        root: null,
         threshold: 0.2,
       },
     );
@@ -42,25 +57,6 @@ const StickyCTA = () => {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    const footer = document.querySelector("footer") || document.getElementById("page-end");
-    if (!footer) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        setFooterInView(entry?.isIntersecting || false);
-      },
-      {
-        root: null,
-        threshold: 0.1,
-      },
-    );
-
-    observer.observe(footer);
-    return () => observer.disconnect();
-  }, []);
-
   const handleClick = () => {
     const target = document.getElementById("contact-section") || document.getElementById("contacto");
     if (target) {
@@ -68,7 +64,7 @@ const StickyCTA = () => {
     }
   };
 
-  if (heroInView || contactInView || footerInView) return null;
+  if (!visible || heroInView || contactInView) return null;
 
   return (
       <div className="pointer-events-none fixed bottom-6 right-6 z-40 hidden md:block">
