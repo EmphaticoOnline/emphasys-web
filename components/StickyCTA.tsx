@@ -6,14 +6,18 @@ const StickyCTA = () => {
   const [visible, setVisible] = useState(() => {
     if (typeof window === "undefined") return false;
     const scrollY = window.scrollY || window.pageYOffset;
-    return scrollY > 200;
+    const windowHeight = typeof window !== "undefined" ? window.innerHeight : 0;
+    const docHeight = typeof document !== "undefined" ? document.body.offsetHeight : 0;
+    const nearBottom = windowHeight + scrollY >= docHeight - 300;
+    return scrollY > 200 && !nearBottom;
   });
-  const [contactInView, setContactInView] = useState(false);
-  const [heroInView, setHeroInView] = useState(true);
 
   const evaluateVisibility = useCallback(() => {
     const scrollY = window.scrollY || window.pageYOffset;
-    setVisible(scrollY > 200);
+    const windowHeight = window.innerHeight;
+    const docHeight = document.body.offsetHeight;
+    const nearBottom = windowHeight + scrollY >= docHeight - 300;
+    setVisible(scrollY > 200 && !nearBottom);
   }, []);
 
   useEffect(() => {
@@ -23,54 +27,6 @@ const StickyCTA = () => {
     };
   }, [evaluateVisibility]);
 
-  useEffect(() => {
-    let observer: IntersectionObserver | null = null;
-    let retry: ReturnType<typeof setTimeout> | null = null;
-
-    const setupObserver = () => {
-      const contact = document.getElementById("contacto") || document.getElementById("contact-section");
-      if (!contact) {
-        retry = setTimeout(setupObserver, 200);
-        return;
-      }
-
-      observer = new IntersectionObserver(
-        (entries) => {
-          const entry = entries[0];
-          setContactInView(entry?.isIntersecting || false);
-        },
-        {
-          threshold: 0.2,
-        },
-      );
-
-      observer.observe(contact);
-    };
-
-    setupObserver();
-
-    return () => {
-      if (retry) clearTimeout(retry);
-      if (observer) observer.disconnect();
-    };
-  }, []);
-
-  useEffect(() => {
-    const hero = document.getElementById("inicio");
-    if (!hero) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        setHeroInView(entry?.isIntersecting || false);
-      },
-      { threshold: 0.1 },
-    );
-
-    observer.observe(hero);
-    return () => observer.disconnect();
-  }, []);
-
   const handleClick = () => {
     const target = document.getElementById("contact-section") || document.getElementById("contacto");
     if (target) {
@@ -78,7 +34,7 @@ const StickyCTA = () => {
     }
   };
 
-  if (!visible || heroInView || contactInView) return null;
+  if (!visible) return null;
 
   return (
       <div className="pointer-events-none fixed bottom-6 right-6 z-40 hidden md:block">
