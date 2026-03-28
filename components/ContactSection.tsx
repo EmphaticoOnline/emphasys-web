@@ -69,10 +69,10 @@ const ContactSection = () => {
               className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
               style={{ color: "var(--color-emphasys-blue)" }}
             >
-              Cuéntanos tu reto y te respondemos en menos de 24h hábiles
+              Conversemos sobre cómo estructurar tu negocio.
             </h2>
             <p className="text-base leading-relaxed text-slate-600">
-              Esta primera conversación es un espacio para escucharte. Buscamos entender cómo está operando hoy tu empresa, qué te preocupa,
+              Esta primera conversación es para entender cómo está operando hoy tu negocio. Buscamos entender cómo está operando hoy tu empresa, qué te preocupa,
               qué está funcionando y qué no. Tomamos nota, hacemos preguntas y compartimos brevemente cómo trabajamos. A partir de ahí,
               proponemos un primer paso concreto que genere claridad y resultados.
             </p>
@@ -218,7 +218,7 @@ const ContactSection = () => {
                   ? "Enviando..."
                   : status === "success"
                   ? "Enviado"
-                  : "Agendar conversación"}
+                  : "Iniciar conversación"}
               </button>
 
               <p className="text-xs text-slate-500">
