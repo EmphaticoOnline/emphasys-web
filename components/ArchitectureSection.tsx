@@ -7,7 +7,7 @@ const ArchitectureSection = () => {
             className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
             style={{ color: "var(--color-emphasys-blue)" }}
           >
-            El crecimiento no se improvisa. Se diseña.
+            El problema no es la operación. Es la falta de estructura.
           </h2>
           <p className="text-lg leading-relaxed text-slate-600">
             La claridad no aparece sola. Se construye con método.

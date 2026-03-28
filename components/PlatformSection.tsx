@@ -7,11 +7,12 @@ const PlatformSection = () => {
             Un solo sistema para todo tu negocio
           </p>
           <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
-            Emphasys Core: una fuente de verdad, módulos que crecen contigo.
+            Una sola fuente de verdad para todo tu negocio
           </h2>
-          <p className="text-lg leading-relaxed text-slate-600">
-            No son proyectos sueltos. Todo vive en un mismo Core que asegura datos consistentes y crecimiento ordenado.
-          </p>
+          <div className="text-lg leading-relaxed text-slate-600 space-y-2">
+            <p>No son proyectos sueltos.</p>
+            <p>Todo vive en un mismo Core que asegura datos consistentes y crecimiento ordenado.</p>
+          </div>
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">

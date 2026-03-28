@@ -22,7 +22,7 @@ const HowItWorks = () => {
             Cómo funciona Emphasys
           </p>
           <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
-            Un Core común. Módulos conectados. Crecimiento sin fricción.
+            Orden primero. Tecnología después. Así es como tu negocio empieza a funcionar.
           </h2>
           <p className="text-lg leading-relaxed text-slate-600">
             Emphasys es una plataforma modular multiempresa. Cada avance reutiliza la misma base de reglas y datos para evitar retrabajos y mantener control.
