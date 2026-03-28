@@ -219,7 +219,7 @@ const ContactSection = () => {
                   ? "Enviando..."
                   : status === "success"
                   ? "Enviado"
-                  : "Iniciar conversación"}
+                  : "Enviar mensaje"}
               </button>
 
               <p className="text-xs text-slate-500">
