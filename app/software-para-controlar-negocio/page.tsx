@@ -44,21 +44,47 @@ const CTA = () => (
 
 export default function SoftwareParaControlarNegocioPage() {
   return (
-    <section className="bg-[#F7F9FB] text-slate-900">
-      <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20 space-y-4">
-        <h1
-          className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-          style={{ color: "var(--color-emphasys-blue)" }}
-        >
-          Tu negocio creció, pero ya no tienes control.
-        </h1>
-        <p className="text-lg leading-relaxed text-slate-600">
-          No sabes exactamente cuánto ganas (o si ganas), dónde está tu dinero o
-          en qué se está yendo. Es momento de ordenar tu operación y recuperar
-          el control, sin grandes inversiones y de forma clara y sencilla.
-        </p>
-        <CTA />
-      </div>
-    </section>
+    <>
+      <section className="bg-[#F7F9FB] text-slate-900">
+        <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20 space-y-4">
+          <h1
+            className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
+            style={{ color: "var(--color-emphasys-blue)" }}
+          >
+            Tu negocio creció, pero ya no tienes control.
+          </h1>
+          <p className="text-lg leading-relaxed text-slate-600">
+            No sabes exactamente cuánto ganas (o si ganas), dónde está tu dinero
+            o en qué se está yendo. Es momento de ordenar tu operación y
+            recuperar el control, sin grandes inversiones y de forma clara y
+            sencilla.
+          </p>
+          <CTA />
+        </div>
+      </section>
+      <section className="bg-white text-slate-900">
+        <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20 space-y-4">
+          <h2
+            className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
+            style={{ color: "var(--color-emphasys-blue)" }}
+          >
+            Si esto te suena familiar, no eres el único
+          </h2>
+          <ul className="mt-2 space-y-3 text-base leading-relaxed text-slate-700">
+            <li>
+              Tu negocio ha crecido, pero cada vez es más difícil entender qué
+              está pasando.
+            </li>
+            <li>No tienes claridad de cuánto ganas realmente.</li>
+            <li>El dinero entra, pero no sabes exactamente a dónde se va.</li>
+            <li>Tomas decisiones con base en intuición, no en información.</li>
+            <li>
+              Sientes que si esto sigue así, el crecimiento se puede convertir
+              en un problema.
+            </li>
+          </ul>
+        </div>
+      </section>
+    </>
   );
 }
