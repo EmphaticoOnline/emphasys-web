@@ -187,6 +187,26 @@ export default function SoftwareParaControlarNegocioPage() {
           </ul>
         </div>
       </section>
+      <section className="bg-white text-slate-900">
+        <div className="mx-auto max-w-[900px] px-6 py-16 text-center sm:px-10 lg:px-0 lg:py-20 space-y-4">
+          <h2
+            className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
+            style={{ color: "var(--color-emphasys-blue)" }}
+          >
+            Da el siguiente paso
+          </h2>
+          <p className="text-lg leading-relaxed text-slate-600">
+            No necesitas tener todo resuelto para empezar. Solo necesitas dar
+            el primer paso para entender qué está pasando en tu negocio.
+          </p>
+          <div className="pt-2 flex justify-center">
+            <CTA />
+          </div>
+          <p className="text-sm font-medium text-slate-500">
+            Sin compromisos. Solo una conversación clara.
+          </p>
+        </div>
+      </section>
     </>
   );
 }
