@@ -70,15 +70,59 @@ export default function SoftwareParaControlarNegocioPage() {
           >
             Si esto te suena familiar, no eres el único
           </h2>
-          <ul className="mt-2 list-disc space-y-4 pl-6 text-base leading-relaxed text-slate-700">
-            <li>
-              Tu negocio creció… pero cada vez entiendes menos lo que está
-              pasando.
+          <ul className="mt-2 space-y-4 text-base font-medium leading-relaxed text-slate-700">
+            <li className="flex items-start gap-3">
+              <span
+                className="mt-1 text-sm font-semibold text-[var(--color-emphasys-green)]"
+                aria-hidden="true"
+              >
+                ✔
+              </span>
+              <span>
+                Tu negocio creció… pero cada vez entiendes menos lo que está
+                pasando.
+              </span>
             </li>
-            <li>No tienes claridad real de cuánto ganas.</li>
-            <li>El dinero entra… pero no sabes exactamente a dónde se va.</li>
-            <li>Tomas decisiones con base en intuición, no en información.</li>
-            <li>Sientes que el crecimiento se te puede salir de control.</li>
+            <li className="flex items-start gap-3">
+              <span
+                className="mt-1 text-sm font-semibold text-[var(--color-emphasys-green)]"
+                aria-hidden="true"
+              >
+                ✔
+              </span>
+              <span>No tienes claridad real de cuánto ganas.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span
+                className="mt-1 text-sm font-semibold text-[var(--color-emphasys-green)]"
+                aria-hidden="true"
+              >
+                ✔
+              </span>
+              <span>
+                El dinero entra… pero no sabes exactamente a dónde se va.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span
+                className="mt-1 text-sm font-semibold text-[var(--color-emphasys-green)]"
+                aria-hidden="true"
+              >
+                ✔
+              </span>
+              <span>
+                Tomas decisiones con base en intuición, no en información.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span
+                className="mt-1 text-sm font-semibold text-[var(--color-emphasys-green)]"
+                aria-hidden="true"
+              >
+                ✔
+              </span>
+              <span>Sientes que el crecimiento se te puede salir de control.</span>
+            </li>
           </ul>
         </div>
       </section>
