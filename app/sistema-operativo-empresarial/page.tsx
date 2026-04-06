@@ -280,7 +280,7 @@ const InternalArchitectureSection = () => (
         </p>
         <p>
           Las automatizaciones se diseñan como capas de soporte: validan datos, liberan alertas y conectan la ejecución diaria con la dirección.
-          Sin promesas de "todo en uno"; solo una infraestructura cohesionada.
+          Sin promesas de &quot;todo en uno&quot;; solo una infraestructura cohesionada.
         </p>
       </div>
     </div>
@@ -334,7 +334,7 @@ const ClosingSection = () => (
   <Section background="bg-[#F4F5F7]">
     <div className="space-y-6">
       <p className="text-xl font-semibold text-slate-800 md:text-2xl">
-        "El crecimiento no se improvisa. Se diseña. Y luego se construye."
+        &quot;El crecimiento no se improvisa. Se diseña. Y luego se construye.&quot;
       </p>
       <CTAButton />
     </div>
