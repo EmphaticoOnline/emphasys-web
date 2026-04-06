@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   title: "Emphasys | Arquitectura empresarial para crecer con claridad",
   description:
     "ERP a la medida y software empresarial que integra ventas, compras y finanzas. Controla costos, automatiza ventas y gana claridad estratégica.",
+  verification: {
+    google: "aCeNCftTa0cNDUs2L9jCCOChfwVehgyDFm2o_EpR1rs",
+  },
   keywords: [
     "ERP a la medida",
     "software empresarial",
