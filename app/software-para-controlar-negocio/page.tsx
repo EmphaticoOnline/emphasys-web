@@ -70,7 +70,7 @@ export default function SoftwareParaControlarNegocioPage() {
           >
             Si esto te suena familiar, no eres el único
           </h2>
-          <ul className="mt-2 space-y-4 text-base leading-relaxed text-slate-700">
+          <ul className="mt-2 list-disc space-y-4 pl-6 text-base leading-relaxed text-slate-700">
             <li>
               Tu negocio creció… pero cada vez entiendes menos lo que está
               pasando.
