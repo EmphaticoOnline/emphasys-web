@@ -126,6 +126,67 @@ export default function SoftwareParaControlarNegocioPage() {
           </ul>
         </div>
       </section>
+      <section className="bg-slate-50 text-slate-900">
+        <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20 space-y-4">
+          <h2
+            className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
+            style={{ color: "var(--color-emphasys-blue)" }}
+          >
+            Recupera el control de tu negocio
+          </h2>
+          <p className="text-lg leading-relaxed text-slate-600">
+            No se trata de meter más sistemas o hacer inversiones grandes. Se
+            trata de tener claridad, orden y control sobre lo que ya tienes.
+          </p>
+          <ul className="mt-2 space-y-4 text-base font-medium leading-relaxed text-slate-700">
+            <li className="flex items-start gap-3">
+              <span
+                className="mt-1 text-sm font-semibold text-[var(--color-emphasys-green)]"
+                aria-hidden="true"
+              >
+                ✔
+              </span>
+              <span>Saber exactamente cuánto ganas.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span
+                className="mt-1 text-sm font-semibold text-[var(--color-emphasys-green)]"
+                aria-hidden="true"
+              >
+                ✔
+              </span>
+              <span>Entender a dónde se va tu dinero.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span
+                className="mt-1 text-sm font-semibold text-[var(--color-emphasys-green)]"
+                aria-hidden="true"
+              >
+                ✔
+              </span>
+              <span>Tener control sobre ventas, gastos e inventario.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span
+                className="mt-1 text-sm font-semibold text-[var(--color-emphasys-green)]"
+                aria-hidden="true"
+              >
+                ✔
+              </span>
+              <span>Toma decisiones con información, no con intuición.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span
+                className="mt-1 text-sm font-semibold text-[var(--color-emphasys-green)]"
+                aria-hidden="true"
+              >
+                ✔
+              </span>
+              <span>Recuperar tranquilidad en la operación diaria.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
     </>
   );
 }
