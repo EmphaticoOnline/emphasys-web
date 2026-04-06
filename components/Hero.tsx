@@ -23,6 +23,10 @@ const Hero = () => {
           Elimina desorden, fugas de dinero y decisiones a ciegas con una estructura clara y una plataforma que conecta todas las áreas.
         </p>
 
+        <p className="mt-4 max-w-[780px] text-base leading-relaxed text-slate-600 md:text-lg">
+          Implementado a través de una plataforma en la nube, con un modelo mensual accesible y escalable.
+        </p>
+
         <a
           href="https://wa.me/523312889584?text=Hola%2C%20quiero%20ordenar%20mi%20negocio%20y%20mejorar%20mi%20control%20de%20ventas%20y%20costos.%20%C2%BFPodemos%20revisar%20mi%20caso%3F"
           target="_blank"

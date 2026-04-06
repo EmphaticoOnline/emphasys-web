@@ -29,6 +29,15 @@ const HowItWorks = () => {
           </p>
         </div>
 
+        <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 className="text-lg font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>
+            Modelo de trabajo
+          </h3>
+          <p className="mt-3 text-base leading-relaxed text-slate-700">
+            Emphasys funciona como una plataforma en la nube bajo un esquema mensual (SaaS), lo que permite implementar, adaptar y evolucionar el sistema sin inversiones iniciales elevadas.
+          </p>
+        </div>
+
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {steps.map((step) => (
             <div key={step.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">

@@ -4,7 +4,7 @@ const services = [
   {
     title: "ERP a la medida",
     href: "/erp-a-la-medida",
-    description: "Integramos ventas, compras e inventario con finanzas para controlar costos y tomar decisiones con datos confiables.",
+    description: "ERP a la medida, implementado sobre una plataforma escalable en la nube.",
   },
   {
     title: "Automatización de ventas",
