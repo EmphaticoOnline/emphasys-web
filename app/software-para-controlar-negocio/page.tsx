@@ -4,13 +4,13 @@ const WHATSAPP_URL =
   "https://wa.me/523312889584?text=Hola%2C%20quiero%20ordenar%20mi%20negocio%20y%20mejorar%20mi%20control%20de%20ventas%20y%20costos.%20%C2%BFPodemos%20revisar%20mi%20caso%3F";
 
 export const metadata: Metadata = {
-  title: "Software para controlar negocio | Recupera el control operativo",
+  title: "Software para controlar negocio | Emphasys",
   description:
-    "Software para controlar tu negocio y ordenar la operación. Recupera claridad financiera y operativa sin grandes inversiones.",
+    "Ordena tu negocio, entiende tus números y recupera el control con una plataforma en la nube diseñada para empresas en crecimiento.",
   openGraph: {
-    title: "Software para controlar negocio | Recupera el control operativo",
+    title: "Software para controlar negocio | Emphasys",
     description:
-      "Ordena tu operación y recupera el control financiero con un sistema claro y sencillo.",
+      "Ordena tu negocio, entiende tus números y recupera el control con una plataforma en la nube diseñada para empresas en crecimiento.",
     url: "https://emphasys.mx/software-para-controlar-negocio",
     type: "article",
     images: [
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Software para controlar negocio",
+    title: "Software para controlar negocio | Emphasys",
     description:
-      "Ordena tu operación y recupera el control financiero con un sistema claro y sencillo.",
+      "Ordena tu negocio, entiende tus números y recupera el control con una plataforma en la nube diseñada para empresas en crecimiento.",
     images: ["/social-card.svg"],
   },
 };
