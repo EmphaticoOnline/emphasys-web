@@ -70,18 +70,15 @@ export default function SoftwareParaControlarNegocioPage() {
           >
             Si esto te suena familiar, no eres el único
           </h2>
-          <ul className="mt-2 space-y-3 text-base leading-relaxed text-slate-700">
+          <ul className="mt-2 space-y-4 text-base leading-relaxed text-slate-700">
             <li>
-              Tu negocio ha crecido, pero cada vez es más difícil entender qué
-              está pasando.
+              Tu negocio creció… pero cada vez entiendes menos lo que está
+              pasando.
             </li>
-            <li>No tienes claridad de cuánto ganas realmente.</li>
-            <li>El dinero entra, pero no sabes exactamente a dónde se va.</li>
+            <li>No tienes claridad real de cuánto ganas.</li>
+            <li>El dinero entra… pero no sabes exactamente a dónde se va.</li>
             <li>Tomas decisiones con base en intuición, no en información.</li>
-            <li>
-              Sientes que si esto sigue así, el crecimiento se puede convertir
-              en un problema.
-            </li>
+            <li>Sientes que el crecimiento se te puede salir de control.</li>
           </ul>
         </div>
       </section>
