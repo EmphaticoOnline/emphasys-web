@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const navItems = [
@@ -23,6 +23,7 @@ const solutions = [
 
 const Header = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(() => {
     if (typeof window === "undefined") return false;
     const current = window.scrollY || window.pageYOffset;
@@ -39,6 +40,30 @@ const Header = () => {
 
   const handleNav = useCallback(
     (href: string) => {
+      if (href === "/") {
+        if (pathname === "/") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          router.push(href);
+        }
+        setOpen(false);
+        return;
+      }
+
+      if (href.startsWith("/#")) {
+        const id = href.split("#")[1];
+        if (pathname === "/") {
+          const el = document.getElementById(id);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        } else {
+          router.push(href);
+        }
+        setOpen(false);
+        return;
+      }
+
       if (href.startsWith("#")) {
         const id = href.replace("#", "");
         const el = document.getElementById(id);
@@ -50,7 +75,7 @@ const Header = () => {
       }
       setOpen(false);
     },
-    [router],
+    [pathname, router],
   );
 
   useEffect(() => {
