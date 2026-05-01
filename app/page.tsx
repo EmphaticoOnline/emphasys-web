@@ -31,7 +31,7 @@ export default function Home() {
               Una forma diferente de implementar tecnología
             </h2>
             <p className="text-lg leading-relaxed text-slate-600">
-              Sin licencias complicadas. Sin proyectos interminables. Un sistema que evoluciona contigo, con un esquema mensual claro y sostenible.
+              Sin licencias complicadas. Sin proyectos interminables. Emphasys es un ERP para pymes que buscan control, claridad y crecimiento. Un sistema que evoluciona contigo, con un esquema mensual claro y sostenible.
             </p>
           </div>
         </div>

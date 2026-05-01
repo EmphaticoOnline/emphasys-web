@@ -12,6 +12,10 @@ const Hero = () => {
           Arquitectura empresarial
         </p>
 
+        <p className="mt-4 max-w-[780px] text-sm leading-relaxed text-slate-600 md:text-base">
+          ERP en la nube para pymes que buscan estructurar su negocio
+        </p>
+
         <h1
           className="mt-6 max-w-[820px] text-[32px] font-extrabold leading-[1.06] tracking-tight md:text-4xl lg:text-5xl"
           style={{ color: "var(--color-emphasys-blue)" }}
