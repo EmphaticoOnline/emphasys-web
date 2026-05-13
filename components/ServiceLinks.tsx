@@ -16,6 +16,11 @@ const services = [
     href: "/control-de-costos",
     description: "Visibilidad financiera en tiempo real: compras, inventario y ventas integradas en tableros accionables.",
   },
+  {
+    title: "Software para controlar negocios",
+    href: "/software-para-controlar-negocio",
+    description: "Una entrada consultiva para recuperar control, claridad y estructura conforme tu empresa crece.",
+  },
 ];
 
 const ServiceLinks = () => {
@@ -33,7 +38,7 @@ const ServiceLinks = () => {
             Elige el punto de entrada según tu reto principal. Todas las rutas conectan con nuestro enfoque de arquitectura empresarial.
           </p>
         </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {services.map((service) => (
             <Link
               key={service.href}
