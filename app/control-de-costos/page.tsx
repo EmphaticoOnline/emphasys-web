@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Control de costos | Visibilidad financiera y operación integrada",
   description:
     "Control de costos con software empresarial integrado. Visibilidad de márgenes, flujo y compras alineadas a inventario y ventas.",
+  alternates: {
+    canonical: "/control-de-costos",
+  },
   keywords: [
     "control de costos",
     "software empresarial",

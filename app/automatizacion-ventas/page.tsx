@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Automatización de ventas | Control de margen y trazabilidad",
   description:
     "Automatización de ventas conectada a inventario y finanzas. Protege margen, estandariza cotizaciones y gana trazabilidad de punta a punta.",
+  alternates: {
+    canonical: "/automatizacion-ventas",
+  },
   keywords: [
     "automatización de ventas",
     "control de margen",

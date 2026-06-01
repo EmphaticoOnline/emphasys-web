@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Arquitectura Comercial Integrada | Automatización de ventas y ERP a la medida",
   description:
     "Ordena ingreso, márgenes y trazabilidad antes de digitalizar. Automatización de ventas con control de costos y conexión a ERP a la medida.",
+  alternates: {
+    canonical: "/arquitectura-comercial-integrada",
+  },
   keywords: [
     "automatización de ventas",
     "arquitectura comercial",

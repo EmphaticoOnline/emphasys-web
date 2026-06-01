@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "ERP a la medida | Software empresarial que integra ventas y finanzas",
   description:
     "ERP a la medida para integrar ventas, compras y finanzas. Control de costos, trazabilidad y automatización de procesos críticos sin perder margen.",
+  alternates: {
+    canonical: "/erp-a-la-medida",
+  },
   keywords: [
     "ERP a la medida",
     "software empresarial",

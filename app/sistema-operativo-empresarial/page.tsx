@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Plataforma Integral de Negocios | ERP a la medida y software empresarial",
   description:
     "Infraestructura digital que integra ventas, compras y finanzas con ERP a la medida. Control de costos y automatización alineada a la Radiografía 360°.",
+  alternates: {
+    canonical: "/sistema-operativo-empresarial",
+  },
   keywords: [
     "ERP a la medida",
     "software empresarial",

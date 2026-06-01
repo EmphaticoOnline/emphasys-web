@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://emphasys.mx"),
+  alternates: {
+    canonical: "/",
+  },
   title: "ERP para pymes | Control y claridad en tu negocio | Emphasys",
   description:
     "Recupera el control de tu negocio con un ERP para pymes que se adapta a ti. Elimina desorden, potencia tus ventas y toma decisiones con claridad.",

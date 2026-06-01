@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "ERP para pymes que buscan crecer sin perder control. Recupera claridad operativa, mejora tu estructura y toma decisiones con información confiable.",
   alternates: {
-    canonical: "https://emphasys.mx/software-para-controlar-negocio",
+    canonical: "/software-para-controlar-negocio",
   },
   openGraph: {
     title: "Software para controlar negocios en crecimiento | ERP para pymes en expansión | Emphasys",

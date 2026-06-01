@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Radiografía Empresarial 360° | ERP a la medida y control de costos",
   description:
     "Diagnóstico integral para empresas que buscan ERP a la medida, automatización de ventas y control de costos. Claridad accionable antes de invertir en software.",
+  alternates: {
+    canonical: "/radiografia-empresarial",
+  },
   keywords: [
     "Radiografía empresarial",
     "ERP a la medida",
