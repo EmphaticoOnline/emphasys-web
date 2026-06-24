@@ -5,6 +5,8 @@ const baseUrl = "https://emphasys.mx";
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
+    "/como-ordenar-empresa-en-crecimiento",
+    "/software-para-controlar-negocio",
     "/arquitectura-comercial-integrada",
     "/automatizacion-ventas",
     "/control-de-costos",
