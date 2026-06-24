@@ -96,7 +96,7 @@ const ContactSection = () => {
                 </span>
                 <div className="flex items-center gap-2">
                   <a
-                    href="https://wa.me/523312889584"
+                    href="https://wa.me/523311107328"
                     className="text-[var(--color-emphasys-green)] underline-offset-4 hover:underline"
                     target="_blank"
                     rel="noreferrer"
@@ -104,7 +104,7 @@ const ContactSection = () => {
                     +52 33 1288 9584
                   </a>
                   <a
-                    href="https://wa.me/523312889584"
+                    href="https://wa.me/523311107328"
                     className="flex h-8 w-8 items-center justify-center rounded-full bg-[#25D366] text-white shadow-sm transition duration-150 hover:brightness-95"
                     target="_blank"
                     rel="noreferrer"
