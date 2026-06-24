@@ -158,7 +158,14 @@ export default function SoftwareParaControlarNegocioPage() {
           <p className="mt-10 max-w-[760px] text-lg font-medium leading-relaxed text-slate-700">
             El problema no es el crecimiento.
             <br />
-            El problema es crecer sin estructura.
+            El problema es{" "}
+            <a
+              href="/como-ordenar-empresa-en-crecimiento"
+              className="text-[var(--color-emphasys-green)] underline-offset-4 hover:underline"
+            >
+              crecer sin estructura
+            </a>
+            .
           </p>
         </div>
       </section>

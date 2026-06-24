@@ -211,6 +211,13 @@ export default function RadiografiaEmpresarialPage() {
           </h2>
           <div className="space-y-2 text-base leading-relaxed text-slate-700">
             <p>
+              Si todavía estás entendiendo qué le pasa a tu empresa, puede orientarte{" "}
+              <a className="text-[var(--color-emphasys-green)] font-semibold" href="/como-ordenar-empresa-en-crecimiento">
+                cómo ordenar una empresa en crecimiento
+              </a>
+              .
+            </p>
+            <p>
               Explora nuestras soluciones específicas:
               <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/erp-a-la-medida">ERP a la medida</a>,
               <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/automatizacion-ventas">Automatización de ventas</a>
