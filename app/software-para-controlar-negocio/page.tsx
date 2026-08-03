@@ -211,6 +211,16 @@ export default function SoftwareParaControlarNegocioPage() {
                 Emphasys conecta ventas, operación, administración y finanzas sobre una sola fuente de información.
               </p>
               <p>
+                Si ya estás evaluando esta categoría de solución, conoce qué debe resolver un{" "}
+                <a
+                  href="/erp-para-pymes-mexico"
+                  className="font-semibold text-[var(--color-emphasys-green)] underline-offset-4 hover:underline"
+                >
+                  ERP para pymes en México
+                </a>
+                .
+              </p>
+              <p>
                 En lugar de trabajar con sistemas aislados, procesos improvisados y datos dispersos, tu empresa empieza a operar con claridad, trazabilidad y control.
               </p>
               <p>

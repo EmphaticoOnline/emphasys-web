@@ -95,6 +95,12 @@ export default function ERPAlaMedidaPage() {
           Diseñamos e implementamos ERP a la medida a partir de una radiografía completa de tu operación. Conectamos ventas, compras,
           inventario y finanzas en un solo lugar para que tomes decisiones con datos confiables.
         </p>
+        <p className="text-base leading-relaxed text-slate-600">
+          Si primero quieres entender cuándo conviene dar este paso, consulta nuestra guía sobre{" "}
+          <a className="font-semibold text-[var(--color-emphasys-green)] underline-offset-4 hover:underline" href="/erp-para-pymes-mexico">
+            ERP para pymes en México
+          </a>.
+        </p>
         <CTA />
       </Section>
 

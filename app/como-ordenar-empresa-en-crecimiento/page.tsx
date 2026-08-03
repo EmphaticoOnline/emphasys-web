@@ -334,6 +334,17 @@ export default function ComoOrdenarEmpresaPage() {
             particular de haber crecido. Pero hay cuatro elementos que siempre aparecen cuando una
             empresa logra recuperar el control.
           </p>
+          <p className="max-w-[760px] text-base leading-relaxed text-slate-600">
+            Cuando la complejidad ya exige conectar información y procesos entre áreas, también
+            conviene entender{" "}
+            <a
+              href="/erp-para-pymes-mexico"
+              className="font-semibold text-[var(--color-emphasys-green)] underline-offset-4 hover:underline"
+            >
+              cuándo una pyme necesita un ERP
+            </a>
+            .
+          </p>
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">

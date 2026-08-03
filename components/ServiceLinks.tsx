@@ -2,6 +2,11 @@ import Link from "next/link";
 
 const services = [
   {
+    title: "ERP para pymes en México",
+    href: "/erp-para-pymes-mexico",
+    description: "Conecta ventas, compras, inventario, cobranza y finanzas sobre una sola estructura de información.",
+  },
+  {
     title: "ERP a la medida",
     href: "/erp-a-la-medida",
     description: "ERP a la medida, implementado sobre una plataforma escalable en la nube.",
@@ -38,7 +43,7 @@ const ServiceLinks = () => {
             Elige el punto de entrada según tu reto principal. Todas las rutas conectan con nuestro enfoque de arquitectura empresarial.
           </p>
         </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <Link
               key={service.href}

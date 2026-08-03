@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/automatizacion-ventas",
     "/control-de-costos",
     "/erp-a-la-medida",
+    "/erp-para-pymes-mexico",
     "/radiografia-empresarial",
     "/sistema-operativo-empresarial",
   ];
