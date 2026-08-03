@@ -46,34 +46,34 @@ export const metadata: Metadata = {
 
 const signals = [
   {
-    title: "La información está repartida",
+    title: "Nadie sabe cuál archivo tiene el dato correcto",
     description:
-      "Los datos viven entre Excel, WhatsApp, correos y sistemas que no comparten la misma versión de la operación.",
+      "Ventas, almacén y administración trabajan con archivos distintos y cada junta empieza conciliando números.",
   },
   {
-    title: "Las áreas hacen promesas desconectadas",
+    title: "Ventas promete algo que inventario no tiene",
     description:
-      "Ventas, compras, inventario y administración avanzan sin conocer a tiempo los compromisos de las demás áreas.",
+      "El problema se descubre después de cerrar: cuando toca comprar de urgencia, retrasar la entrega o explicar al cliente.",
   },
   {
-    title: "Cerrar el mes exige reconstruir lo ocurrido",
+    title: "Administración reconstruye el mes a mano",
     description:
-      "Para entender ventas, costos, pendientes o margen hay que conciliar archivos y perseguir información.",
+      "Para conocer ventas, costos y pendientes debe pedir archivos, revisar chats y conciliar capturas.",
   },
   {
-    title: "El dueño sigue conectando toda la empresa",
+    title: "Tú sigues siendo el puente entre todas las áreas",
     description:
-      "Las decisiones y excepciones dependen de una persona porque el proceso no contiene reglas ni contexto suficientes.",
+      "Compras, ventas, almacén y cobranza te buscan para resolver lo que el proceso no aclara.",
   },
   {
-    title: "Los errores se convierten en retrabajo",
+    title: "Compras compra sin conocer las existencias reales",
     description:
-      "Capturas repetidas, datos desactualizados y seguimientos manuales consumen tiempo y generan fricción entre áreas.",
+      "Un dato desactualizado termina en faltantes, compras innecesarias o dinero detenido en inventario.",
   },
   {
-    title: "Hay actividad, pero no una visión compartida",
+    title: "Cobranza no sabe qué ya se entregó",
     description:
-      "Cada equipo trabaja, aunque dirección todavía necesita reunir varias versiones antes de tomar una decisión.",
+      "Antes de cobrar debe confirmar con ventas, almacén y operación qué ocurrió con cada pedido.",
   },
 ];
 
@@ -81,22 +81,22 @@ const erpFoundations = [
   {
     title: "Una fuente común de información",
     description:
-      "Los movimientos relevantes se registran dentro de una lógica compartida, en lugar de reconstruirse desde archivos separados.",
+      "Un pedido, una salida y una factura conservan la misma historia, sin volver a capturarla.",
   },
   {
     title: "Procesos que continúan entre áreas",
     description:
-      "Una venta puede avanzar hacia inventario, compra, entrega, facturación y cobranza sin romper el contexto en cada cambio de responsable.",
+      "La venta avanza a inventario, compra, entrega y cobranza sin perder contexto al cambiar de responsable.",
   },
   {
     title: "Reglas, responsables y trazabilidad",
     description:
-      "Cada paso tiene información, responsables y criterios visibles para reducir dependencias y aclarar qué ocurrió.",
+      "Cada paso deja claro quién actúa, con qué información y qué ocurrió.",
   },
   {
     title: "Reportes que nacen de la operación",
     description:
-      "La dirección consulta información que proviene del trabajo diario, no de una reconstrucción tardía hecha para cada reunión.",
+      "Dirección consulta el trabajo diario, no un reporte reconstruido antes de cada junta.",
   },
 ];
 
@@ -115,32 +115,32 @@ const connectedAreas = [
   {
     title: "Ventas y CRM",
     description:
-      "Oportunidades, cotizaciones y pedidos conservan el contexto comercial necesario para que la operación pueda responder.",
+      "Cada cotización y pedido conserva lo prometido al cliente para que operación pueda responder.",
   },
   {
     title: "Compras y abastecimiento",
     description:
-      "Las necesidades de compra pueden responder a compromisos, prioridades y existencias visibles, no solo a solicitudes aisladas.",
+      "Compras ve existencias y compromisos antes de abastecer o reaccionar a una urgencia.",
   },
   {
     title: "Inventario y operación",
     description:
-      "Entradas, salidas y disponibilidad forman parte del mismo flujo que conecta lo vendido con lo que puede entregarse.",
+      "Entradas, salidas y disponibilidad conectan lo vendido con lo que realmente puede entregarse.",
   },
   {
     title: "Facturación y cobranza",
     description:
-      "La administración conserva relación entre lo acordado, lo entregado, lo facturado y lo que sigue pendiente de cobro.",
+      "Administración sabe qué se acordó, qué se entregó, qué se facturó y qué falta cobrar.",
   },
   {
     title: "Finanzas y control de costos",
     description:
-      "Los movimientos operativos alimentan una lectura más clara de costos, compromisos y resultados para decidir con contexto.",
+      "Los movimientos diarios muestran costos, compromisos y resultados sin reconstruir el mes.",
   },
   {
     title: "Reportes y dirección",
     description:
-      "La dirección trabaja con una referencia compartida para identificar desvíos, prioridades y decisiones pendientes.",
+      "Dirección identifica desvíos y pendientes con los mismos datos que usan las áreas.",
   },
 ];
 
@@ -148,32 +148,32 @@ const objections = [
   {
     question: "“Somos demasiado pequeños”",
     answer:
-      "La necesidad no depende solamente del número de empleados. También depende de cuántas áreas participan, cuántas transacciones ocurren y cuánto control manual exige la operación.",
+      "No depende solo del número de empleados. Depende de cuántas áreas y movimientos debes coordinar manualmente.",
   },
   {
     question: "“Excel todavía funciona”",
     answer:
-      "Excel sigue siendo útil para analizar. El problema aparece cuando debe sostener procesos compartidos, autorizaciones, trazabilidad y múltiples versiones de la misma información.",
+      "Sirve para analizar. Deja de alcanzar cuando cada área guarda su versión y una decisión exige conciliar archivos.",
   },
   {
     question: "“Un ERP es demasiado caro”",
     answer:
-      "La evaluación también debe considerar el costo operativo de repetir capturas, corregir errores, perseguir datos y tomar decisiones con información tardía.",
+      "También cuestan las capturas repetidas, las compras equivocadas, los errores y las decisiones tomadas tarde.",
   },
   {
     question: "“Primero queremos crecer”",
     answer:
-      "Crecer sobre procesos frágiles multiplica la fricción existente. La estructura permite que nuevas ventas y personas no generen el mismo nivel de desorden.",
+      "Más ventas sobre procesos frágiles significan más urgencias, más errores y más decisiones que terminan en tu escritorio.",
   },
   {
     question: "“El equipo no lo va a usar”",
     answer:
-      "La adopción depende de que el sistema responda al proceso real, de que las responsabilidades sean claras y de que exista acompañamiento durante el cambio.",
+      "El equipo adopta mejor un sistema que responde a su trabajo real, aclara responsabilidades y llega con acompañamiento.",
   },
   {
     question: "“No queremos cambiar todo de golpe”",
     answer:
-      "No es necesario intervenir toda la empresa al mismo tiempo. Las prioridades pueden definirse según el riesgo y el impacto operativo de cada proceso.",
+      "No hace falta. Se puede empezar donde hoy se pierde más control y avanzar por etapas.",
   },
 ];
 
@@ -182,31 +182,31 @@ const implementationSteps = [
     number: "01",
     title: "Diagnóstico de la operación",
     description:
-      "Entendemos cómo fluye hoy la información, dónde se rompen los procesos y qué decisiones siguen dependiendo de seguimiento manual.",
+      "Seguimos la información entre áreas para encontrar rupturas, dobles capturas y decisiones que todavía dependen de ti.",
   },
   {
     number: "02",
     title: "Diseño de procesos, reglas y prioridades",
     description:
-      "Definimos cómo deben conectarse las áreas, qué información necesita cada etapa y por dónde conviene comenzar.",
+      "Definimos qué debe saber cada área, quién decide y por dónde conviene empezar.",
   },
   {
     number: "03",
     title: "Configuración e integración",
     description:
-      "Construimos la estructura tecnológica que materializa los flujos y criterios definidos para la operación.",
+      "Llevamos esos flujos y reglas al sistema que usará el equipo.",
   },
   {
     number: "04",
     title: "Implementación gradual y validación",
     description:
-      "Ponemos en marcha los procesos por prioridades, revisando que la información y las responsabilidades funcionen en la práctica.",
+      "Avanzamos por prioridades y comprobamos que la información funcione en el trabajo diario.",
   },
   {
     number: "05",
     title: "Capacitación y acompañamiento",
     description:
-      "Acompañamos al equipo para adoptar la nueva forma de trabajar y ajustar la estructura conforme evoluciona la empresa.",
+      "Acompañamos al equipo durante la adopción y ajustamos lo que la operación revele.",
   },
 ];
 
@@ -262,34 +262,35 @@ export default function ERPParaPymesMexicoPage() {
             className="text-xs font-semibold uppercase tracking-[0.32em]"
             style={{ color: "var(--color-emphasys-blue)", opacity: 0.65 }}
           >
-            Para empresas que crecieron más rápido que sus procesos
+            Para dueños que todavía conectan toda la empresa
           </p>
           <h1
             className="mt-5 max-w-[840px] text-[32px] font-extrabold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl"
             style={{ color: "var(--color-emphasys-blue)" }}
           >
-            ERP para pymes en México: una sola estructura para recuperar el control
+            ERP para pymes en México: deja de ser el puente entre todas tus áreas
           </h1>
           <p className="mt-6 max-w-[820px] text-lg leading-relaxed text-slate-600 sm:text-xl">
-            Un ERP no es solamente un programa. Es la estructura que permite que ventas, compras,
-            inventario, cobranza, finanzas y administración trabajen con la misma información.
+            Ventas promete lo que inventario no tiene. Compras no conoce las existencias reales.
+            Cobranza pregunta qué ya se entregó. Y tú terminas aclarando todo. Un ERP conecta esa
+            operación para que las áreas trabajen con la misma información.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
               href="#contacto"
               className="inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold text-white shadow-md transition duration-200 ease-out hover:-translate-y-0.5 hover:brightness-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2"
             >
-              Revisar si mi empresa necesita un ERP
+              Hablemos de lo que está pasando
             </a>
             <a
               href="#que-es-un-erp"
               className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-8 py-3 text-sm font-semibold text-[var(--color-emphasys-blue)] transition duration-200 hover:-translate-y-0.5 hover:border-[var(--color-emphasys-green)] hover:text-[var(--color-emphasys-green)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2"
             >
-              Entender cómo funciona un ERP
+              Ver cómo se conectan las áreas
             </a>
           </div>
           <p className="mt-5 max-w-[650px] text-sm leading-relaxed text-slate-500">
-            Una conversación para entender tu operación y definir un primer paso concreto.
+            Sin demostraciones genéricas. Primero entendemos tu operación.
           </p>
           <div className="mt-14 h-px w-full bg-slate-200" />
         </div>
@@ -300,8 +301,8 @@ export default function ERPParaPymesMexicoPage() {
           ¿Cuándo empieza una pyme a necesitar un ERP?
         </h2>
         <p className="mt-4 max-w-[780px] text-lg leading-relaxed text-slate-600">
-          No existe un tamaño exacto. El punto de quiebre llega cuando coordinar la empresa exige
-          demasiado seguimiento manual y las herramientas aisladas ya no pueden sostener la complejidad.
+          El punto de quiebre llega cuando coordinar ventas, entregas, compras y cobros exige más
+          llamadas, archivos y decisiones tuyas.
         </p>
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {signals.map((signal) => (
@@ -312,8 +313,7 @@ export default function ERPParaPymesMexicoPage() {
           ))}
         </div>
         <p className="mt-10 max-w-[760px] text-lg font-medium leading-relaxed text-slate-800">
-          Cuando varias de estas señales aparecen juntas, el problema ya no está en una sola herramienta.
-          Está en la falta de una estructura compartida.
+          Si reconoces varias señales, no falta esfuerzo. Falta una estructura que conecte el trabajo.
         </p>
       </Section>
 
@@ -325,8 +325,7 @@ export default function ERPParaPymesMexicoPage() {
           ¿Qué es realmente un ERP?
         </h2>
         <p className="mt-5 max-w-[820px] text-xl font-medium leading-relaxed text-slate-800">
-          Es el sistema que registra y conecta los movimientos principales de la empresa bajo reglas
-          e información compartidas.
+          Es el sistema que conecta lo vendido, comprado, entregado, facturado y cobrado sin perder la historia entre áreas.
         </p>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {erpFoundations.map((foundation) => (
@@ -343,21 +342,20 @@ export default function ERPParaPymesMexicoPage() {
           Lo que Excel, WhatsApp y los sistemas aislados ya no pueden sostener
         </h2>
         <p className="mt-4 max-w-[800px] text-lg leading-relaxed text-slate-600">
-          Estas herramientas no son el enemigo. Ayudaron a la empresa a llegar hasta aquí. El problema
-          aparece cuando deben coordinar una operación que ya necesita continuidad entre áreas.
+          Estas herramientas ayudaron a crecer. El problema aparece cuando intentan coordinar una operación que ya cruza varias áreas.
         </p>
         <div className="mt-10 space-y-5">
           <article className="rounded-2xl border border-slate-200 p-6">
-            <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>Excel ayuda a analizar, pero no gobierna un proceso entre áreas</h3>
-            <p className="mt-3 text-base leading-relaxed text-slate-600">Puede calcular y organizar datos, pero no evita versiones duplicadas ni define quién debe actuar ante cada movimiento.</p>
+            <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>Excel analiza; no coordina el trabajo entre áreas</h3>
+            <p className="mt-3 text-base leading-relaxed text-slate-600">Cuando almacén actualiza un archivo y ventas consulta otro, el error llega hasta la promesa al cliente.</p>
           </article>
           <article className="rounded-2xl border border-slate-200 p-6">
-            <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>WhatsApp agiliza conversaciones, pero no crea trazabilidad operativa</h3>
-            <p className="mt-3 text-base leading-relaxed text-slate-600">Una decisión puede quedar en un chat sin integrarse al pedido, al inventario, a la entrega o a la cobranza.</p>
+            <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>WhatsApp conversa; no conserva el proceso</h3>
+            <p className="mt-3 text-base leading-relaxed text-slate-600">Un cambio acordado en un chat puede no llegar al pedido, la entrega o la cobranza.</p>
           </article>
           <article className="rounded-2xl border border-slate-200 p-6">
-            <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>Un sistema por área puede digitalizar tareas y aun así fragmentar la empresa</h3>
-            <p className="mt-3 text-base leading-relaxed text-slate-600">Si los sistemas no comparten información y reglas, las personas siguen conciliando manualmente lo que cada área registra.</p>
+            <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>Un sistema por área todavía puede dejarte en medio</h3>
+            <p className="mt-3 text-base leading-relaxed text-slate-600">Si no comparten datos, alguien debe conciliar ventas, inventario y administración. Casi siempre eres tú.</p>
           </article>
         </div>
       </Section>
@@ -367,7 +365,7 @@ export default function ERPParaPymesMexicoPage() {
           Qué cambia cuando toda la empresa trabaja con la misma información
         </h2>
         <p className="mt-4 max-w-[800px] text-lg leading-relaxed text-slate-600">
-          El valor no está en acumular módulos. Está en conservar el contexto mientras el trabajo avanza de un área a otra.
+          El cambio ocurre cuando un pedido conserva su historia al pasar de ventas al cobro.
         </p>
         <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" aria-label="Flujo operativo conectado">
           {flow.map((step, index) => (
@@ -379,12 +377,12 @@ export default function ERPParaPymesMexicoPage() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           <div>
-            <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>La operación puede responder con contexto</h3>
-            <p className="mt-3 text-base leading-relaxed text-slate-600">Ventas entiende qué puede prometer; compras conoce qué debe abastecer; inventario refleja movimientos y administración conserva la continuidad del pedido al cobro.</p>
+            <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>Cada área sabe qué ocurrió antes</h3>
+            <p className="mt-3 text-base leading-relaxed text-slate-600">Ventas ve disponibilidad; compras ve compromisos; cobranza ve entregas. Nadie empieza de cero.</p>
           </div>
           <div>
             <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>La dirección deja de reconstruir la historia</h3>
-            <p className="mt-3 text-base leading-relaxed text-slate-600">La información operativa alimenta una visión común para revisar pendientes, costos y resultados con mayor claridad.</p>
+            <p className="mt-3 text-base leading-relaxed text-slate-600">Pendientes, costos y resultados dejan de depender de un archivo preparado para la junta.</p>
           </div>
         </div>
       </Section>
@@ -394,7 +392,7 @@ export default function ERPParaPymesMexicoPage() {
           Las áreas que puede conectar una estructura ERP
         </h2>
         <p className="mt-4 max-w-[780px] text-lg leading-relaxed text-slate-600">
-          Cada empresa necesita una combinación distinta. Lo importante es que las áreas compartan la lógica de la operación.
+          No todas las empresas necesitan lo mismo. Todas necesitan que la información continúe entre áreas.
         </p>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {connectedAreas.map((area) => (
@@ -407,16 +405,16 @@ export default function ERPParaPymesMexicoPage() {
       </Section>
 
       <Section background="bg-slate-50">
-        <p className="text-xs font-semibold uppercase tracking-[0.28em]" style={{ color: "var(--color-emphasys-blue)", opacity: 0.65 }}>Una implementación proporcionada</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.28em]" style={{ color: "var(--color-emphasys-blue)", opacity: 0.65 }}>Sin cambiar todo de golpe</p>
         <h2 className="mt-4 max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
           Un ERP para una pyme no debería imponer más complejidad
         </h2>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {[
-            ["Empezar por los procesos que generan más riesgo", "La prioridad se define por los puntos donde hoy se pierde información, control o continuidad."],
-            ["Implementar por prioridades y etapas", "La empresa puede avanzar sin intentar transformar toda su operación al mismo tiempo."],
-            ["Adaptar reglas sin perder una estructura común", "Los procesos particulares se contemplan dentro de una lógica compartida entre áreas."],
-            ["Acompañar al equipo durante la adopción", "La nueva estructura necesita claridad, práctica y seguimiento para convertirse en la forma cotidiana de trabajar."],
+            ["Empezar donde hoy pierdes más control", "Puede ser una promesa sin inventario, una compra innecesaria o una entrega que cobranza no ve."],
+            ["Avanzar por prioridades", "No hace falta intervenir toda la empresa al mismo tiempo."],
+            ["Respetar las reglas de tu operación", "Los procesos particulares conviven dentro de una misma estructura."],
+            ["Acompañar al equipo", "La adopción se trabaja en la operación diaria, no termina al entregar el sistema."],
           ].map(([title, description]) => (
             <article key={title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
               <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>{title}</h3>
@@ -446,15 +444,15 @@ export default function ERPParaPymesMexicoPage() {
           Qué hace diferente a Emphasys
         </h2>
         <p className="mt-5 max-w-[780px] text-lg leading-relaxed text-slate-100">
-          No empezamos con una lista de módulos. Empezamos por entender cómo opera realmente la empresa y qué estructura necesita para recuperar control.
+          Antes de hablar de módulos, seguimos un pedido real: quién lo captura, quién lo promete, quién lo entrega y quién lo cobra.
         </p>
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {[
-            ["Entendemos la operación real", "Observamos cómo fluye la información, dónde aparecen las fricciones y de qué dependen las decisiones."],
-            ["Diseñamos antes de automatizar", "Definimos procesos, responsables y reglas para evitar que la tecnología solo acelere el desorden."],
-            ["Conectamos áreas, no solamente pantallas", "La implementación busca continuidad entre ventas, operación, administración y finanzas."],
-            ["Avanzamos según prioridades reales", "La estructura puede crecer con la empresa a partir de los procesos que hoy necesitan más control."],
-            ["Acompañamos la adopción", "El trabajo continúa durante la puesta en marcha para que el sistema se convierta en una forma útil de operar."],
+            ["Entendemos la operación real", "Seguimos cómo se vende, compra, entrega y cobra; no cómo dice el manual que debería ocurrir."],
+            ["Ponemos orden antes de automatizar", "Aclaramos responsables y reglas para no acelerar el mismo desorden."],
+            ["Conectamos áreas, no pantallas", "El dato acompaña el trabajo de ventas a operación, administración y finanzas."],
+            ["Empezamos por lo que más pesa", "Priorizamos los procesos que hoy provocan errores, urgencias o decisiones a ciegas."],
+            ["Acompañamos la adopción", "Seguimos presentes mientras el equipo convierte el sistema en su forma diaria de trabajar."],
           ].map(([title, description]) => (
             <article key={title} className="rounded-2xl border border-white/20 bg-white/5 p-6">
               <h3 className="text-xl font-semibold text-white">{title}</h3>
@@ -469,7 +467,7 @@ export default function ERPParaPymesMexicoPage() {
           Cómo se implementa
         </h2>
         <p className="mt-4 max-w-[760px] text-lg leading-relaxed text-slate-600">
-          La tecnología llega después de entender y diseñar la estructura que debe sostener.
+          Primero entendemos el trabajo. Después construimos el sistema que lo conecta.
         </p>
         <div className="mt-10 space-y-5">
           {implementationSteps.map((step) => (
@@ -483,7 +481,7 @@ export default function ERPParaPymesMexicoPage() {
           ))}
         </div>
         <p className="mt-8 text-base leading-relaxed text-slate-600">
-          Si tu operación requiere reglas o flujos particulares, conoce nuestro enfoque de{" "}
+          Si tu operación tiene reglas particulares, conoce nuestro enfoque de{" "}
           <a href="/erp-a-la-medida" className="font-semibold text-[var(--color-emphasys-green)] underline-offset-4 hover:underline">ERP a la medida</a>.
         </p>
       </Section>
@@ -493,7 +491,7 @@ export default function ERPParaPymesMexicoPage() {
           Empresas que recuperaron claridad y estructura
         </h2>
         <p className="mt-4 max-w-[780px] text-base leading-relaxed text-slate-600">
-          Estos testimonios reflejan el trabajo integral de Emphasys sobre estructura, procesos y acompañamiento; no resultados atribuibles exclusivamente a un ERP.
+          Estos resultados reflejan el trabajo completo de Emphasys: estructura, procesos, tecnología y acompañamiento.
         </p>
         <div className="mt-10 grid gap-7 md:grid-cols-2">
           {cases.map((item) => (
@@ -513,11 +511,11 @@ export default function ERPParaPymesMexicoPage() {
             El primer paso no es elegir módulos. Es entender qué necesita tu operación.
           </h2>
           <p className="mx-auto mt-5 max-w-[720px] text-lg leading-relaxed text-slate-600">
-            Revisemos dónde se está perdiendo el control y qué proceso conviene ordenar primero.
+            Cuéntanos dónde se rompe hoy la operación. Empecemos por ahí.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-            <a href="#contacto" className="inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold text-white shadow-md transition duration-200 hover:-translate-y-0.5 hover:brightness-90">Solicitar una evaluación inicial</a>
-            <a href="/radiografia-empresarial" className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-8 py-3 text-sm font-semibold text-[var(--color-emphasys-blue)] transition duration-200 hover:border-[var(--color-emphasys-green)] hover:text-[var(--color-emphasys-green)]">Conocer la Radiografía Empresarial</a>
+            <a href="#contacto" className="inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold text-white shadow-md transition duration-200 hover:-translate-y-0.5 hover:brightness-90">Conversemos sobre tu operación</a>
+            <a href="/radiografia-empresarial" className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-8 py-3 text-sm font-semibold text-[var(--color-emphasys-blue)] transition duration-200 hover:border-[var(--color-emphasys-green)] hover:text-[var(--color-emphasys-green)]">Ver cómo empezamos</a>
           </div>
         </div>
       </Section>
