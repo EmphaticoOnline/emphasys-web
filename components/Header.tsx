@@ -2,41 +2,22 @@
 
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const navItems = [
   { label: "Inicio", href: "/" },
-  { label: "Método", href: "#metodo" },
-  { label: "Impacto", href: "#impacto" },
+  { label: "Cómo trabajamos", href: "/#metodo" },
+  { label: "Radiografía", href: "/radiografia-empresarial" },
   { label: "Casos", href: "/#casos" },
-  { label: "Contacto", href: "#contacto" },
-];
-
-const solutions = [
-  { label: "Radiografía Empresarial 360°", href: "/radiografia-empresarial" },
-  { label: "Arquitectura Comercial Integrada", href: "/arquitectura-comercial-integrada" },
-  { label: "Plataforma Integral de Negocios", href: "/sistema-operativo-empresarial" },
-  { label: "ERP a la medida", href: "/erp-a-la-medida" },
-  { label: "Automatización de ventas", href: "/automatizacion-ventas" },
-  { label: "Control de costos", href: "/control-de-costos" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 const Header = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(() => {
-    if (typeof window === "undefined") return false;
-    const current = window.scrollY || window.pageYOffset;
-    return current > 10;
-  });
+  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [heroInView, setHeroInView] = useState(true);
-  const hoverTimeout = useRef<number | null>(null);
-
-  const handleScrollState = useCallback(() => {
-    setScrolled((window.scrollY || window.pageYOffset) > 10);
-  }, []);
 
   const handleNav = useCallback(
     (href: string) => {
@@ -44,7 +25,7 @@ const Header = () => {
         if (pathname === "/") {
           window.scrollTo({ top: 0, behavior: "smooth" });
         } else {
-          router.push(href);
+          router.push("/");
         }
         setOpen(false);
         return;
@@ -54,9 +35,7 @@ const Header = () => {
         const id = href.split("#")[1];
         if (pathname === "/") {
           const el = document.getElementById(id);
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
         } else {
           router.push(href);
         }
@@ -64,67 +43,34 @@ const Header = () => {
         return;
       }
 
-      if (href.startsWith("#")) {
-        const id = href.replace("#", "");
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      } else {
-        router.push(href);
-      }
+      router.push(href);
       setOpen(false);
     },
     [pathname, router],
   );
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScrollState, { passive: true });
-    return () => window.removeEventListener("scroll", handleScrollState);
-  }, [handleScrollState]);
+    const onScroll = () => setScrolled((window.scrollY || window.pageYOffset) > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const hero = document.getElementById("inicio");
-    if (!hero) return;
+    if (!hero) {
+      setHeroInView(false);
+      return;
+    }
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        setHeroInView(entry?.isIntersecting ?? false);
-      },
-      {
-        root: null,
-        threshold: 0.1,
-      },
+      ([entry]) => setHeroInView(entry?.isIntersecting ?? false),
+      { threshold: 0.1 },
     );
 
     observer.observe(hero);
     return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => () => {
-    if (hoverTimeout.current) {
-      window.clearTimeout(hoverTimeout.current);
-    }
-  }, []);
-
-  const openSolutionsMenu = () => {
-    if (hoverTimeout.current) {
-      window.clearTimeout(hoverTimeout.current);
-      hoverTimeout.current = null;
-    }
-    setSolutionsOpen(true);
-  };
-
-  const closeSolutionsMenuWithDelay = () => {
-    if (hoverTimeout.current) {
-      window.clearTimeout(hoverTimeout.current);
-    }
-    hoverTimeout.current = window.setTimeout(() => {
-      setSolutionsOpen(false);
-      hoverTimeout.current = null;
-    }, 120);
-  };
+  }, [pathname]);
 
   return (
     <header
@@ -134,91 +80,39 @@ const Header = () => {
     >
       <div className="h-1 w-full bg-[var(--color-emphasys-green)]" />
       <div className="mx-auto flex max-w-[1100px] items-center gap-6 px-4 py-4 sm:px-6">
-        <div className="flex items-center gap-3">
-          <a href="#contacto" onClick={(e) => { e.preventDefault(); handleNav("#contacto"); }} className="flex items-center">
-            <Image
-              src="/logos/logo-emphasys.png"
-              alt="Emphasys Soluciones"
-              width={260}
-              height={76}
-              className="h-16 w-auto md:h-20"
-              priority
-            />
-          </a>
-        </div>
+        <button type="button" onClick={() => handleNav("/")} className="flex items-center">
+          <Image
+            src="/logos/logo-emphasys.png"
+            alt="Emphasys Soluciones"
+            width={260}
+            height={76}
+            className="h-16 w-auto md:h-20"
+            priority
+          />
+        </button>
 
-        <div className="flex flex-1 items-center gap-6 justify-end">
-          <nav className="hidden w-full items-center justify-end gap-8 pr-[4.5rem] md:flex">
+        <div className="flex flex-1 items-center justify-end gap-6">
+          <nav className="hidden items-center gap-7 md:flex">
             {navItems.map((item) => (
-              <div key={item.href} className="flex items-center gap-8">
-                <button
-                  onClick={() => handleNav(item.href)}
-                  className="text-sm md:text-base font-semibold uppercase tracking-[0.16em] text-[var(--color-emphasys-blue)] border-b-2 border-transparent pb-1 transition-colors duration-200 ease-out hover:text-[var(--color-emphasys-green)] hover:border-[var(--color-emphasys-green)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white cursor-pointer"
-                >
-                  {item.label}
-                </button>
-
-                {item.label === "Impacto" && (
-                  <div
-                    className="relative"
-                    onMouseEnter={openSolutionsMenu}
-                    onMouseLeave={closeSolutionsMenuWithDelay}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setSolutionsOpen((prev) => !prev)}
-                      className="flex items-center gap-2 text-sm md:text-base font-semibold uppercase tracking-[0.16em] text-[var(--color-emphasys-blue)] border-b-2 border-transparent pb-1 transition-colors duration-200 ease-out hover:text-[var(--color-emphasys-green)] hover:border-[var(--color-emphasys-green)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white cursor-pointer"
-                      aria-expanded={solutionsOpen}
-                    >
-                      Soluciones
-                      <svg
-                        aria-hidden="true"
-                        focusable="false"
-                        className={`h-3 w-3 transition-transform duration-150 ${solutionsOpen ? "rotate-180" : "rotate-0"}`}
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M5.75 7.25a.75.75 0 0 1 1.06 0L10 10.44l3.19-3.19a.75.75 0 1 1 1.06 1.06l-3.72 3.72a.75.75 0 0 1-1.06 0L5.75 8.31a.75.75 0 0 1 0-1.06Z" />
-                      </svg>
-                    </button>
-
-                    {solutionsOpen && (
-                      <div
-                        className="absolute right-0 mt-3 w-64 rounded-xl border border-slate-200 bg-white p-3 shadow-lg"
-                        onMouseEnter={openSolutionsMenu}
-                        onMouseLeave={closeSolutionsMenuWithDelay}
-                      >
-                        <ul className="space-y-1 text-left">
-                          {solutions.map((solution) => (
-                            <li key={solution.href}>
-                              <a
-                                href={solution.href}
-                                className="block rounded-lg px-3 py-2 text-sm font-semibold uppercase tracking-[0.12em] text-[var(--color-emphasys-blue)] transition-colors duration-150 hover:bg-slate-50 hover:text-[var(--color-emphasys-green)]"
-                              >
-                                {solution.label}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
+              <button
+                key={item.href}
+                onClick={() => handleNav(item.href)}
+                className="border-b-2 border-transparent pb-1 text-sm font-semibold uppercase tracking-[0.12em] text-[var(--color-emphasys-blue)] transition-colors duration-200 hover:border-[var(--color-emphasys-green)] hover:text-[var(--color-emphasys-green)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              >
+                {item.label}
+              </button>
             ))}
           </nav>
 
           {heroInView && (
-            <div className="hidden md:block ml-6">
-              <a
-                href="https://wa.me/523311107328?text=Hola%2C%20quiero%20ordenar%20mi%20negocio%20y%20mejorar%20mi%20control%20de%20ventas%20y%20costos.%20%C2%BFPodemos%20revisar%20mi%20caso%3F"
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full bg-[var(--color-emphasys-green)] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 ease-out hover:brightness-90 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white whitespace-nowrap"
-              >
-                Iniciar conversación
-              </a>
-            </div>
+            <a
+              href="https://wa.me/523311107328?text=Hola%2C%20quiero%20conversar%20sobre%20lo%20que%20est%C3%A1%20pasando%20en%20mi%20empresa.%20%C2%BFPodemos%20revisar%20mi%20caso%3F"
+              target="_blank"
+              rel="noreferrer"
+              className="hidden whitespace-nowrap rounded-full bg-[var(--color-emphasys-green)] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:brightness-90 md:block"
+            >
+              Iniciar conversación
+            </a>
           )}
 
           <button
@@ -236,37 +130,21 @@ const Header = () => {
       {open && (
         <div className="border-t border-slate-100 bg-white px-4 pb-4 pt-3 shadow-sm md:hidden">
           <div className="flex flex-col gap-3">
-            <div className="rounded-lg border border-slate-200 p-3">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Soluciones</p>
-              <div className="mt-2 space-y-1">
-                {solutions.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    className="block rounded-lg px-3 py-2 text-sm font-semibold uppercase tracking-[0.12em] text-[var(--color-emphasys-blue)] transition-colors duration-150 hover:bg-slate-50 hover:text-[var(--color-emphasys-green)]"
-                    onClick={() => setOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-
             {navItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => handleNav(item.href)}
-                className="text-base font-semibold uppercase tracking-[0.14em] text-[var(--color-emphasys-blue)] text-left border-b-2 border-transparent pb-1 transition-colors duration-200 hover:text-[var(--color-emphasys-green)] hover:border-[var(--color-emphasys-green)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                className="border-b-2 border-transparent pb-1 text-left text-base font-semibold uppercase tracking-[0.12em] text-[var(--color-emphasys-blue)] transition-colors duration-200 hover:border-[var(--color-emphasys-green)] hover:text-[var(--color-emphasys-green)]"
               >
                 {item.label}
               </button>
             ))}
             <button
               type="button"
-              onClick={() => handleNav("#contacto")}
-              className="mt-2 rounded-full bg-[var(--color-emphasys-green)] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 ease-out hover:brightness-90 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              onClick={() => handleNav("/#contacto")}
+              className="mt-2 rounded-full bg-[var(--color-emphasys-green)] px-5 py-2.5 text-sm font-semibold text-white"
             >
-              Agendar Conversación
+              Agendar conversación
             </button>
           </div>
         </div>
