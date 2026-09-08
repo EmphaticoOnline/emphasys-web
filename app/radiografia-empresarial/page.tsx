@@ -3,76 +3,60 @@ import type { ReactNode } from "react";
 import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
-  title: "Radiografía Empresarial 360° | ERP a la medida y control de costos",
+  title: "Radiografía Empresarial | Diagnóstico estratégico para empresas",
   description:
-    "Diagnóstico integral para empresas que buscan ERP a la medida, automatización de ventas y control de costos. Claridad accionable antes de invertir en software.",
-  alternates: {
-    canonical: "/radiografia-empresarial",
-  },
+    "Radiografía Empresarial de Emphasys: diagnóstico estratégico para entender qué está frenando a tu empresa, priorizar problemas y definir el siguiente paso con criterio.",
+  alternates: { canonical: "/radiografia-empresarial" },
   keywords: [
     "Radiografía empresarial",
-    "ERP a la medida",
-    "automatización de ventas",
-    "control de costos",
+    "diagnóstico empresarial",
     "diagnóstico de procesos",
-    "software empresarial",
+    "orden empresarial",
+    "empresa en crecimiento",
+    "control empresarial",
   ],
   openGraph: {
-    title: "Radiografía Empresarial 360° | ERP a la medida y control de costos",
+    title: "Radiografía Empresarial | Emphasys",
     description:
-      "Diagnóstico integral para empresas que buscan ERP a la medida, automatización de ventas y control de costos.",
+      "Diagnóstico estratégico para entender qué está frenando a tu empresa, qué merece atención primero y qué intervención puede generar mayor valor.",
     url: "https://emphasys.mx/radiografia-empresarial",
     type: "article",
-    images: [
-      {
-        url: "/social-card.svg",
-        width: 1200,
-        height: 630,
-        alt: "Radiografía Empresarial 360° | ERP a la medida y control de costos",
-      },
-    ],
+    images: [{ url: "/social-card.svg", width: 1200, height: 630, alt: "Radiografía Empresarial de Emphasys" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Radiografía Empresarial 360° | ERP a la medida y control de costos",
+    title: "Radiografía Empresarial | Emphasys",
     description:
-      "Diagnóstico integral para empresas que buscan ERP a la medida, automatización de ventas y control de costos.",
+      "Diagnóstico estratégico para entender qué está frenando a tu empresa y definir el siguiente paso con criterio.",
     images: ["/social-card.svg"],
   },
 };
 
 const content = {
   why: [
-    "Cuellos de botella invisibles",
-    "Desorden operativo",
-    "Fricciones entre áreas",
-    "Decisiones sin información confiable",
-    "Tecnología desconectada del proceso real",
+    "Problemas que se repiten sin resolver su causa",
+    "Información dispersa o poco confiable",
+    "Responsabilidades y procesos poco claros",
+    "Dependencia excesiva del dueño o de personas clave",
+    "Errores, retrabajos y fugas de tiempo o dinero",
   ],
   includes: [
-    "Entrevistas con líderes clave",
-    "Revisión de procesos",
-    "Análisis de flujo entre áreas",
-    "Identificación de riesgos",
-    "Evaluación tecnológica y financiera",
-    "Mapa de oportunidades estratégicas",
+    "Entrevistas con personas clave",
+    "Observación de la operación y revisión de evidencia",
+    "Análisis de procesos, responsabilidades e información",
+    "Identificación de hallazgos con impacto real",
+    "Priorización de problemas y oportunidades",
   ],
   deliverables: [
-    "Documento estructurado por área",
-    "Hallazgos claros",
-    "Prioridades estratégicas",
+    "Reporte ejecutivo con hallazgos centrales",
+    "Prioridades claras para actuar",
     "Recomendaciones concretas",
-    "Propuesta de primer paso viable",
+    "Una ruta crítica de intervención",
+    "Claridad suficiente para decidir qué hacer después",
   ],
 };
 
-const SectionWrapper = ({
-  children,
-  background = "bg-white",
-}: {
-  children: ReactNode;
-  background?: string;
-}) => (
+const SectionWrapper = ({ children, background = "bg-white" }: { children: ReactNode; background?: string }) => (
   <section className={`${background} text-slate-900`}>
     <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20">{children}</div>
   </section>
@@ -82,87 +66,40 @@ const List = ({ items }: { items: string[] }) => (
   <ul className="mt-8 space-y-3 text-base leading-relaxed text-slate-700 md:text-lg">
     {items.map((item) => (
       <li key={item} className="flex gap-3">
-        <span className="mt-1 h-[6px] w-[6px] rounded-full" style={{ backgroundColor: "var(--color-emphasys-blue)" }} />
+        <span className="mt-2 h-[6px] w-[6px] shrink-0 rounded-full" style={{ backgroundColor: "var(--color-emphasys-blue)" }} />
         <span>{item}</span>
       </li>
     ))}
   </ul>
 );
 
-const InvestmentBlock = () => (
-  <div className="space-y-4">
-    <h2
-      className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-      style={{ color: "var(--color-emphasys-blue)" }}
-    >
-      Inversión
-    </h2>
-    <p className="text-lg leading-relaxed text-slate-600 md:text-xl">
-      Inversión referencial: <span className="font-semibold text-slate-900">$15,000 MXN</span>
-    </p>
-    <p className="text-base leading-relaxed text-slate-600">
-      Se ajusta según tamaño y complejidad.
-    </p>
-    <div className="pt-4">
-      <a
-        href="#contacto"
-        className="inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-6 py-3 text-sm font-semibold text-white shadow-md transition duration-200 ease-out hover:brightness-90 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-      >
-        Agendar Conversación
-      </a>
-    </div>
-  </div>
-);
-
 const Hero = () => (
   <section className="relative bg-[#F7F9FB] text-slate-900">
     <div className="mx-auto w-full max-w-[900px] px-6 pt-20 pb-16 sm:px-10 lg:px-0 lg:pt-24 lg:pb-20">
-      <p
-        className="text-xs font-semibold uppercase tracking-[0.3em]"
-        style={{ color: "var(--color-emphasys-blue)", opacity: 0.6 }}
-      >
+      <p className="text-xs font-semibold uppercase tracking-[0.3em]" style={{ color: "var(--color-emphasys-blue)", opacity: 0.6 }}>
         Diagnóstico estratégico
       </p>
-      <h1
-        className="mt-6 max-w-[820px] text-[32px] font-extrabold leading-[1.06] tracking-tight md:text-4xl lg:text-5xl"
-        style={{ color: "var(--color-emphasys-blue)" }}
-      >
-        Radiografía Empresarial 360° (Diagnóstico de entrada)
+      <h1 className="mt-6 max-w-[820px] text-[32px] font-extrabold leading-[1.06] tracking-tight md:text-4xl lg:text-5xl" style={{ color: "var(--color-emphasys-blue)" }}>
+        Radiografía Empresarial
       </h1>
-      <p className="mt-6 max-w-[720px] text-lg leading-relaxed text-slate-600 md:text-xl">
-        Punto de partida para activar Emphasys Core: entendemos cómo opera tu empresa antes de conectar módulos.
+      <p className="mt-6 max-w-[760px] text-lg leading-relaxed text-slate-600 md:text-xl">
+        Una forma estructurada de entender qué está frenando a tu empresa, qué merece atención primero y qué tipo de intervención puede generar mayor valor.
       </p>
-      <p className="mt-4 text-base font-semibold leading-relaxed text-slate-800 md:text-lg">
-        El crecimiento no se improvisa. Se diseña.
+      <p className="mt-4 max-w-[760px] text-base leading-relaxed text-slate-600 md:text-lg">
+        No parte de una solución predeterminada. Parte de evidencia, observación y criterio.
       </p>
-      <div className="mt-10 flex flex-wrap gap-4">
-        <a
-          href="#contacto"
-          className="inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold text-white shadow-md transition duration-200 ease-out hover:brightness-90 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F9FB]"
-        >
-          Agendar conversación
+      <div className="mt-10">
+        <a href="#contacto" className="inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold text-white shadow-md transition duration-200 ease-out hover:-translate-y-0.5 hover:brightness-90">
+          Agendar una conversación
         </a>
       </div>
     </div>
   </section>
 );
 
-const SectionBlock = ({
-  title,
-  description,
-  items,
-}: {
-  title: string;
-  description?: string;
-  items: string[];
-}) => (
+const SectionBlock = ({ title, description, items }: { title: string; description?: string; items: string[] }) => (
   <div className="space-y-4">
-    <h2
-      className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-      style={{ color: "var(--color-emphasys-blue)" }}
-    >
-      {title}
-    </h2>
+    <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>{title}</h2>
     {description && <p className="text-lg leading-relaxed text-slate-600 md:text-xl">{description}</p>}
     <List items={items} />
   </div>
@@ -173,21 +110,18 @@ export default function RadiografiaEmpresarialPage() {
     <>
       <Hero />
 
-      <div id="metodo" className="sr-only" aria-hidden="true" />
-      <div id="impacto" className="sr-only" aria-hidden="true" />
-
       <SectionWrapper background="bg-white">
         <SectionBlock
-          title="¿Por qué una radiografía?"
-          description="Una radiografía o diagnóstico integral de 360 grados revela lo que los síntomas diarios ocultan."
+          title="¿Por qué una Radiografía?"
+          description="Porque los síntomas cotidianos rara vez explican por sí solos qué está causando el problema."
           items={content.why}
         />
       </SectionWrapper>
 
       <SectionWrapper background="bg-slate-50">
         <SectionBlock
-          title="¿Qué incluye?"
-          description="Trabajo estructurado para entender operación, riesgos y soporte tecnológico."
+          title="¿Cómo trabajamos?"
+          description="Entrevistamos, observamos y validamos antes de convertir una percepción en un hallazgo."
           items={content.includes}
         />
       </SectionWrapper>
@@ -195,36 +129,39 @@ export default function RadiografiaEmpresarialPage() {
       <SectionWrapper background="bg-white">
         <SectionBlock
           title="¿Qué recibe la empresa?"
-          description="Entregables claros para decidir con criterio y ejecutar con orden."
+          description="La Radiografía tiene valor por sí misma. Al terminar, la empresa recibe claridad, prioridades y recomendaciones concretas, continúe o no con Emphasys."
           items={content.deliverables}
         />
       </SectionWrapper>
 
       <SectionWrapper background="bg-slate-50">
-        <InvestmentBlock />
+        <div className="space-y-4">
+          <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+            Inversión y duración
+          </h2>
+          <p className="text-lg leading-relaxed text-slate-600 md:text-xl">
+            Inversión base para una empresa de complejidad normal: <span className="font-semibold text-slate-900">$35,000 MXN + IVA</span>.
+          </p>
+          <p className="text-base leading-relaxed text-slate-600">
+            El alcance puede ajustarse cuando la complejidad de la empresa lo requiere. El proceso normalmente se desarrolla en aproximadamente tres semanas.
+          </p>
+          <p className="text-base leading-relaxed text-slate-600">
+            Forma de pago: 50% al contratar y 50% contra entrega.
+          </p>
+        </div>
       </SectionWrapper>
 
       <SectionWrapper background="bg-white">
-        <div className="space-y-3">
-          <h2 className="text-2xl font-semibold text-slate-900" style={{ color: "var(--color-emphasys-blue)" }}>
-            ¿Listo para avanzar?
+        <div className="space-y-5">
+          <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+            ¿Qué puede pasar después?
           </h2>
-          <div className="space-y-2 text-base leading-relaxed text-slate-700">
-            <p>
-              Si todavía estás entendiendo qué le pasa a tu empresa, puede orientarte{" "}
-              <a className="text-[var(--color-emphasys-green)] font-semibold" href="/como-ordenar-empresa-en-crecimiento">
-                cómo ordenar una empresa en crecimiento
-              </a>
-              .
-            </p>
-            <p>
-              Explora nuestras soluciones específicas:
-              <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/erp-a-la-medida">ERP a la medida</a>,
-              <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/automatizacion-ventas">Automatización de ventas</a>
-              <span className="ml-2">y</span>
-              <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/control-de-costos">Control de costos</a>.
-            </p>
-          </div>
+          <p className="text-lg leading-relaxed text-slate-600">
+            La Radiografía no obliga a contratar una solución posterior. A partir de los hallazgos, Emphasys puede recomendar Automatizar, Transformar, combinar ambos caminos o incluso no continuar si otra alternativa es más conveniente.
+          </p>
+          <p className="text-base font-semibold leading-relaxed text-slate-800">
+            Primero entendemos. Después recomendamos.
+          </p>
         </div>
       </SectionWrapper>
 
