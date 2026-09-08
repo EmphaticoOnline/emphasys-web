@@ -121,32 +121,28 @@ const Section = ({
   background?: string;
 }) => (
   <section className={`${background} text-slate-900`}>
-    <div className="mx-auto max-w-[1100px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20">{children}</div>
+    <div className="wrap py-16 lg:py-24">{children}</div>
   </section>
 );
 
 const CTAButton = ({ className = "" }: { className?: string }) => (
   <a
     href="#contacto"
-    className={`inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition duration-200 ease-out hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent ${className}`}
+    className={`btn-primary ${className}`}
   >
     Iniciar Radiografía Empresarial 360°
   </a>
 );
 
 const Hero = () => (
-  <section className="relative bg-[#F5F7FA] text-slate-900">
-    <div className="mx-auto max-w-[1100px] px-6 pt-24 pb-20 sm:px-10 lg:px-0 lg:pt-28 lg:pb-24">
+  <section className="relative overflow-hidden bg-[#f5f4ef] text-slate-900">
+    <div className="wrap relative pb-20 pt-16 lg:pb-24 lg:pt-20">
       <p
-        className="text-xs font-semibold uppercase tracking-[0.28em]"
-        style={{ color: "var(--color-emphasys-blue)", opacity: 0.7 }}
+        className="eyebrow"
       >
         Infraestructura estratégica
       </p>
-      <h1
-        className="mt-6 text-[34px] font-extrabold leading-tight tracking-tight md:text-5xl"
-        style={{ color: "var(--color-emphasys-blue)" }}
-      >
+      <h1 className="font-display mt-6 text-[34px] font-semibold leading-tight tracking-tight text-[var(--color-emphasys-blue)] md:text-5xl">
         <span className="block">Sistema Operativo Empresarial (Implementación)</span>
         <span className="block mt-2">Emphasys Core + módulos conectados para operar sin islas.</span>
       </h1>
@@ -167,14 +163,12 @@ const ProblemSection = () => (
   <Section>
     <div className="space-y-6">
       <p
-        className="text-xs font-semibold uppercase tracking-[0.3em]"
-        style={{ color: "var(--color-emphasys-blue)", opacity: 0.6 }}
+        className="eyebrow"
       >
         El problema invisible
       </p>
       <h2
-        className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-        style={{ color: "var(--color-emphasys-blue)" }}
+        className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display"
       >
         Muchas empresas crecen sin sistema.
       </h2>
@@ -194,17 +188,15 @@ const ProblemSection = () => (
 );
 
 const FocusShiftSection = () => (
-  <Section background="bg-slate-50">
+  <Section background="bg-[#eceff4]">
     <div className="space-y-8">
       <p
-        className="text-xs font-semibold uppercase tracking-[0.3em]"
-        style={{ color: "var(--color-emphasys-blue)", opacity: 0.6 }}
+        className="eyebrow"
       >
         Cambio de enfoque
       </p>
       <h2
-        className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-        style={{ color: "var(--color-emphasys-blue)" }}
+        className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display"
       >
         Primero se diseña el modelo. Después se construye el sistema.
       </h2>
@@ -220,7 +212,7 @@ const FocusShiftSection = () => (
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
               {String(index + 1).padStart(2, "0")}
             </p>
-            <h3 className="mt-4 text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>
+            <h3 className="mt-4 text-xl font-semibold text-[var(--color-emphasys-blue)]">
               {step.title}
             </h3>
             <p className="mt-3 text-base leading-relaxed text-slate-600">{step.description}</p>
@@ -235,8 +227,7 @@ const DefinitionSection = () => (
   <Section>
     <div className="space-y-8">
       <p
-        className="text-xs font-semibold uppercase tracking-[0.3em]"
-        style={{ color: "var(--color-emphasys-blue)", opacity: 0.6 }}
+        className="eyebrow"
       >
         ¿Qué es la Plataforma Integral de Negocios?
       </p>
@@ -245,8 +236,8 @@ const DefinitionSection = () => (
       </p>
       <div className="grid gap-6 md:grid-cols-3">
         {strategicBlocks.map((block) => (
-          <div key={block.title} className="rounded-2xl border border-slate-200 p-6">
-            <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>
+          <div key={block.title} className="border border-[rgba(29,47,104,0.10)] p-6">
+            <h3 className="text-xl font-semibold text-[var(--color-emphasys-blue)]">
               {block.title}
             </h3>
             <p className="mt-3 text-base leading-relaxed text-slate-600">{block.description}</p>
@@ -258,17 +249,15 @@ const DefinitionSection = () => (
 );
 
 const InternalArchitectureSection = () => (
-  <Section background="bg-[#F7F9FB]">
+  <Section background="bg-[#f5f4ef]">
     <div className="space-y-6">
       <p
-        className="text-xs font-semibold uppercase tracking-[0.3em]"
-        style={{ color: "var(--color-emphasys-blue)", opacity: 0.6 }}
+        className="eyebrow"
       >
         Arquitectura interna
       </p>
       <h2
-        className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-        style={{ color: "var(--color-emphasys-blue)" }}
+        className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display"
       >
         Un ecosistema estructural, no un catálogo de módulos.
       </h2>
@@ -294,21 +283,19 @@ const MethodologySection = () => (
   <Section>
     <div className="space-y-8">
       <p
-        className="text-xs font-semibold uppercase tracking-[0.3em]"
-        style={{ color: "var(--color-emphasys-blue)", opacity: 0.6 }}
+        className="eyebrow"
       >
         Metodología de construcción
       </p>
       <h2
-        className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-        style={{ color: "var(--color-emphasys-blue)" }}
+        className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display"
       >
         Profundidad, no rapidez.
       </h2>
       <div className="space-y-6">
         {methodPhases.map((phase) => (
-          <div key={phase.title} className="rounded-2xl border border-slate-200 p-6">
-            <h3 className="text-lg font-semibold uppercase tracking-[0.18em]" style={{ color: "var(--color-emphasys-blue)" }}>
+          <div key={phase.title} className="border border-[rgba(29,47,104,0.10)] p-6">
+            <h3 className="text-lg font-semibold uppercase tracking-[0.18em] text-[var(--color-emphasys-blue)]">
               {phase.title}
             </h3>
             <p className="mt-3 text-base leading-relaxed text-slate-600">{phase.description}</p>
@@ -320,10 +307,10 @@ const MethodologySection = () => (
 );
 
 const PolicySection = () => (
-  <Section background="bg-[var(--color-emphasys-blue)]">
+  <Section background="surface-navy">
     <div className="space-y-4 text-white">
       <p className="text-xs font-semibold uppercase tracking-[0.3em] opacity-70">Política institucional</p>
-      <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+      <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl">
         Ningún Sistema Operativo se construye sin arquitectura previa.
       </h2>
       <p className="max-w-3xl text-lg leading-relaxed text-slate-100">
@@ -359,7 +346,7 @@ export default function SistemaOperativoEmpresarialPage() {
       <ClosingSection />
       <Section background="bg-white">
         <div className="space-y-3">
-          <h3 className="text-2xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>
+          <h3 className="text-2xl font-semibold text-[var(--color-emphasys-blue)]">
             Pasos siguientes
           </h3>
           <p className="text-base leading-relaxed text-slate-700">

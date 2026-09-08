@@ -37,11 +37,11 @@ const StickyCTA = () => {
   if (!visible) return null;
 
   return (
-      <div className="pointer-events-none fixed bottom-6 right-6 z-40 hidden md:block">
+      <div className="pointer-events-none fixed bottom-6 right-6 z-40 hidden lg:block">
       <button
         type="button"
         onClick={handleClick}
-        className="pointer-events-auto rounded-full bg-[var(--color-emphasys-green)] px-6 py-3 text-sm font-semibold text-white shadow-xl transition-all duration-200 ease-out hover:brightness-90 hover:-translate-y-0.5 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white whitespace-nowrap"
+        className="btn-primary pointer-events-auto whitespace-nowrap shadow-xl"
         aria-label="Iniciar conversación"
       >
         Iniciar conversación

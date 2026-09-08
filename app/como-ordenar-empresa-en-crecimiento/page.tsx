@@ -139,23 +139,18 @@ const Section = ({
     id={id}
     className={`${background} text-slate-900${id ? " scroll-mt-28 md:scroll-mt-32" : ""}`}
   >
-    <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20">{children}</div>
+    <div className="wrap py-16 lg:py-24">{children}</div>
   </section>
 );
 
 const CTAButton = ({
   href,
   children,
-  offsetColor = "white",
 }: {
   href: string;
   children: ReactNode;
-  offsetColor?: string;
 }) => (
-  <a
-    href={href}
-    className={`inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold text-white shadow-md transition duration-200 ease-out hover:brightness-90 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-${offsetColor}`}
-  >
+  <a href={href} className="btn-primary">
     {children}
   </a>
 );
@@ -164,18 +159,12 @@ export default function ComoOrdenarEmpresaPage() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative bg-[#F7F9FB] text-slate-900">
-        <div className="mx-auto max-w-[900px] px-6 pb-16 pt-20 sm:px-10 lg:px-0 lg:pb-20 lg:pt-24">
-          <p
-            className="text-xs font-semibold uppercase tracking-[0.32em]"
-            style={{ color: "var(--color-emphasys-blue)", opacity: 0.65 }}
-          >
+      <section className="relative overflow-hidden bg-[#f5f4ef] text-slate-900">
+        <div className="wrap relative pb-16 pt-16 lg:pb-24 lg:pt-20">
+          <p className="eyebrow">
             Para dueños y directores de empresas en crecimiento
           </p>
-          <h1
-            className="mt-5 max-w-[820px] text-[32px] font-extrabold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl"
-            style={{ color: "var(--color-emphasys-blue)" }}
-          >
+          <h1 className="font-display mt-5 max-w-[820px] text-[34px] font-semibold leading-[1.05] tracking-tight text-[var(--color-emphasys-blue)] sm:text-5xl">
             Tu empresa está creciendo. ¿Por qué cada vez tienes menos control?
           </h1>
           <div className="mt-6 max-w-[760px] space-y-3 text-lg leading-relaxed text-slate-600 sm:text-xl">
@@ -189,7 +178,7 @@ export default function ComoOrdenarEmpresaPage() {
           <div className="mt-10">
             <a
               href="#senales"
-              className="inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold text-white shadow-md transition duration-200 ease-out hover:brightness-90 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F9FB]"
+              className="btn-primary"
             >
               Descubre las señales
             </a>
@@ -202,8 +191,7 @@ export default function ComoOrdenarEmpresaPage() {
       <Section background="bg-white">
         <div className="space-y-4">
           <h2
-            className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-            style={{ color: "var(--color-emphasys-blue)" }}
+            className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display"
           >
             El crecimiento no siempre se siente como éxito
           </h2>
@@ -234,11 +222,10 @@ export default function ComoOrdenarEmpresaPage() {
       </Section>
 
       {/* ── Sección 2: Las señales ── */}
-      <Section id="senales" background="bg-slate-50">
+      <Section id="senales" background="bg-[#eceff4]">
         <div className="space-y-4">
           <h2
-            className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-            style={{ color: "var(--color-emphasys-blue)" }}
+            className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display"
           >
             Las señales de que tu empresa creció más rápido que sus procesos
           </h2>
@@ -252,7 +239,7 @@ export default function ComoOrdenarEmpresaPage() {
           {signals.map((signal) => (
             <div
               key={signal.label}
-              className="rounded-2xl border border-slate-200 bg-white px-5 py-5 shadow-sm"
+              className="border border-[rgba(29,47,104,0.10)] bg-white px-5 py-5"
             >
               <p className="text-base font-semibold leading-snug text-slate-900">{signal.label}</p>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">{signal.description}</p>
@@ -272,8 +259,7 @@ export default function ComoOrdenarEmpresaPage() {
       <Section background="bg-white">
         <div className="space-y-4">
           <h2
-            className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-            style={{ color: "var(--color-emphasys-blue)" }}
+            className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display"
           >
             Por qué contratar más personas no resuelve el problema
           </h2>
@@ -317,11 +303,10 @@ export default function ComoOrdenarEmpresaPage() {
       </Section>
 
       {/* ── Sección 4: Cómo ordenar una empresa en crecimiento ── */}
-      <Section background="bg-slate-50">
+      <Section background="bg-[#eceff4]">
         <div className="space-y-4">
           <h2
-            className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-            style={{ color: "var(--color-emphasys-blue)" }}
+            className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display"
           >
             Cómo ordenar una empresa en crecimiento
           </h2>
@@ -351,14 +336,13 @@ export default function ComoOrdenarEmpresaPage() {
           {pillars.map((pillar) => (
             <div
               key={pillar.number}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              className="border border-[rgba(29,47,104,0.10)] bg-white p-6"
             >
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">
                 {pillar.number}
               </p>
               <h3
-                className="mt-4 text-xl font-semibold leading-snug"
-                style={{ color: "var(--color-emphasys-blue)" }}
+                className="mt-4 text-xl font-semibold leading-snug text-[var(--color-emphasys-blue)]"
               >
                 {pillar.title}
               </h3>
@@ -372,8 +356,7 @@ export default function ComoOrdenarEmpresaPage() {
       <Section background="bg-white">
         <div className="space-y-4">
           <h2
-            className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-            style={{ color: "var(--color-emphasys-blue)" }}
+            className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display"
           >
             Lo que cambia cuando una empresa recupera estructura
           </h2>
@@ -387,11 +370,10 @@ export default function ComoOrdenarEmpresaPage() {
           {results.map((result) => (
             <div
               key={result.title}
-              className="rounded-2xl border border-slate-200 bg-[#F7F9FB] p-6 shadow-sm"
+              className="border border-[rgba(29,47,104,0.10)] bg-[#f5f4ef] p-6"
             >
               <h3
-                className="text-lg font-semibold leading-snug"
-                style={{ color: "var(--color-emphasys-blue)" }}
+                className="text-lg font-semibold leading-snug text-[var(--color-emphasys-blue)]"
               >
                 {result.title}
               </h3>
@@ -412,17 +394,15 @@ export default function ComoOrdenarEmpresaPage() {
       </Section>
 
       {/* ── Sección 6: Por dónde empiezan las empresas que recuperan el control ── */}
-      <Section background="bg-slate-50">
+      <Section background="bg-[#eceff4]">
         <div className="space-y-4">
           <p
-            className="text-xs font-semibold uppercase tracking-[0.28em]"
-            style={{ color: "var(--color-emphasys-blue)", opacity: 0.65 }}
+            className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-emphasys-blue)]"
           >
             Cómo trabaja Emphasys
           </p>
           <h2
-            className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-            style={{ color: "var(--color-emphasys-blue)" }}
+            className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display"
           >
             Por dónde empiezan las empresas que recuperan el control
           </h2>
@@ -467,15 +447,15 @@ export default function ComoOrdenarEmpresaPage() {
         </div>
 
         <div className="mt-10">
-          <CTAButton href="/radiografia-empresarial" offsetColor="slate-50">
+          <CTAButton href="/radiografia-empresarial">
             Conoce cómo funciona la Radiografía Empresarial
           </CTAButton>
         </div>
       </Section>
 
       {/* ── Cierre ── */}
-      <section className="bg-[var(--color-emphasys-blue)] text-white">
-        <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20">
+      <section className="surface-navy">
+        <div className="wrap py-16 lg:py-24">
           <div className="space-y-4">
             <h2 className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
               Recuperar el control empieza por entender qué está pasando.
@@ -488,7 +468,7 @@ export default function ComoOrdenarEmpresaPage() {
             <div className="pt-4">
               <a
                 href="/radiografia-empresarial"
-                className="inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold text-white shadow-md transition duration-200 ease-out hover:brightness-90 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1d2f68]"
+                className="btn-primary"
               >
                 Conoce cómo funciona la Radiografía Empresarial
               </a>

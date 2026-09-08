@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import ContactSection from "@/components/ContactSection";
+import PageHero from "@/components/PageHero";
+import RadiographMark from "@/components/visual/RadiographMark";
 
 export const metadata: Metadata = {
   title: "Radiografía Empresarial | Diagnóstico estratégico para empresas",
@@ -58,48 +60,26 @@ const content = {
 
 const SectionWrapper = ({ children, background = "bg-white" }: { children: ReactNode; background?: string }) => (
   <section className={`${background} text-slate-900`}>
-    <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20">{children}</div>
+    <div className="wrap py-16 lg:py-24">{children}</div>
   </section>
 );
 
 const List = ({ items }: { items: string[] }) => (
-  <ul className="mt-8 space-y-3 text-base leading-relaxed text-slate-700 md:text-lg">
-    {items.map((item) => (
-      <li key={item} className="flex gap-3">
-        <span className="mt-2 h-[6px] w-[6px] shrink-0 rounded-full" style={{ backgroundColor: "var(--color-emphasys-blue)" }} />
-        <span>{item}</span>
+  <ol className="mt-8 divide-y divide-[rgba(29,47,104,0.10)] border-y border-[rgba(29,47,104,0.10)]">
+    {items.map((item, index) => (
+      <li key={item} className="flex gap-5 py-4">
+        <span className="w-8 shrink-0 font-display text-[var(--color-emphasys-green)]">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <span className="text-base leading-relaxed text-slate-700 md:text-lg">{item}</span>
       </li>
     ))}
-  </ul>
-);
-
-const Hero = () => (
-  <section className="relative bg-[#F7F9FB] text-slate-900">
-    <div className="mx-auto w-full max-w-[900px] px-6 pt-20 pb-16 sm:px-10 lg:px-0 lg:pt-24 lg:pb-20">
-      <p className="text-xs font-semibold uppercase tracking-[0.3em]" style={{ color: "var(--color-emphasys-blue)", opacity: 0.6 }}>
-        Diagnóstico estratégico
-      </p>
-      <h1 className="mt-6 max-w-[820px] text-[32px] font-extrabold leading-[1.06] tracking-tight md:text-4xl lg:text-5xl" style={{ color: "var(--color-emphasys-blue)" }}>
-        Radiografía Empresarial
-      </h1>
-      <p className="mt-6 max-w-[760px] text-lg leading-relaxed text-slate-600 md:text-xl">
-        Una forma estructurada de entender qué está frenando a tu empresa, qué merece atención primero y qué tipo de intervención puede generar mayor valor.
-      </p>
-      <p className="mt-4 max-w-[760px] text-base leading-relaxed text-slate-600 md:text-lg">
-        No parte de una solución predeterminada. Parte de evidencia, observación y criterio.
-      </p>
-      <div className="mt-10">
-        <a href="#contacto" className="inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold text-white shadow-md transition duration-200 ease-out hover:-translate-y-0.5 hover:brightness-90">
-          Agendar una conversación
-        </a>
-      </div>
-    </div>
-  </section>
+  </ol>
 );
 
 const SectionBlock = ({ title, description, items }: { title: string; description?: string; items: string[] }) => (
   <div className="space-y-4">
-    <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>{title}</h2>
+    <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-[var(--color-emphasys-blue)] sm:text-4xl">{title}</h2>
     {description && <p className="text-lg leading-relaxed text-slate-600 md:text-xl">{description}</p>}
     <List items={items} />
   </div>
@@ -108,7 +88,19 @@ const SectionBlock = ({ title, description, items }: { title: string; descriptio
 export default function RadiografiaEmpresarialPage() {
   return (
     <>
-      <Hero />
+      <PageHero
+        eyebrow="Diagnóstico estratégico"
+        title="Radiografía Empresarial"
+        visual={<RadiographMark />}
+        actions={<a href="#contacto" className="btn-primary">Agendar una conversación</a>}
+      >
+        <p>
+          Una forma estructurada de entender qué está frenando a tu empresa, qué merece atención primero y qué tipo de intervención puede generar mayor valor.
+        </p>
+        <p>
+          No parte de una solución predeterminada. Parte de evidencia, observación y criterio.
+        </p>
+      </PageHero>
 
       <SectionWrapper background="bg-white">
         <SectionBlock
@@ -118,7 +110,7 @@ export default function RadiografiaEmpresarialPage() {
         />
       </SectionWrapper>
 
-      <SectionWrapper background="bg-slate-50">
+      <SectionWrapper background="bg-[#eceff4]">
         <SectionBlock
           title="¿Cómo trabajamos?"
           description="Entrevistamos, observamos y validamos antes de convertir una percepción en un hallazgo."
@@ -134,12 +126,29 @@ export default function RadiografiaEmpresarialPage() {
         />
       </SectionWrapper>
 
-      <SectionWrapper background="bg-slate-50">
+      <SectionWrapper background="bg-[#f5f4ef]">
         <div className="space-y-4">
-          <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+          <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-[var(--color-emphasys-blue)] sm:text-4xl">
             Inversión y duración
           </h2>
-          <p className="text-lg leading-relaxed text-slate-600 md:text-xl">
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            <div className="border border-[rgba(29,47,104,0.10)] bg-white p-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Inversión base</p>
+              <p className="mt-3 font-display text-2xl text-[var(--color-emphasys-blue)]">$35,000 MXN + IVA</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">Para una empresa de complejidad normal.</p>
+            </div>
+            <div className="border border-[rgba(29,47,104,0.10)] bg-white p-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Duración</p>
+              <p className="mt-3 font-display text-2xl text-[var(--color-emphasys-blue)]">3 semanas</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">Aproximada. El alcance puede ajustarse cuando la complejidad lo requiere.</p>
+            </div>
+            <div className="border border-[rgba(29,47,104,0.10)] bg-white p-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Forma de pago</p>
+              <p className="mt-3 font-display text-2xl text-[var(--color-emphasys-blue)]">50% / 50%</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">50% al contratar y 50% contra entrega.</p>
+            </div>
+          </div>
+          <p className="text-base leading-relaxed text-slate-600">
             Inversión base para una empresa de complejidad normal: <span className="font-semibold text-slate-900">$35,000 MXN + IVA</span>.
           </p>
           <p className="text-base leading-relaxed text-slate-600">
@@ -151,19 +160,19 @@ export default function RadiografiaEmpresarialPage() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper background="bg-white">
-        <div className="space-y-5">
-          <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+      <section className="surface-navy">
+        <div className="wrap py-16 lg:py-24">
+          <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl">
             ¿Qué puede pasar después?
           </h2>
-          <p className="text-lg leading-relaxed text-slate-600">
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-white/75">
             La Radiografía no obliga a contratar una solución posterior. A partir de los hallazgos, Emphasys puede recomendar Automatizar, Transformar, combinar ambos caminos o incluso no continuar si otra alternativa es más conveniente.
           </p>
-          <p className="text-base font-semibold leading-relaxed text-slate-800">
+          <p className="mt-6 font-display text-xl text-white">
             Primero entendemos. Después recomendamos.
           </p>
         </div>
-      </SectionWrapper>
+      </section>
 
       <ContactSection />
     </>

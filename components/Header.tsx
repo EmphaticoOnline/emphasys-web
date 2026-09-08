@@ -17,7 +17,7 @@ const Header = () => {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [heroInView, setHeroInView] = useState(true);
+  const [heroInView, setHeroInView] = useState(pathname === "/");
 
   const handleNav = useCallback(
     (href: string) => {
@@ -59,7 +59,6 @@ const Header = () => {
   useEffect(() => {
     const hero = document.getElementById("inicio");
     if (!hero) {
-      setHeroInView(false);
       return;
     }
 
@@ -74,42 +73,42 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed left-[10px] top-0 z-50 w-[calc(100%-10px)] border-b border-slate-100 bg-white transition-shadow duration-200 ${
-        scrolled ? "shadow-sm" : "shadow-none"
+      className={`fixed left-[8px] top-0 z-50 w-[calc(100%-8px)] border-b bg-white/90 backdrop-blur-md transition-shadow duration-200 ${
+        scrolled ? "border-[rgba(29,47,104,0.10)] shadow-[0_10px_30px_rgba(18,26,61,0.06)]" : "border-transparent shadow-none"
       }`}
     >
-      <div className="h-1 w-full bg-[var(--color-emphasys-green)]" />
-      <div className="mx-auto flex max-w-[1100px] items-center gap-6 px-4 py-4 sm:px-6">
+      <div className="h-[3px] w-full bg-[var(--color-emphasys-green)]" />
+      <div className="mx-auto flex max-w-[1120px] items-center gap-6 px-4 py-3 sm:px-6">
         <button type="button" onClick={() => handleNav("/")} className="flex items-center">
           <Image
             src="/logos/logo-emphasys.png"
             alt="Emphasys Soluciones"
             width={260}
             height={76}
-            className="h-16 w-auto md:h-20"
+            className="h-14 w-auto md:h-[68px]"
             priority
           />
         </button>
 
         <div className="flex flex-1 items-center justify-end gap-6">
-          <nav className="hidden items-center gap-7 md:flex">
+          <nav className="hidden items-center gap-7 lg:flex">
             {navItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => handleNav(item.href)}
-                className="border-b-2 border-transparent pb-1 text-sm font-semibold uppercase tracking-[0.12em] text-[var(--color-emphasys-blue)] transition-colors duration-200 hover:border-[var(--color-emphasys-green)] hover:text-[var(--color-emphasys-green)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                className="border-b-2 border-transparent pb-1 text-[13px] font-semibold uppercase tracking-[0.12em] text-[var(--color-emphasys-blue)] transition-colors duration-200 hover:border-[var(--color-emphasys-green)] hover:text-[var(--color-emphasys-green)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
                 {item.label}
               </button>
             ))}
           </nav>
 
-          {heroInView && (
+          {pathname === "/" && heroInView && (
             <a
               href="https://wa.me/523311107328?text=Hola%2C%20quiero%20conversar%20sobre%20lo%20que%20est%C3%A1%20pasando%20en%20mi%20empresa.%20%C2%BFPodemos%20revisar%20mi%20caso%3F"
               target="_blank"
               rel="noreferrer"
-              className="hidden whitespace-nowrap rounded-full bg-[var(--color-emphasys-green)] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:brightness-90 md:block"
+              className="btn-primary hidden whitespace-nowrap px-5 py-2.5 text-sm lg:inline-flex"
             >
               Iniciar conversación
             </a>
@@ -117,24 +116,26 @@ const Header = () => {
 
           <button
             type="button"
-            className="ml-auto flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 md:hidden"
+            className="ml-auto flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full border border-slate-200 lg:hidden"
             onClick={() => setOpen((prev) => !prev)}
-            aria-label="Abrir menú"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={open}
           >
-            <span className="block h-[2px] w-5 bg-slate-700" />
-            <span className="sr-only">Menú</span>
+            <span className={`block h-[1.5px] w-5 bg-[var(--color-emphasys-blue)] transition ${open ? "translate-y-[6px] rotate-45" : ""}`} />
+            <span className={`block h-[1.5px] w-5 bg-[var(--color-emphasys-blue)] transition ${open ? "opacity-0" : ""}`} />
+            <span className={`block h-[1.5px] w-5 bg-[var(--color-emphasys-blue)] transition ${open ? "-translate-y-[6px] -rotate-45" : ""}`} />
           </button>
         </div>
       </div>
 
       {open && (
-        <div className="border-t border-slate-100 bg-white px-4 pb-4 pt-3 shadow-sm md:hidden">
+        <div className="border-t border-slate-100 bg-white px-4 pb-5 pt-3 shadow-sm lg:hidden">
           <div className="flex flex-col gap-3">
             {navItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => handleNav(item.href)}
-                className="border-b-2 border-transparent pb-1 text-left text-base font-semibold uppercase tracking-[0.12em] text-[var(--color-emphasys-blue)] transition-colors duration-200 hover:border-[var(--color-emphasys-green)] hover:text-[var(--color-emphasys-green)]"
+                className="border-b border-slate-100 pb-3 text-left text-base font-semibold uppercase tracking-[0.12em] text-[var(--color-emphasys-blue)]"
               >
                 {item.label}
               </button>
@@ -142,7 +143,7 @@ const Header = () => {
             <button
               type="button"
               onClick={() => handleNav("/#contacto")}
-              className="mt-2 rounded-full bg-[var(--color-emphasys-green)] px-5 py-2.5 text-sm font-semibold text-white"
+              className="btn-primary mt-2"
             >
               Agendar conversación
             </button>

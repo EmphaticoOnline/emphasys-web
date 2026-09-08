@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import StickyCTA from "@/components/StickyCTA";
 import StickyWhatsApp from "@/components/StickyWhatsApp";
 
@@ -13,6 +14,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -68,17 +75,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${sourceSerif.variable} antialiased`}>
         <div className="relative min-h-screen">
           <div
-            className="fixed left-0 top-0 h-full w-[10px]"
+            className="fixed left-0 top-0 z-[60] h-full w-[8px]"
             style={{ backgroundColor: "var(--color-emphasys-blue)" }}
           />
-          <div className="pl-[10px]">
+          <div className="pl-[8px]">
             <Header />
-            <main className="pt-24">
-              {children}
-            </main>
+            <main className="pt-24">{children}</main>
+            <Footer />
             <StickyCTA />
             <StickyWhatsApp />
           </div>

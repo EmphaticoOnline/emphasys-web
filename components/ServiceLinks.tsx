@@ -1,32 +1,12 @@
 import Link from "next/link";
 
-const paths = [
-  {
-    title: "Radiografía Empresarial",
-    href: "/radiografia-empresarial",
-    description: "Un análisis estructurado para entender qué está frenando a la empresa, qué merece atención primero y qué tipo de intervención puede generar mayor valor.",
-  },
-  {
-    title: "Automatizar",
-    href: "/erp-a-la-medida",
-    description: "Cuando el reto requiere conectar información, reducir captura duplicada, establecer controles y sostener mejor la operación mediante tecnología.",
-  },
-  {
-    title: "Transformar",
-    href: "/#contacto",
-    description: "Cuando el reto exige cambios más profundos en procesos, responsabilidades, coordinación, adopción y forma de operar.",
-  },
-];
-
 const ServiceLinks = () => {
   return (
-    <section className="bg-white text-slate-900">
-      <div className="mx-auto max-w-[900px] px-6 pt-16 pb-16 sm:px-10 lg:px-0">
-        <div className="space-y-4">
-          <h2
-            className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-            style={{ color: "var(--color-emphasys-blue)" }}
-          >
+    <section className="bg-[#f5f4ef] text-slate-900">
+      <div className="wrap py-20 lg:py-28">
+        <div className="max-w-3xl space-y-4">
+          <p className="eyebrow">Después de entender</p>
+          <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-[var(--color-emphasys-blue)] sm:text-4xl">
             Después de entender el problema, definimos la intervención adecuada
           </h2>
           <p className="text-base leading-relaxed text-slate-600">
@@ -34,25 +14,51 @@ const ServiceLinks = () => {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {paths.map((path) => (
-            <Link
-              key={path.title}
-              href={path.href}
-              className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            >
-              <h3 className="text-xl font-semibold text-slate-900 group-hover:text-[var(--color-emphasys-green)]">
-                {path.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">{path.description}</p>
-              <span className="mt-4 inline-flex items-center text-sm font-semibold text-[var(--color-emphasys-green)]">
-                Conocer más
-              </span>
-            </Link>
-          ))}
+        <Link
+          href="/radiografia-empresarial"
+          className="group mt-12 block overflow-hidden border border-[rgba(29,47,104,0.12)] bg-white p-8 shadow-[0_18px_40px_rgba(18,26,61,0.05)] transition duration-200 hover:-translate-y-0.5 sm:p-10"
+        >
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-emphasys-green)]">Método</p>
+          <h3 className="mt-3 font-display text-3xl font-semibold text-[var(--color-emphasys-blue)] group-hover:text-[var(--color-emphasys-green)]">
+            Radiografía Empresarial
+          </h3>
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-600">
+            Un análisis estructurado para entender qué está frenando a la empresa, qué merece atención primero y qué tipo de intervención puede generar mayor valor.
+          </p>
+          <span className="mt-5 inline-flex text-sm font-semibold text-[var(--color-emphasys-green)]">Conocer más →</span>
+        </Link>
+
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <Link
+            href="/erp-a-la-medida"
+            className="group border border-[rgba(29,47,104,0.10)] bg-white/70 p-7 transition duration-200 hover:border-[rgba(0,98,97,0.35)]"
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Posible intervención</p>
+            <h3 className="mt-3 font-display text-2xl font-semibold text-[var(--color-emphasys-blue)] group-hover:text-[var(--color-emphasys-green)]">
+              Automatizar
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600">
+              Cuando el reto requiere conectar información, reducir captura duplicada, establecer controles y sostener mejor la operación mediante tecnología.
+            </p>
+            <span className="mt-4 inline-flex text-sm font-semibold text-[var(--color-emphasys-green)]">Conocer más</span>
+          </Link>
+
+          <Link
+            href="/#contacto"
+            className="group border border-[rgba(29,47,104,0.10)] bg-white/70 p-7 transition duration-200 hover:border-[rgba(0,98,97,0.35)]"
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Posible intervención</p>
+            <h3 className="mt-3 font-display text-2xl font-semibold text-[var(--color-emphasys-blue)] group-hover:text-[var(--color-emphasys-green)]">
+              Transformar
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600">
+              Cuando el reto exige cambios más profundos en procesos, responsabilidades, coordinación, adopción y forma de operar.
+            </p>
+            <span className="mt-4 inline-flex text-sm font-semibold text-[var(--color-emphasys-green)]">Conocer más</span>
+          </Link>
         </div>
 
-        <p className="mt-8 text-base font-semibold leading-relaxed text-slate-800">
+        <p className="mt-10 font-display text-xl font-semibold leading-relaxed text-[var(--color-emphasys-blue)]">
           La solución no se decide antes de entender el problema.
         </p>
       </div>

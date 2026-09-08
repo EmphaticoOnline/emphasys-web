@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import PageHero from "@/components/PageHero";
 
 const WHATSAPP_URL =
   "https://wa.me/523311107328?text=Hola%2C%20quiero%20ordenar%20mi%20negocio%20y%20mejorar%20mi%20control%20de%20ventas%20y%20costos.%20%C2%BFPodemos%20revisar%20mi%20caso%3F";
@@ -49,37 +50,24 @@ const Section = ({
   title,
   children,
   background = "bg-white",
-  headingAs = "h2",
 }: {
   id?: string;
   title: string;
   children: ReactNode;
   background?: string;
-  headingAs?: "h1" | "h2";
-}) => {
-  const Heading = headingAs;
-  return (
-    <section id={id} className={`${background} text-slate-900`}>
-      <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20 space-y-4">
-        <Heading
-          className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-          style={{ color: "var(--color-emphasys-blue)" }}
-        >
-          {title}
-        </Heading>
-        {children}
-      </div>
-    </section>
-  );
-};
+}) => (
+  <section id={id} className={`${background} text-slate-900 ${id ? "scroll-mt-28 md:scroll-mt-32" : ""}`}>
+    <div className="wrap space-y-4 py-16 lg:py-24">
+      <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-[var(--color-emphasys-blue)] sm:text-4xl">
+        {title}
+      </h2>
+      {children}
+    </div>
+  </section>
+);
 
 const CTA = () => (
-  <a
-    href={WHATSAPP_URL}
-    target="_blank"
-    rel="noreferrer"
-    className="inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold text-white shadow-md transition duration-200 ease-out hover:brightness-90 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-  >
+  <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-primary">
     Agendar una conversación
   </a>
 );
@@ -87,42 +75,52 @@ const CTA = () => (
 export default function ERPAlaMedidaPage() {
   return (
     <>
-      <Section
-        id="metodo"
+      <PageHero
+        eyebrow="Automatizar"
         title="ERP a la medida para integrar ventas, seguimiento comercial, compras, inventario y finanzas"
-        background="bg-[#F7F9FB]"
-        headingAs="h1"
+        actions={<CTA />}
       >
-        <p className="text-lg leading-relaxed text-slate-600">
+        <p>
           Diseñamos e implementamos ERP a la medida a partir de una radiografía completa de tu operación. Conectamos ventas y seguimiento comercial (CRM), compras, inventario y finanzas en un solo lugar para que tu equipo trabaje con información compartida y tomes decisiones con datos confiables.
         </p>
-        <p className="text-base leading-relaxed text-slate-600">
+        <p>
           Si primero quieres entender cuándo conviene dar este paso, consulta nuestra guía sobre{" "}
           <a className="font-semibold text-[var(--color-emphasys-green)] underline-offset-4 hover:underline" href="/erp-para-pymes-mexico">
             ERP para pymes en México
           </a>.
         </p>
-        <CTA />
-      </Section>
+      </PageHero>
+      <div id="metodo" className="sr-only" aria-hidden="true" />
 
-      <Section title="Problemas que resolvemos" background="bg-white" id="impacto" headingAs="h2">
-        <ul className="mt-4 space-y-3 text-base leading-relaxed text-slate-700">
-          <li>Datos dispersos en hojas de cálculo, correos y chats.</li>
-          <li>Oportunidades y seguimientos comerciales que se pierden o dependen de la memoria del vendedor.</li>
-          <li>Costos sin trazabilidad y márgenes que se diluyen.</li>
-          <li>Ventas y compras sin sincronización con inventario.</li>
-          <li>Reportes tardíos que impiden decisiones oportunas.</li>
+      <Section title="Problemas que resolvemos" background="bg-white" id="impacto">
+        <ul className="mt-4 divide-y divide-[rgba(29,47,104,0.10)] border-y border-[rgba(29,47,104,0.10)]">
+          {[
+            "Datos dispersos en hojas de cálculo, correos y chats.",
+            "Oportunidades y seguimientos comerciales que se pierden o dependen de la memoria del vendedor.",
+            "Costos sin trazabilidad y márgenes que se diluyen.",
+            "Ventas y compras sin sincronización con inventario.",
+            "Reportes tardíos que impiden decisiones oportunas.",
+          ].map((item) => (
+            <li key={item} className="py-4 text-base leading-relaxed text-slate-700">{item}</li>
+          ))}
         </ul>
       </Section>
 
-      <Section title="Cómo lo hacemos" background="bg-slate-50" headingAs="h2">
-        <ol className="mt-2 list-decimal space-y-3 pl-6 text-base leading-relaxed text-slate-700">
-          <li>Radiografía Empresarial para entender procesos, riesgos y prioridades.</li>
-          <li>Diseño de la arquitectura operativa, comercial y financiera que requiere la empresa.</li>
-          <li>Implementación del ERP a la medida con CRM e integraciones necesarias según el alcance definido.</li>
-          <li>Despliegue gradual, pruebas y acompañamiento para lograr adopción y resultados.</li>
+      <Section title="Cómo lo hacemos" background="bg-[#eceff4]">
+        <ol className="mt-2 space-y-5">
+          {[
+            "Radiografía Empresarial para entender procesos, riesgos y prioridades.",
+            "Diseño de la arquitectura operativa, comercial y financiera que requiere la empresa.",
+            "Implementación del ERP a la medida con CRM e integraciones necesarias según el alcance definido.",
+            "Despliegue gradual, pruebas y acompañamiento para lograr adopción y resultados.",
+          ].map((item, index) => (
+            <li key={item} className="flex gap-4 text-base leading-relaxed text-slate-700">
+              <span className="font-display text-[var(--color-emphasys-green)]">{String(index + 1).padStart(2, "0")}</span>
+              <span>{item}</span>
+            </li>
+          ))}
         </ol>
-        <div className="pt-6">
+        <div className="pt-8">
           <CTA />
         </div>
       </Section>

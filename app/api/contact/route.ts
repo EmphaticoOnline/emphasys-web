@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
   try {
     const data = await req.json();
@@ -16,6 +14,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Falta configurar RESEND_API_KEY." }, { status: 500 });
     }
 
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const toEmail = process.env.CONTACT_TO_EMAIL || "diazantonio37@emphaticoonline.com";
     const subject = `Nuevo contacto: ${name}${topic ? ` | ${topic}` : ""}`;
 

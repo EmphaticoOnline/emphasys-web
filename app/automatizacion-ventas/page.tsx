@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import PageHero from "@/components/PageHero";
 
 const WHATSAPP_URL =
   "https://wa.me/523311107328?text=Hola%2C%20quiero%20ordenar%20mi%20negocio%20y%20mejorar%20mi%20control%20de%20ventas%20y%20costos.%20%C2%BFPodemos%20revisar%20mi%20caso%3F";
@@ -47,74 +48,71 @@ const Section = ({
   title,
   children,
   background = "bg-white",
-  headingAs = "h2",
 }: {
   id?: string;
   title: string;
   children: ReactNode;
   background?: string;
-  headingAs?: "h1" | "h2";
-}) => {
-  const Heading = headingAs;
-  return (
-    <section id={id} className={`${background} text-slate-900`}>
-      <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20 space-y-4">
-        <Heading
-          className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-          style={{ color: "var(--color-emphasys-blue)" }}
-        >
-          {title}
-        </Heading>
-        {children}
-      </div>
-    </section>
-  );
-};
+}) => (
+  <section id={id} className={`${background} text-slate-900 ${id ? "scroll-mt-28 md:scroll-mt-32" : ""}`}>
+    <div className="wrap space-y-4 py-16 lg:py-24">
+      <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-[var(--color-emphasys-blue)] sm:text-4xl">
+        {title}
+      </h2>
+      {children}
+    </div>
+  </section>
+);
 
 const CTA = () => (
-  <a
-    href={WHATSAPP_URL}
-    target="_blank"
-    rel="noreferrer"
-    className="inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold text-white shadow-md transition duration-200 ease-out hover:brightness-90 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-  >
-  Agendar una conversación
+  <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-primary">
+    Agendar una conversación
   </a>
 );
 
 export default function AutomatizacionVentasPage() {
   return (
     <>
-      <Section
-        id="metodo"
+      <PageHero
+        eyebrow="Automatizar"
         title="Automatización de ventas con control de margen y trazabilidad"
-        background="bg-[#F7F9FB]"
-        headingAs="h1"
+        actions={<CTA />}
       >
-        <p className="text-lg leading-relaxed text-slate-600">
+        <p>
           Estandarizamos cotizaciones, reglas comerciales y aprobaciones para que cada venta proteja el margen y se integre con inventario y finanzas.
           Automatizamos después de ordenar el proceso, no antes.
         </p>
-        <CTA />
-      </Section>
+      </PageHero>
+      <div id="metodo" className="sr-only" aria-hidden="true" />
 
-  <Section title="Dolores que atendemos" background="bg-white" id="impacto" headingAs="h2">
-        <ul className="mt-4 space-y-3 text-base leading-relaxed text-slate-700">
-          <li>Seguimiento inconsistente y pérdida de oportunidades.</li>
-          <li>Márgenes que se erosionan por descuentos sin control.</li>
-          <li>Promesas comerciales desconectadas de inventario o capacidad operativa.</li>
-          <li>Falta de trazabilidad desde el lead hasta la facturación.</li>
+      <Section title="Dolores que atendemos" background="bg-white" id="impacto">
+        <ul className="mt-4 divide-y divide-[rgba(29,47,104,0.10)] border-y border-[rgba(29,47,104,0.10)]">
+          {[
+            "Seguimiento inconsistente y pérdida de oportunidades.",
+            "Márgenes que se erosionan por descuentos sin control.",
+            "Promesas comerciales desconectadas de inventario o capacidad operativa.",
+            "Falta de trazabilidad desde el lead hasta la facturación.",
+          ].map((item) => (
+            <li key={item} className="py-4 text-base leading-relaxed text-slate-700">{item}</li>
+          ))}
         </ul>
       </Section>
 
-  <Section title="Implementación" background="bg-slate-50" headingAs="h2">
-        <ol className="mt-2 list-decimal space-y-3 pl-6 text-base leading-relaxed text-slate-700">
-          <li>Radiografía de ciclo comercial y puntos de fuga.</li>
-          <li>Diseño de reglas, aprobaciones y datos obligatorios por etapa.</li>
-          <li>Integración con inventario, facturación y finanzas.</li>
-          <li>Automatización de alertas, tareas y reportes para dirección.</li>
+      <Section title="Implementación" background="bg-[#eceff4]">
+        <ol className="mt-2 space-y-5">
+          {[
+            "Radiografía de ciclo comercial y puntos de fuga.",
+            "Diseño de reglas, aprobaciones y datos obligatorios por etapa.",
+            "Integración con inventario, facturación y finanzas.",
+            "Automatización de alertas, tareas y reportes para dirección.",
+          ].map((item, index) => (
+            <li key={item} className="flex gap-4 text-base leading-relaxed text-slate-700">
+              <span className="font-display text-[var(--color-emphasys-green)]">{String(index + 1).padStart(2, "0")}</span>
+              <span>{item}</span>
+            </li>
+          ))}
         </ol>
-        <div className="pt-6">
+        <div className="pt-8">
           <CTA />
         </div>
       </Section>
