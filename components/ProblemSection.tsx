@@ -1,28 +1,31 @@
 const ProblemSection = () => {
   return (
-  <section className="bg-slate-100 text-slate-900">
-  <div className="mx-auto max-w-[900px] px-6 pt-2 pb-20 sm:px-10 lg:px-0">
+    <section className="bg-slate-100 text-slate-900">
+      <div className="mx-auto max-w-[900px] px-6 pt-2 pb-20 sm:px-10 lg:px-0">
         <div className="space-y-8">
           <h2
             className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
             style={{ color: "var(--color-emphasys-blue)" }}
           >
-            <span className="block">Si hoy sientes que tu negocio te está rebasando, no es casualidad</span>
-            <span className="block">
-              El crecimiento no ahorca a las empresas. La falta de estructura sí.
-            </span>
+            <span className="block">Cuando el crecimiento empieza a pesar</span>
+            <span className="block">El crecimiento no ahorca a las empresas. La falta de estructura sí.</span>
           </h2>
+
           <div className="space-y-6 text-lg leading-relaxed text-slate-600">
             <p>
-              Cuando una empresa comienza a crecer, lo que antes funcionaba deja de ser suficiente.
+              Cuando una empresa crece más rápido que su capacidad para organizarse, lo que antes funcionaba deja de ser suficiente.
             </p>
+
             <ul className="list-disc space-y-2 pl-5">
-              <li>Las decisiones se vuelven más complejas</li>
-              <li>La información se dispersa</li>
-              <li>El dueño carga con todo</li>
+              <li>La información se dispersa.</li>
+              <li>Las áreas comienzan a trabajar desconectadas.</li>
+              <li>Aparecen errores, retrabajos y seguimientos perdidos.</li>
+              <li>Las responsabilidades se vuelven menos claras.</li>
+              <li>El dueño termina cargando con demasiadas decisiones.</li>
             </ul>
+
             <p>
-              <strong>No es falta de esfuerzo. No es falta de tecnología. Es falta de arquitectura.</strong>
+              <strong>No es falta de esfuerzo. No es falta de tecnología. Es falta de estructura.</strong>
             </p>
           </div>
         </div>
