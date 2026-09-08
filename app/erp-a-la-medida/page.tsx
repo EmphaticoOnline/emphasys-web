@@ -5,9 +5,9 @@ const WHATSAPP_URL =
   "https://wa.me/523311107328?text=Hola%2C%20quiero%20ordenar%20mi%20negocio%20y%20mejorar%20mi%20control%20de%20ventas%20y%20costos.%20%C2%BFPodemos%20revisar%20mi%20caso%3F";
 
 export const metadata: Metadata = {
-  title: "ERP a la medida | Software empresarial que integra ventas y finanzas",
+  title: "ERP a la medida | Software empresarial que integra ventas, compras, inventario y finanzas",
   description:
-    "ERP a la medida para integrar ventas, compras y finanzas. Control de costos, trazabilidad y automatización de procesos críticos sin perder margen.",
+    "ERP a la medida para integrar ventas, compras, inventario y finanzas. Control de costos, trazabilidad y automatización de procesos críticos sin perder margen.",
   alternates: {
     canonical: "/erp-a-la-medida",
   },
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     "integración inventario finanzas",
   ],
   openGraph: {
-    title: "ERP a la medida | Software empresarial que integra ventas y finanzas",
+    title: "ERP a la medida | Software empresarial que integra ventas, compras, inventario y finanzas",
     description:
-      "Implementamos ERP a la medida para conectar ventas, compras y finanzas. Controla costos y automatiza procesos con claridad.",
+      "Implementamos ERP a la medida para conectar ventas, compras, inventario y finanzas. Controla costos y automatiza procesos con claridad.",
     url: "https://emphasys.mx/erp-a-la-medida",
     type: "article",
     images: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         url: "/social-card.svg",
         width: 1200,
         height: 630,
-        alt: "ERP a la medida | Software empresarial que integra ventas y finanzas",
+        alt: "ERP a la medida | Software empresarial que integra ventas, compras, inventario y finanzas",
       },
     ],
   },
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ERP a la medida | Software empresarial",
     description:
-      "ERP a la medida para integrar ventas, compras y finanzas. Control de costos y automatización con claridad.",
+      "ERP a la medida para integrar ventas, compras, inventario y finanzas. Control de costos y automatización con claridad.",
     images: ["/social-card.svg"],
   },
 };
@@ -87,7 +87,7 @@ export default function ERPAlaMedidaPage() {
     <>
       <Section
         id="metodo"
-        title="ERP a la medida para integrar ventas, compras y finanzas"
+        title="ERP a la medida para integrar ventas, compras, inventario y finanzas"
         background="bg-[#F7F9FB]"
         headingAs="h1"
       >
