@@ -1,65 +1,60 @@
 import Link from "next/link";
 
-const services = [
+const paths = [
   {
-    title: "ERP para pymes en México",
-    href: "/erp-para-pymes-mexico",
-    description: "Conecta ventas, compras, inventario, cobranza y finanzas sobre una sola estructura de información.",
+    title: "Radiografía Empresarial",
+    href: "/radiografia-empresarial",
+    description: "Un análisis estructurado para entender qué está frenando a la empresa, qué merece atención primero y qué tipo de intervención puede generar mayor valor.",
   },
   {
-    title: "ERP a la medida",
+    title: "Automatizar",
     href: "/erp-a-la-medida",
-    description: "ERP a la medida, implementado sobre una plataforma escalable en la nube.",
+    description: "Cuando el reto requiere conectar información, reducir captura duplicada, establecer controles y sostener mejor la operación mediante tecnología.",
   },
   {
-    title: "Automatización de ventas",
-    href: "/automatizacion-ventas",
-    description: "Reglas comerciales, aprobaciones y trazabilidad conectadas a inventario y facturación para proteger margen.",
-  },
-  {
-    title: "Control de costos",
-    href: "/control-de-costos",
-    description: "Visibilidad financiera en tiempo real: compras, inventario y ventas integradas en tableros accionables.",
-  },
-  {
-    title: "Software para controlar negocios",
-    href: "/software-para-controlar-negocio",
-    description: "Una entrada consultiva para recuperar control, claridad y estructura conforme tu empresa crece.",
+    title: "Transformar",
+    href: "/#contacto",
+    description: "Cuando el reto exige cambios más profundos en procesos, responsabilidades, coordinación, adopción y forma de operar.",
   },
 ];
 
 const ServiceLinks = () => {
   return (
     <section className="bg-white text-slate-900">
-      <div className="mx-auto max-w-[900px] px-6 pt-16 pb-12 sm:px-10 lg:px-0">
+      <div className="mx-auto max-w-[900px] px-6 pt-16 pb-16 sm:px-10 lg:px-0">
         <div className="space-y-4">
           <h2
             className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
             style={{ color: "var(--color-emphasys-blue)" }}
           >
-            Elige por dónde empezar. Nosotros nos encargamos de estructurar tu negocio.
+            Después de entender el problema, definimos la intervención adecuada
           </h2>
           <p className="text-base leading-relaxed text-slate-600">
-            Elige el punto de entrada según tu reto principal. Todas las rutas conectan con nuestro enfoque de arquitectura empresarial.
+            No todas las empresas necesitan lo mismo. La recomendación surge de lo que realmente está ocurriendo en el negocio, no de un catálogo de soluciones.
           </p>
         </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
+
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {paths.map((path) => (
             <Link
-              key={service.href}
-              href={service.href}
+              key={path.title}
+              href={path.href}
               className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               <h3 className="text-xl font-semibold text-slate-900 group-hover:text-[var(--color-emphasys-green)]">
-                {service.title}
+                {path.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">{service.description}</p>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">{path.description}</p>
               <span className="mt-4 inline-flex items-center text-sm font-semibold text-[var(--color-emphasys-green)]">
-                Ver más
+                Conocer más
               </span>
             </Link>
           ))}
         </div>
+
+        <p className="mt-8 text-base font-semibold leading-relaxed text-slate-800">
+          La solución no se decide antes de entender el problema.
+        </p>
       </div>
     </section>
   );
