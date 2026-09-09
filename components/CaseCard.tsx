@@ -11,17 +11,19 @@ const CaseCard = ({ item, featured = false }: { item: CaseItem; featured?: boole
   return (
     <article
       className={`relative overflow-hidden border border-[rgba(29,47,104,0.10)] bg-white p-7 shadow-[0_16px_40px_rgba(18,26,61,0.05)] sm:p-8 ${
-        featured ? "md:col-span-2 lg:col-span-3 md:grid md:grid-cols-[180px_1fr] md:gap-8 md:items-start" : ""
+        featured ? "md:col-span-2 lg:col-span-3 md:grid md:grid-cols-[220px_1fr] md:gap-8 md:items-center" : ""
       }`}
     >
       <div className="absolute left-0 top-0 h-full w-[3px] bg-[var(--color-emphasys-green)]" />
-      <div>
+      <div className={featured ? "flex items-center justify-center px-3 py-2 md:min-h-[7.5rem]" : ""}>
         <Image
           src={item.logo}
           alt={item.company}
-          width={220}
-          height={64}
-          className="h-12 w-auto object-contain object-left opacity-85"
+          width={featured ? 280 : 220}
+          height={featured ? 217 : 64}
+          className={`w-auto object-contain opacity-85 ${
+            featured ? "h-[4.5rem] object-center md:h-[4.75rem]" : "h-12 object-left"
+          }`}
         />
       </div>
       <div>
