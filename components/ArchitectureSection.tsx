@@ -1,46 +1,52 @@
+const steps = [
+  {
+    number: "01",
+    title: "Conversación inicial",
+    body: "Entendemos qué está pasando, qué te preocupa, qué has intentado y qué impacto está teniendo en la empresa.",
+  },
+  {
+    number: "02",
+    title: "Radiografía Empresarial",
+    body: "Si existe un problema que merece profundizarse, analizamos la empresa con evidencia para identificar hallazgos, prioridades y oportunidades de mayor impacto.",
+  },
+  {
+    number: "03",
+    title: "Intervención adecuada",
+    body: "A partir de lo encontrado, podemos recomendar Automatizar, Transformar, combinar ambos caminos o incluso no continuar si no somos la opción adecuada.",
+  },
+];
+
 const ArchitectureSection = () => {
   return (
-  <section id="metodo" className="bg-white text-slate-900 scroll-mt-28 md:scroll-mt-32">
-  <div className="mx-auto max-w-[900px] px-6 pt-16 pb-24 sm:px-10 lg:px-0">
-        <div className="space-y-4">
-          <h2
-            className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-            style={{ color: "var(--color-emphasys-blue)" }}
-          >
-            El problema no es la operación. Es la falta de estructura.
+    <section id="metodo" className="scroll-mt-28 bg-white text-slate-900 md:scroll-mt-32">
+      <div className="wrap py-20 lg:py-28">
+        <div className="max-w-3xl space-y-4">
+          <p className="eyebrow">Cómo empezamos</p>
+          <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-[var(--color-emphasys-blue)] sm:text-4xl">
+            El primer paso es conversar
           </h2>
           <p className="text-lg leading-relaxed text-slate-600">
-            La claridad no aparece sola. Se construye con método.
+            No necesitas saber si tu empresa requiere software, procesos, acompañamiento o una combinación de varias cosas. Esa decisión no debería tomarse antes de entender el problema.
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-3">
-          <div className="space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-              01 — Diagnóstico Estratégico
-            </p>
-            <p className="text-base leading-relaxed text-slate-600">
-              No tocamos tecnología primero. Entendemos el negocio completo: decisiones, flujo, responsabilidades y fricciones.
-            </p>
-          </div>
+        <div className="relative mt-14 grid gap-8 lg:grid-cols-3">
+          <div className="pointer-events-none absolute left-[8%] right-[8%] top-5 hidden h-px bg-[rgba(29,47,104,0.14)] lg:block" />
+          {steps.map((step) => (
+            <article key={step.number} className="relative">
+              <span className="relative z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(29,47,104,0.16)] bg-white font-display text-sm text-[var(--color-emphasys-blue)]">
+                {step.number}
+              </span>
+              <h3 className="mt-5 font-display text-2xl font-semibold text-[var(--color-emphasys-blue)]">{step.title}</h3>
+              <p className="mt-3 text-base leading-relaxed text-slate-600">{step.body}</p>
+            </article>
+          ))}
+        </div>
 
-          <div className="space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-              02 — Diseño de Arquitectura
-            </p>
-            <p className="text-base leading-relaxed text-slate-600">
-              Definimos estructura. Procesos claros. Roles definidos. Información organizada. El orden antes que la automatización.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-              03 — Implementación Inteligente
-            </p>
-            <p className="text-base leading-relaxed text-slate-600">
-              Solo después diseñamos sistemas. Automatizamos lo que ya tiene lógica. Nunca automatizamos el caos.
-            </p>
-          </div>
+        <div className="mt-12">
+          <a href="#contacto" className="btn-primary">
+            Agendar una conversación
+          </a>
         </div>
       </div>
     </section>

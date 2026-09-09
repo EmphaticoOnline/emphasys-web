@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-
-const WHATSAPP_URL =
-  "https://wa.me/523311107328?text=Hola%2C%20quiero%20ordenar%20mi%20negocio%20y%20mejorar%20mi%20control%20de%20ventas%20y%20costos.%20%C2%BFPodemos%20revisar%20mi%20caso%3F";
+import ContactSection from "@/components/ContactSection";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Control de costos | Visibilidad financiera y operación integrada",
@@ -47,76 +46,75 @@ const Section = ({
   title,
   children,
   background = "bg-white",
-  headingAs = "h2",
 }: {
   id?: string;
   title: string;
   children: ReactNode;
   background?: string;
-  headingAs?: "h1" | "h2";
-}) => {
-  const Heading = headingAs;
-  return (
-    <section id={id} className={`${background} text-slate-900`}>
-      <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20 space-y-4">
-        <Heading
-          className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-          style={{ color: "var(--color-emphasys-blue)" }}
-        >
-          {title}
-        </Heading>
-        {children}
-      </div>
-    </section>
-  );
-};
+}) => (
+  <section id={id} className={`${background} text-slate-900 ${id ? "scroll-mt-28 md:scroll-mt-32" : ""}`}>
+    <div className="wrap space-y-4 py-16 lg:py-24">
+      <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-[var(--color-emphasys-blue)] sm:text-4xl">
+        {title}
+      </h2>
+      {children}
+    </div>
+  </section>
+);
 
 const CTA = () => (
-  <a
-    href={WHATSAPP_URL}
-    target="_blank"
-    rel="noreferrer"
-    className="inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold text-white shadow-md transition duration-200 ease-out hover:brightness-90 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-  >
-  Agendar una conversación
+  <a href="#contacto" className="btn-primary">
+    Agendar una conversación
   </a>
 );
 
 export default function ControlDeCostosPage() {
   return (
     <>
-      <Section
-        id="metodo"
+      <PageHero
+        eyebrow="Control financiero"
         title="Control de costos con visibilidad financiera real"
-        background="bg-[#F7F9FB]"
-        headingAs="h1"
+        actions={<CTA />}
       >
-        <p className="text-lg leading-relaxed text-slate-600">
+        <p>
           Conectamos compras, inventario, ventas y finanzas para mostrar márgenes y flujo en tiempo real. Reducimos fugas y mejoramos la rentabilidad con reglas claras y tableros accionables.
         </p>
-        <CTA />
-      </Section>
+      </PageHero>
+      <div id="metodo" className="sr-only" aria-hidden="true" />
 
-  <Section title="Problemas típicos" background="bg-white" id="impacto" headingAs="h2">
-        <ul className="mt-4 space-y-3 text-base leading-relaxed text-slate-700">
-          <li>Compras sin control y sin impacto inmediato en flujo.</li>
-          <li>Costos indirectos invisibles que erosionan margen.</li>
-          <li>Inventario desalineado con ventas y abastecimiento.</li>
-          <li>Tableros financieros que no concilian con la operación.</li>
+      <Section title="Problemas típicos" background="bg-white" id="impacto">
+        <ul className="mt-4 divide-y divide-[rgba(29,47,104,0.10)] border-y border-[rgba(29,47,104,0.10)]">
+          {[
+            "Compras sin control y sin impacto inmediato en flujo.",
+            "Costos indirectos invisibles que erosionan margen.",
+            "Inventario desalineado con ventas y abastecimiento.",
+            "Tableros financieros que no concilian con la operación.",
+          ].map((item) => (
+            <li key={item} className="py-4 text-base leading-relaxed text-slate-700">{item}</li>
+          ))}
         </ul>
       </Section>
 
-  <Section title="Implementación" background="bg-slate-50" headingAs="h2">
-        <ol className="mt-2 list-decimal space-y-3 pl-6 text-base leading-relaxed text-slate-700">
-          <li>Radiografía de costos y flujo de información.</li>
-          <li>Diseño de reglas de compras, autorizaciones y centros de costo.</li>
-          <li>Integración con inventario, ventas y contabilidad.</li>
-          <li>Tableros de margen y flujo con alertas automáticas.</li>
+      <Section title="Implementación" background="bg-[#eceff4]">
+        <ol className="mt-2 space-y-5">
+          {[
+            "Radiografía de costos y flujo de información.",
+            "Diseño de reglas de compras, autorizaciones y centros de costo.",
+            "Integración con inventario, ventas y contabilidad.",
+            "Tableros de margen y flujo con alertas automáticas.",
+          ].map((item, index) => (
+            <li key={item} className="flex gap-4 text-base leading-relaxed text-slate-700">
+              <span className="font-display text-[var(--color-emphasys-green)]">{String(index + 1).padStart(2, "0")}</span>
+              <span>{item}</span>
+            </li>
+          ))}
         </ol>
-        <div className="pt-6">
+        <div className="pt-8">
           <CTA />
         </div>
       </Section>
+
+      <ContactSection />
     </>
   );
 }

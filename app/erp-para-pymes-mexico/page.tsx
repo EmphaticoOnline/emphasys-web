@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import type { ReactNode } from "react";
+import CaseCard from "@/components/CaseCard";
 import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
@@ -247,7 +247,7 @@ const Section = ({
     id={id}
     className={`${background} text-slate-900${id ? " scroll-mt-28 md:scroll-mt-32" : ""}`}
   >
-    <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20">
+    <div className="wrap py-16 lg:py-24">
       {children}
     </div>
   </section>
@@ -256,18 +256,13 @@ const Section = ({
 export default function ERPParaPymesMexicoPage() {
   return (
     <>
-      <section className="relative bg-[#F7F9FB] text-slate-900">
-        <div className="mx-auto max-w-[900px] px-6 pb-16 pt-20 sm:px-10 lg:px-0 lg:pb-20 lg:pt-24">
-          <p
-            className="text-xs font-semibold uppercase tracking-[0.32em]"
-            style={{ color: "var(--color-emphasys-blue)", opacity: 0.65 }}
-          >
+      <section className="relative overflow-hidden bg-[#f5f4ef] text-slate-900">
+        <div className="grid-faint pointer-events-none absolute inset-0 opacity-70" />
+        <div className="wrap relative pb-16 pt-16 lg:pb-24 lg:pt-20">
+          <p className="eyebrow">
             Para dueños que todavía conectan toda la empresa
           </p>
-          <h1
-            className="mt-5 max-w-[840px] text-[32px] font-extrabold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl"
-            style={{ color: "var(--color-emphasys-blue)" }}
-          >
+          <h1 className="font-display mt-5 max-w-[840px] text-[34px] font-semibold leading-[1.05] tracking-tight text-[var(--color-emphasys-blue)] sm:text-5xl">
             ERP para pymes en México: deja de ser el puente entre todas tus áreas
           </h1>
           <p className="mt-6 max-w-[820px] text-lg leading-relaxed text-slate-600 sm:text-xl">
@@ -276,28 +271,21 @@ export default function ERPParaPymesMexicoPage() {
             operación para que las áreas trabajen con la misma información.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <a
-              href="#contacto"
-              className="inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold text-white shadow-md transition duration-200 ease-out hover:-translate-y-0.5 hover:brightness-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2"
-            >
+            <a href="#contacto" className="btn-primary">
               Hablemos de lo que está pasando
             </a>
-            <a
-              href="#que-es-un-erp"
-              className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-8 py-3 text-sm font-semibold text-[var(--color-emphasys-blue)] transition duration-200 hover:-translate-y-0.5 hover:border-[var(--color-emphasys-green)] hover:text-[var(--color-emphasys-green)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2"
-            >
+            <a href="#que-es-un-erp" className="btn-ghost">
               Ver cómo se conectan las áreas
             </a>
           </div>
           <p className="mt-5 max-w-[650px] text-sm leading-relaxed text-slate-500">
             Sin demostraciones genéricas. Primero entendemos tu operación.
           </p>
-          <div className="mt-14 h-px w-full bg-slate-200" />
         </div>
       </section>
 
       <Section background="bg-white">
-        <h2 className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+        <h2 className="font-display max-w-[820px] text-3xl font-semibold leading-tight tracking-tight text-[var(--color-emphasys-blue)] sm:text-4xl">
           ¿Cuándo empieza una pyme a necesitar un ERP?
         </h2>
         <p className="mt-4 max-w-[780px] text-lg leading-relaxed text-slate-600">
@@ -306,8 +294,8 @@ export default function ERPParaPymesMexicoPage() {
         </p>
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {signals.map((signal) => (
-            <article key={signal.title} className="rounded-2xl border border-slate-200 bg-[#F7F9FB] p-6 shadow-sm">
-              <h3 className="text-lg font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>{signal.title}</h3>
+            <article key={signal.title} className="border border-[rgba(29,47,104,0.10)] bg-[#f5f4ef] p-6">
+              <h3 className="text-lg font-semibold text-[var(--color-emphasys-blue)]">{signal.title}</h3>
               <p className="mt-3 text-base leading-relaxed text-slate-600">{signal.description}</p>
             </article>
           ))}
@@ -317,11 +305,11 @@ export default function ERPParaPymesMexicoPage() {
         </p>
       </Section>
 
-      <Section id="que-es-un-erp" background="bg-slate-50">
-        <p className="text-xs font-semibold uppercase tracking-[0.28em]" style={{ color: "var(--color-emphasys-blue)", opacity: 0.65 }}>
+      <Section id="que-es-un-erp" background="bg-[#eceff4]">
+        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-emphasys-blue)]">
           Más que software
         </p>
-        <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+        <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display">
           ¿Qué es realmente un ERP?
         </h2>
         <p className="mt-5 max-w-[820px] text-xl font-medium leading-relaxed text-slate-800">
@@ -329,8 +317,8 @@ export default function ERPParaPymesMexicoPage() {
         </p>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {erpFoundations.map((foundation) => (
-            <article key={foundation.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>{foundation.title}</h3>
+            <article key={foundation.title} className="border border-[rgba(29,47,104,0.10)] bg-white p-6">
+              <h3 className="text-xl font-semibold text-[var(--color-emphasys-blue)]">{foundation.title}</h3>
               <p className="mt-3 text-base leading-relaxed text-slate-600">{foundation.description}</p>
             </article>
           ))}
@@ -338,30 +326,30 @@ export default function ERPParaPymesMexicoPage() {
       </Section>
 
       <Section background="bg-white">
-        <h2 className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+        <h2 className="font-display max-w-[820px] text-3xl font-semibold leading-tight tracking-tight text-[var(--color-emphasys-blue)] sm:text-4xl">
           Lo que Excel, WhatsApp y los sistemas aislados ya no pueden sostener
         </h2>
         <p className="mt-4 max-w-[800px] text-lg leading-relaxed text-slate-600">
           Estas herramientas ayudaron a crecer. El problema aparece cuando intentan coordinar una operación que ya cruza varias áreas.
         </p>
         <div className="mt-10 space-y-5">
-          <article className="rounded-2xl border border-slate-200 p-6">
-            <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>Excel analiza; no coordina el trabajo entre áreas</h3>
+          <article className="border border-[rgba(29,47,104,0.10)] p-6">
+            <h3 className="text-xl font-semibold text-[var(--color-emphasys-blue)]">Excel analiza; no coordina el trabajo entre áreas</h3>
             <p className="mt-3 text-base leading-relaxed text-slate-600">Cuando almacén actualiza un archivo y ventas consulta otro, el error llega hasta la promesa al cliente.</p>
           </article>
-          <article className="rounded-2xl border border-slate-200 p-6">
-            <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>WhatsApp conversa; no conserva el proceso</h3>
+          <article className="border border-[rgba(29,47,104,0.10)] p-6">
+            <h3 className="text-xl font-semibold text-[var(--color-emphasys-blue)]">WhatsApp conversa; no conserva el proceso</h3>
             <p className="mt-3 text-base leading-relaxed text-slate-600">Un cambio acordado en un chat puede no llegar al pedido, la entrega o la cobranza.</p>
           </article>
-          <article className="rounded-2xl border border-slate-200 p-6">
-            <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>Un sistema por área todavía puede dejarte en medio</h3>
+          <article className="border border-[rgba(29,47,104,0.10)] p-6">
+            <h3 className="text-xl font-semibold text-[var(--color-emphasys-blue)]">Un sistema por área todavía puede dejarte en medio</h3>
             <p className="mt-3 text-base leading-relaxed text-slate-600">Si no comparten datos, alguien debe conciliar ventas, inventario y administración. Casi siempre eres tú.</p>
           </article>
         </div>
       </Section>
 
-      <Section background="bg-slate-50">
-        <h2 className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+      <Section background="bg-[#eceff4]">
+        <h2 className="font-display max-w-[820px] text-3xl font-semibold leading-tight tracking-tight text-[var(--color-emphasys-blue)] sm:text-4xl">
           Qué cambia cuando toda la empresa trabaja con la misma información
         </h2>
         <p className="mt-4 max-w-[800px] text-lg leading-relaxed text-slate-600">
@@ -369,7 +357,7 @@ export default function ERPParaPymesMexicoPage() {
         </p>
         <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" aria-label="Flujo operativo conectado">
           {flow.map((step, index) => (
-            <div key={step} className="relative rounded-2xl border border-slate-200 bg-white px-5 py-5 shadow-sm">
+            <div key={step} className="relative border border-[rgba(29,47,104,0.10)] bg-white px-5 py-5">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">{String(index + 1).padStart(2, "0")}</p>
               <p className="mt-2 font-semibold text-[var(--color-emphasys-blue)]">{step}</p>
             </div>
@@ -377,18 +365,18 @@ export default function ERPParaPymesMexicoPage() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           <div>
-            <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>Cada área sabe qué ocurrió antes</h3>
+            <h3 className="text-xl font-semibold text-[var(--color-emphasys-blue)]">Cada área sabe qué ocurrió antes</h3>
             <p className="mt-3 text-base leading-relaxed text-slate-600">Ventas ve disponibilidad; compras ve compromisos; cobranza ve entregas. Nadie empieza de cero.</p>
           </div>
           <div>
-            <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>La dirección deja de reconstruir la historia</h3>
+            <h3 className="text-xl font-semibold text-[var(--color-emphasys-blue)]">La dirección deja de reconstruir la historia</h3>
             <p className="mt-3 text-base leading-relaxed text-slate-600">Pendientes, costos y resultados dejan de depender de un archivo preparado para la junta.</p>
           </div>
         </div>
       </Section>
 
       <Section background="bg-white">
-        <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+        <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display">
           Las áreas que puede conectar una estructura ERP
         </h2>
         <p className="mt-4 max-w-[780px] text-lg leading-relaxed text-slate-600">
@@ -396,17 +384,17 @@ export default function ERPParaPymesMexicoPage() {
         </p>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {connectedAreas.map((area) => (
-            <article key={area.title} className="rounded-2xl border border-slate-200 bg-[#F7F9FB] p-6 shadow-sm">
-              <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>{area.title}</h3>
+            <article key={area.title} className="border border-[rgba(29,47,104,0.10)] bg-[#f5f4ef] p-6">
+              <h3 className="text-xl font-semibold text-[var(--color-emphasys-blue)]">{area.title}</h3>
               <p className="mt-3 text-base leading-relaxed text-slate-600">{area.description}</p>
             </article>
           ))}
         </div>
       </Section>
 
-      <Section background="bg-slate-50">
-        <p className="text-xs font-semibold uppercase tracking-[0.28em]" style={{ color: "var(--color-emphasys-blue)", opacity: 0.65 }}>Sin cambiar todo de golpe</p>
-        <h2 className="mt-4 max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+      <Section background="bg-[#eceff4]">
+        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-emphasys-blue)]">Sin cambiar todo de golpe</p>
+        <h2 className="mt-4 max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display">
           Un ERP para una pyme no debería imponer más complejidad
         </h2>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
@@ -416,8 +404,8 @@ export default function ERPParaPymesMexicoPage() {
             ["Respetar las reglas de tu operación", "Los procesos particulares conviven dentro de una misma estructura."],
             ["Acompañar al equipo", "La adopción se trabaja en la operación diaria, no termina al entregar el sistema."],
           ].map(([title, description]) => (
-            <article key={title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>{title}</h3>
+            <article key={title} className="border border-[rgba(29,47,104,0.10)] bg-white p-6">
+              <h3 className="text-xl font-semibold text-[var(--color-emphasys-blue)]">{title}</h3>
               <p className="mt-3 text-base leading-relaxed text-slate-600">{description}</p>
             </article>
           ))}
@@ -425,22 +413,22 @@ export default function ERPParaPymesMexicoPage() {
       </Section>
 
       <Section background="bg-white">
-        <h2 className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+        <h2 className="font-display max-w-[820px] text-3xl font-semibold leading-tight tracking-tight text-[var(--color-emphasys-blue)] sm:text-4xl">
           Las dudas más comunes antes de implementar un ERP
         </h2>
-        <div className="mt-10 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white px-6 shadow-sm sm:px-8">
+        <div className="mt-10 divide-y divide-[rgba(29,47,104,0.10)] border border-[rgba(29,47,104,0.10)] bg-white px-6 sm:px-8">
           {objections.map((item) => (
             <article key={item.question} className="py-6">
-              <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>{item.question}</h3>
+              <h3 className="text-xl font-semibold text-[var(--color-emphasys-blue)]">{item.question}</h3>
               <p className="mt-3 max-w-[760px] text-base leading-relaxed text-slate-600">{item.answer}</p>
             </article>
           ))}
         </div>
       </Section>
 
-      <Section background="bg-[var(--color-emphasys-blue)]">
+      <Section background="surface-navy">
         <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white opacity-70">El enfoque Emphasys</p>
-        <h2 className="mt-4 max-w-[820px] text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl">
+        <h2 className="font-display mt-4 max-w-[820px] text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl">
           Qué hace diferente a Emphasys
         </h2>
         <p className="mt-5 max-w-[780px] text-lg leading-relaxed text-slate-100">
@@ -454,7 +442,7 @@ export default function ERPParaPymesMexicoPage() {
             ["Empezamos por lo que más pesa", "Priorizamos los procesos que hoy provocan errores, urgencias o decisiones a ciegas."],
             ["Acompañamos la adopción", "Seguimos presentes mientras el equipo convierte el sistema en su forma diaria de trabajar."],
           ].map(([title, description]) => (
-            <article key={title} className="rounded-2xl border border-white/20 bg-white/5 p-6">
+            <article key={title} className="border border-white/20 bg-white/5 p-6">
               <h3 className="text-xl font-semibold text-white">{title}</h3>
               <p className="mt-3 text-base leading-relaxed text-slate-100">{description}</p>
             </article>
@@ -462,8 +450,8 @@ export default function ERPParaPymesMexicoPage() {
         </div>
       </Section>
 
-      <Section background="bg-slate-50">
-        <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+      <Section background="bg-[#eceff4]">
+        <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display">
           Cómo se implementa
         </h2>
         <p className="mt-4 max-w-[760px] text-lg leading-relaxed text-slate-600">
@@ -471,10 +459,10 @@ export default function ERPParaPymesMexicoPage() {
         </p>
         <div className="mt-10 space-y-5">
           {implementationSteps.map((step) => (
-            <article key={step.number} className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:grid-cols-[70px_1fr]">
+            <article key={step.number} className="grid gap-3 border border-[rgba(29,47,104,0.10)] bg-white p-6 sm:grid-cols-[70px_1fr]">
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-slate-400">{step.number}</p>
               <div>
-                <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>{step.title}</h3>
+                <h3 className="text-xl font-semibold text-[var(--color-emphasys-blue)]">{step.title}</h3>
                 <p className="mt-3 text-base leading-relaxed text-slate-600">{step.description}</p>
               </div>
             </article>
@@ -487,7 +475,7 @@ export default function ERPParaPymesMexicoPage() {
       </Section>
 
       <Section background="bg-white">
-        <h2 className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+        <h2 className="font-display max-w-[820px] text-3xl font-semibold leading-tight tracking-tight text-[var(--color-emphasys-blue)] sm:text-4xl">
           Empresas que recuperaron claridad y estructura
         </h2>
         <p className="mt-4 max-w-[780px] text-base leading-relaxed text-slate-600">
@@ -495,27 +483,22 @@ export default function ERPParaPymesMexicoPage() {
         </p>
         <div className="mt-10 grid gap-7 md:grid-cols-2">
           {cases.map((item) => (
-            <article key={item.company} className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
-              <Image src={item.logo} alt={item.company} width={220} height={64} className="h-14 w-auto object-contain opacity-80" />
-              <p className="mt-3 text-sm font-semibold text-slate-900">{item.company}</p>
-              <p className="mt-4 text-base leading-relaxed text-slate-700">{item.quote}</p>
-              <p className="mt-4 text-sm text-slate-500">{item.author}</p>
-            </article>
+            <CaseCard key={item.company} item={item} />
           ))}
         </div>
       </Section>
 
-      <Section background="bg-slate-50">
+      <Section background="bg-[#eceff4]">
         <div className="text-center">
-          <h2 className="mx-auto max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+          <h2 className="mx-auto max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display">
             El primer paso no es elegir módulos. Es entender qué necesita tu operación.
           </h2>
           <p className="mx-auto mt-5 max-w-[720px] text-lg leading-relaxed text-slate-600">
             Cuéntanos dónde se rompe hoy la operación. Empecemos por ahí.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-            <a href="#contacto" className="inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold text-white shadow-md transition duration-200 hover:-translate-y-0.5 hover:brightness-90">Conversemos sobre tu operación</a>
-            <a href="/radiografia-empresarial" className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-8 py-3 text-sm font-semibold text-[var(--color-emphasys-blue)] transition duration-200 hover:border-[var(--color-emphasys-green)] hover:text-[var(--color-emphasys-green)]">Ver cómo empezamos</a>
+            <a href="#contacto" className="btn-primary">Conversemos sobre tu operación</a>
+            <a href="/radiografia-empresarial" className="btn-ghost">Ver cómo empezamos</a>
           </div>
         </div>
       </Section>

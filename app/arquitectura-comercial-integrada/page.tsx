@@ -97,32 +97,28 @@ const Section = ({
   background?: string;
 }) => (
   <section className={`${background} text-slate-900`}>
-    <div className="mx-auto max-w-[1100px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20">{children}</div>
+    <div className="wrap py-16 lg:py-24">{children}</div>
   </section>
 );
 
 const CTAButton = ({ className = "" }: { className?: string }) => (
   <a
     href="#contacto"
-    className={`inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition duration-200 ease-out hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent ${className}`}
+    className={`btn-primary ${className}`}
   >
-    Iniciar Radiografía Empresarial 360°
+    Agendar una conversación
   </a>
 );
 
 const Hero = () => (
-  <section className="relative bg-[#F4F6FA] text-slate-900">
-    <div className="mx-auto max-w-[1100px] px-6 pt-24 pb-20 sm:px-10 lg:px-0 lg:pt-28 lg:pb-24">
+  <section className="relative overflow-hidden bg-[#f5f4ef] text-slate-900">
+    <div className="wrap relative pb-20 pt-16 lg:pb-24 lg:pt-20">
       <p
-        className="text-xs font-semibold uppercase tracking-[0.28em]"
-        style={{ color: "var(--color-emphasys-blue)", opacity: 0.7 }}
+        className="eyebrow"
       >
         Arquitectura del ingreso
       </p>
-      <h1
-        className="mt-6 text-[34px] font-extrabold leading-tight tracking-tight md:text-5xl"
-        style={{ color: "var(--color-emphasys-blue)" }}
-      >
+      <h1 className="font-display mt-6 text-[34px] font-semibold leading-tight tracking-tight text-[var(--color-emphasys-blue)] md:text-5xl">
         Arquitectura Comercial (Diseño sobre el Core)
       </h1>
       <p className="mt-8 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl">
@@ -139,14 +135,12 @@ const ProblemSection = () => (
   <Section>
     <div className="space-y-6">
       <p
-        className="text-xs font-semibold uppercase tracking-[0.3em]"
-        style={{ color: "var(--color-emphasys-blue)", opacity: 0.6 }}
+        className="eyebrow"
       >
         El problema estructural
       </p>
       <h2
-        className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-        style={{ color: "var(--color-emphasys-blue)" }}
+        className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display"
       >
         Sin reglas, el ingreso depende de improvisaciones.
       </h2>
@@ -166,17 +160,15 @@ const ProblemSection = () => (
 );
 
 const BreakPointSection = () => (
-  <Section background="bg-slate-50">
+  <Section background="bg-[#eceff4]">
     <div className="space-y-4">
       <p
-        className="text-xs font-semibold uppercase tracking-[0.3em]"
-        style={{ color: "var(--color-emphasys-blue)", opacity: 0.6 }}
+        className="eyebrow"
       >
         Punto de quiebre
       </p>
       <h2
-        className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-        style={{ color: "var(--color-emphasys-blue)" }}
+        className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display"
       >
         Digitalizar sin estructura solo automatiza el desorden.
       </h2>
@@ -191,14 +183,12 @@ const ProposalSection = () => (
   <Section>
     <div className="space-y-6">
       <p
-        className="text-xs font-semibold uppercase tracking-[0.3em]"
-        style={{ color: "var(--color-emphasys-blue)", opacity: 0.6 }}
+        className="eyebrow"
       >
         Propuesta Emphasys
       </p>
       <h2
-        className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-        style={{ color: "var(--color-emphasys-blue)" }}
+        className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display"
       >
         Arquitectura Comercial Integrada.
       </h2>
@@ -221,18 +211,17 @@ const ProposalSection = () => (
 );
 
 const StructuralSection = () => (
-  <Section background="bg-[#F7F9FB]">
+  <Section background="bg-[#f5f4ef]">
     <div className="space-y-8">
       <p
-        className="text-xs font-semibold uppercase tracking-[0.3em]"
-        style={{ color: "var(--color-emphasys-blue)", opacity: 0.6 }}
+        className="eyebrow"
       >
         Componentes estructurales
       </p>
       <div className="grid gap-6 md:grid-cols-2">
         {structuralComponents.map((component) => (
-          <div key={component.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>
+          <div key={component.title} className="border border-[rgba(29,47,104,0.10)] bg-white p-6">
+            <h3 className="text-xl font-semibold text-[var(--color-emphasys-blue)]">
               {component.title}
             </h3>
             <p className="mt-3 text-base leading-relaxed text-slate-600">{component.description}</p>
@@ -247,14 +236,12 @@ const IntegrationSection = () => (
   <Section>
     <div className="space-y-5">
       <p
-        className="text-xs font-semibold uppercase tracking-[0.3em]"
-        style={{ color: "var(--color-emphasys-blue)", opacity: 0.6 }}
+        className="eyebrow"
       >
         Integración al Sistema Operativo
       </p>
       <h2
-        className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"
-        style={{ color: "var(--color-emphasys-blue)" }}
+        className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display"
       >
         El ingreso como eje estructural.
       </h2>
@@ -290,12 +277,12 @@ export default function ArquitecturaComercialIntegradaPage() {
       <ClosingSection />
       <Section background="bg-white">
         <div className="space-y-3">
-          <h3 className="text-2xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>
-            Rutas relacionadas
+          <h3 className="text-2xl font-semibold text-[var(--color-emphasys-blue)]">
+            Lecturas relacionadas
           </h3>
           <p className="text-base leading-relaxed text-slate-700">
-            También te puede interesar <a className="text-[var(--color-emphasys-green)] font-semibold" href="/erp-a-la-medida">ERP a la medida</a> o
-            <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/control-de-costos">Control de costos</a>.
+            También puedes leer sobre <a className="text-[var(--color-emphasys-green)] font-semibold" href="/erp-a-la-medida">ERP a la medida</a> o
+            <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/control-de-costos">Control de costos</a>. Qué conviene en tu caso se define después de entender el problema.
           </p>
         </div>
       </Section>

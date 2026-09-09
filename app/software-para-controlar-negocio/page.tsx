@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-
-const WHATSAPP_URL =
-  "https://wa.me/523311107328?text=Hola%2C%20quiero%20ordenar%20mi%20negocio%20y%20mejorar%20mi%20control%20de%20ventas%20y%20costos.%20%C2%BFPodemos%20revisar%20mi%20caso%3F";
+import CaseCard from "@/components/CaseCard";
+import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
   title: "Software para controlar negocios en crecimiento | ERP para pymes en expansión | Emphasys",
   description:
-    "ERP para pymes que buscan crecer sin perder control. Recupera claridad operativa, mejora tu estructura y toma decisiones con información confiable.",
+    "Software para controlar un negocio en crecimiento y ERP para pymes. Recupera claridad operativa; Emphasys recomienda tecnología cuando sostiene el control.",
   alternates: {
     canonical: "/software-para-controlar-negocio",
   },
   openGraph: {
     title: "Software para controlar negocios en crecimiento | ERP para pymes en expansión | Emphasys",
     description:
-      "ERP para pymes que buscan crecer sin perder control. Recupera claridad operativa, mejora tu estructura y toma decisiones con información confiable.",
+      "Software para controlar un negocio en crecimiento y ERP para pymes. Recupera claridad operativa; Emphasys recomienda tecnología cuando sostiene el control.",
     url: "https://emphasys.mx/software-para-controlar-negocio",
     type: "website",
     images: [
@@ -22,7 +20,7 @@ export const metadata: Metadata = {
         url: "/social-card.svg",
         width: 1200,
         height: 630,
-        alt: "Software para controlar negocio | Recupera el control operativo",
+        alt: "Software para controlar negocio | ERP para pymes y control operativo",
       },
     ],
   },
@@ -30,19 +28,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Software para controlar negocios en crecimiento | ERP para pymes en expansión | Emphasys",
     description:
-      "ERP para pymes que buscan crecer sin perder control. Recupera claridad operativa, mejora tu estructura y toma decisiones con información confiable.",
+      "Software para controlar un negocio en crecimiento y ERP para pymes. Recupera claridad operativa; Emphasys recomienda tecnología cuando sostiene el control.",
     images: ["/social-card.svg"],
   },
 };
 
 const CTA = () => (
-  <a
-    href={WHATSAPP_URL}
-    target="_blank"
-    rel="noreferrer"
-    className="inline-flex items-center justify-center rounded-full bg-[var(--color-emphasys-green)] px-8 py-3 text-sm font-semibold text-white shadow-md transition duration-200 ease-out hover:brightness-90 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-  >
-    Quiero ordenar mi negocio
+  <a href="#contacto" className="btn-primary">
+    Agendar una conversación
   </a>
 );
 
@@ -113,15 +106,12 @@ const cases = [
 export default function SoftwareParaControlarNegocioPage() {
   return (
     <>
-      <section className="relative bg-[#F7F9FB] text-slate-900">
-        <div className="mx-auto max-w-[900px] px-6 pb-16 pt-20 sm:px-10 lg:px-0 lg:pb-20 lg:pt-24">
-          <p className="text-xs font-semibold uppercase tracking-[0.32em]" style={{ color: "var(--color-emphasys-blue)", opacity: 0.65 }}>
+      <section className="relative overflow-hidden bg-[#f5f4ef] text-slate-900">
+        <div className="wrap relative pb-16 pt-16 lg:pb-24 lg:pt-20">
+          <p className="eyebrow">
             ERP para pymes que buscan crecer sin perder control.
           </p>
-          <h1
-            className="mt-5 max-w-[820px] text-[32px] font-extrabold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl"
-            style={{ color: "var(--color-emphasys-blue)" }}
-          >
+          <h1 className="font-display mt-5 max-w-[820px] text-[34px] font-semibold leading-[1.05] tracking-tight text-[var(--color-emphasys-blue)] sm:text-5xl">
             Tu negocio está creciendo… pero el control se está perdiendo.
           </h1>
           <p className="mt-6 max-w-[790px] text-lg leading-relaxed text-slate-600 sm:text-xl">
@@ -138,9 +128,9 @@ export default function SoftwareParaControlarNegocioPage() {
       </section>
 
       <section className="bg-white text-slate-900">
-        <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20">
+        <div className="wrap py-16 lg:py-24">
           <div className="space-y-4">
-            <h2 className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+            <h2 className="max-w-[820px] text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display">
               El problema no siempre se nota en las ventas.
               <br />
               Empieza a notarse en el desgaste.
@@ -149,7 +139,7 @@ export default function SoftwareParaControlarNegocioPage() {
 
           <div className="mt-10 grid gap-4 md:grid-cols-2">
             {signals.map((signal) => (
-              <div key={signal} className="rounded-2xl border border-slate-200 bg-[#F7F9FB] px-5 py-4 shadow-sm">
+              <div key={signal} className="border border-[rgba(29,47,104,0.10)] bg-[#f5f4ef] px-5 py-4">
                 <p className="text-base leading-relaxed text-slate-700">{signal}</p>
               </div>
             ))}
@@ -170,10 +160,10 @@ export default function SoftwareParaControlarNegocioPage() {
         </div>
       </section>
 
-      <section className="bg-slate-50 text-slate-900">
-        <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20">
+      <section className="bg-[#eceff4] text-slate-900">
+        <div className="wrap py-16 lg:py-24">
           <div className="space-y-4">
-            <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+            <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display">
               Tu empresa no necesita más esfuerzo.
               <br />
               Necesita estructura.
@@ -198,12 +188,12 @@ export default function SoftwareParaControlarNegocioPage() {
       </section>
 
       <section className="bg-white text-slate-900">
-        <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20">
+        <div className="wrap py-16 lg:py-24">
           <div className="space-y-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em]" style={{ color: "var(--color-emphasys-blue)", opacity: 0.65 }}>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-emphasys-blue)]">
               Una sola estructura para recuperar control sobre todo tu negocio
             </p>
-            <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+            <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display">
               Una sola estructura para recuperar control sobre todo tu negocio.
             </h2>
             <div className="max-w-[820px] space-y-4 text-lg leading-relaxed text-slate-600">
@@ -252,8 +242,8 @@ export default function SoftwareParaControlarNegocioPage() {
                 desc: "La empresa gana estructura para funcionar mejor sin que todo dependa de una sola persona.",
               },
             ].map((item) => (
-              <div key={item.title} className="rounded-2xl border border-slate-200 bg-[#F7F9FB] p-6 shadow-sm">
-                <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>
+              <div key={item.title} className="border border-[rgba(29,47,104,0.10)] bg-[#f5f4ef] p-6">
+                <h3 className="text-xl font-semibold text-[var(--color-emphasys-blue)]">
                   {item.title}
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-slate-700">{item.desc}</p>
@@ -263,10 +253,10 @@ export default function SoftwareParaControlarNegocioPage() {
         </div>
       </section>
 
-      <section className="bg-slate-50 text-slate-900">
-        <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20">
+      <section className="bg-[#eceff4] text-slate-900">
+        <div className="wrap py-16 lg:py-24">
           <div className="space-y-4">
-            <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+            <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display">
               Lo que cambia cuando recuperas estructura
             </h2>
             <p className="max-w-[760px] text-lg leading-relaxed text-slate-600">
@@ -276,8 +266,8 @@ export default function SoftwareParaControlarNegocioPage() {
 
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {benefits.map((benefit) => (
-              <div key={benefit.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="text-xl font-semibold" style={{ color: "var(--color-emphasys-blue)" }}>
+              <div key={benefit.title} className="border border-[rgba(29,47,104,0.10)] bg-white p-6">
+                <h3 className="text-xl font-semibold text-[var(--color-emphasys-blue)]">
                   {benefit.title}
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-slate-700">{benefit.description}</p>
@@ -288,9 +278,9 @@ export default function SoftwareParaControlarNegocioPage() {
       </section>
 
       <section id="casos" className="bg-white text-slate-900 scroll-mt-28 md:scroll-mt-32">
-        <div className="mx-auto max-w-[900px] px-6 py-16 sm:px-10 lg:px-0 lg:py-20">
+        <div className="wrap py-16 lg:py-24">
           <div className="space-y-4">
-            <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+            <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display">
               Impacto real en empresas reales
             </h2>
             <p className="text-base leading-relaxed text-slate-600">
@@ -300,29 +290,16 @@ export default function SoftwareParaControlarNegocioPage() {
 
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
             {cases.map((item) => (
-              <div key={item.company} className="rounded-xl border border-slate-200 bg-white p-8 shadow-sm">
-                <div className="flex flex-col space-y-3">
-                  <Image
-                    src={item.logo}
-                    alt={item.company}
-                    width={220}
-                    height={64}
-                    className="h-14 w-auto object-contain opacity-80"
-                  />
-                  <p className="text-sm font-semibold text-slate-900">{item.company}</p>
-                </div>
-                <p className="mt-4 text-base leading-relaxed text-slate-700">{item.quote}</p>
-                <p className="mt-4 text-sm text-slate-500">{item.author}</p>
-              </div>
+              <CaseCard key={item.company} item={item} />
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-slate-50 text-slate-900">
-        <div className="mx-auto max-w-[900px] px-6 py-16 text-center sm:px-10 lg:px-0 lg:py-20">
+      <section className="bg-[#eceff4] text-slate-900">
+        <div className="wrap py-16 text-center lg:py-24">
           <div className="space-y-4">
-            <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--color-emphasys-blue)" }}>
+            <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl text-[var(--color-emphasys-blue)] font-display">
               Conversemos sobre cómo recuperar el control de tu negocio.
             </h2>
             <p className="mx-auto max-w-[720px] text-lg leading-relaxed text-slate-600">
@@ -337,6 +314,8 @@ export default function SoftwareParaControlarNegocioPage() {
           </p>
         </div>
       </section>
+
+      <ContactSection />
     </>
   );
 }
