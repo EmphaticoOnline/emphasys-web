@@ -78,7 +78,7 @@ const ContactSection = () => {
               </div>
               <div className="flex items-center gap-2">
                 <span className="font-semibold text-[var(--color-emphasys-blue)]">Tel / WhatsApp:</span>
-                <a href="https://wa.me/523311107328" className="text-[var(--color-emphasys-green)] underline-offset-4 hover:underline" target="_blank" rel="noreferrer">
+                <a href="https://wa.me/523312889584" className="text-[var(--color-emphasys-green)] underline-offset-4 hover:underline" target="_blank" rel="noreferrer">
                   +52 33 1288 9584
                 </a>
               </div>
