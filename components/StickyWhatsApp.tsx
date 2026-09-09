@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 const WHATSAPP_URL =
-  "https://wa.me/523311107328?text=Hola%2C%20quiero%20conversar%20sobre%20lo%20que%20est%C3%A1%20pasando%20en%20mi%20empresa.%20%C2%BFPodemos%20revisar%20mi%20caso%3F";
+  "https://wa.me/523312889584?text=Hola%2C%20quiero%20conversar%20sobre%20lo%20que%20est%C3%A1%20pasando%20en%20mi%20empresa.%20%C2%BFPodemos%20revisar%20mi%20caso%3F";
 
 const StickyWhatsApp = () => {
   const [visible, setVisible] = useState(false);
