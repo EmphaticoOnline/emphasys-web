@@ -47,11 +47,11 @@ const ResultsSection = () => {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {featured ? <CaseCard key={featured.company} item={featured} featured /> : null}
           {santaLucia ? <CaseCard key={santaLucia.company} item={santaLucia} /> : null}
           {supplier ? <CaseCard key={supplier.company} item={supplier} /> : null}
-          {runika ? <CaseCard key={runika.company} item={runika} featured /> : null}
+          {runika ? <CaseCard key={runika.company} item={runika} /> : null}
         </div>
       </div>
     </section>
