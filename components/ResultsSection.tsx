@@ -32,7 +32,7 @@ const cases: CaseItem[] = [
 ];
 
 const ResultsSection = () => {
-  const [featured, ...rest] = cases;
+  const [featured, santaLucia, supplier, runika] = cases;
 
   return (
     <section id="casos" className="scroll-mt-28 bg-white text-slate-900 md:scroll-mt-32">
@@ -48,10 +48,10 @@ const ResultsSection = () => {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
-          {featured ? <CaseCard item={featured} featured /> : null}
-          {rest.map((item) => (
-            <CaseCard key={item.company} item={item} />
-          ))}
+          {featured ? <CaseCard key={featured.company} item={featured} featured /> : null}
+          {santaLucia ? <CaseCard key={santaLucia.company} item={santaLucia} /> : null}
+          {supplier ? <CaseCard key={supplier.company} item={supplier} /> : null}
+          {runika ? <CaseCard key={runika.company} item={runika} featured /> : null}
         </div>
       </div>
     </section>
