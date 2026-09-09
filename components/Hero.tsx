@@ -25,7 +25,7 @@ const Hero = () => {
           </p>
 
           <a
-            href="https://wa.me/523312889584?text=Hola%2C%20quiero%20conversar%20sobre%20lo%20que%20est%C3%A1%20pasando%20en%20mi%20empresa.%20%C2%BFPodemos%20revisar%20mi%20caso%3F"
+            href="https://wa.me/523325905090?text=Hola%2C%20quiero%20conversar%20sobre%20lo%20que%20est%C3%A1%20pasando%20en%20mi%20empresa.%20%C2%BFPodemos%20revisar%20mi%20caso%3F"
             target="_blank"
             rel="noreferrer"
             className="btn-primary mt-10"
