@@ -9,7 +9,7 @@ const navItems = [
   { label: "Cómo trabajamos", href: "/#metodo" },
   { label: "Radiografía", href: "/radiografia-empresarial" },
   { label: "Casos", href: "/#casos" },
-  { label: "Contacto", href: "/#contacto" },
+  { label: "Contacto", href: "#contacto" },
 ];
 
 const Header = () => {
@@ -17,7 +17,6 @@ const Header = () => {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [heroInView, setHeroInView] = useState(pathname === "/");
 
   const handleNav = useCallback(
     (href: string) => {
@@ -31,13 +30,13 @@ const Header = () => {
         return;
       }
 
-      if (href.startsWith("/#")) {
+      if (href.startsWith("#") || href.startsWith("/#")) {
         const id = href.split("#")[1];
-        if (pathname === "/") {
-          const el = document.getElementById(id);
-          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
         } else {
-          router.push(href);
+          router.push(`/#${id}`);
         }
         setOpen(false);
         return;
@@ -55,21 +54,6 @@ const Header = () => {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    const hero = document.getElementById("inicio");
-    if (!hero) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setHeroInView(entry?.isIntersecting ?? false),
-      { threshold: 0.1 },
-    );
-
-    observer.observe(hero);
-    return () => observer.disconnect();
-  }, [pathname]);
 
   return (
     <header
@@ -103,17 +87,6 @@ const Header = () => {
             ))}
           </nav>
 
-          {pathname === "/" && heroInView && (
-            <a
-              href="https://wa.me/523311107328?text=Hola%2C%20quiero%20conversar%20sobre%20lo%20que%20est%C3%A1%20pasando%20en%20mi%20empresa.%20%C2%BFPodemos%20revisar%20mi%20caso%3F"
-              target="_blank"
-              rel="noreferrer"
-              className="btn-primary hidden whitespace-nowrap px-5 py-2.5 text-sm xl:inline-flex"
-            >
-              Iniciar conversación
-            </a>
-          )}
-
           <button
             type="button"
             className="ml-auto flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full border border-slate-200 lg:hidden"
@@ -140,11 +113,7 @@ const Header = () => {
                 {item.label}
               </button>
             ))}
-            <button
-              type="button"
-              onClick={() => handleNav("/#contacto")}
-              className="btn-primary mt-2"
-            >
+            <button type="button" onClick={() => handleNav("#contacto")} className="btn-primary mt-2">
               Agendar conversación
             </button>
           </div>

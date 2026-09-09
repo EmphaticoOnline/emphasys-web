@@ -466,11 +466,8 @@ export default function ComoOrdenarEmpresaPage() {
               claridad dónde está la pérdida de estructura y por dónde conviene empezar.
             </p>
             <div className="pt-4">
-              <a
-                href="/radiografia-empresarial"
-                className="btn-primary"
-              >
-                Conoce cómo funciona la Radiografía Empresarial
+              <a href="#contacto" className="btn-primary">
+                Agendar una conversación
               </a>
             </div>
           </div>

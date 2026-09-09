@@ -106,7 +106,7 @@ const CTAButton = ({ className = "" }: { className?: string }) => (
     href="#contacto"
     className={`btn-primary ${className}`}
   >
-    Iniciar Radiografía Empresarial 360°
+    Agendar una conversación
   </a>
 );
 
@@ -278,11 +278,11 @@ export default function ArquitecturaComercialIntegradaPage() {
       <Section background="bg-white">
         <div className="space-y-3">
           <h3 className="text-2xl font-semibold text-[var(--color-emphasys-blue)]">
-            Rutas relacionadas
+            Lecturas relacionadas
           </h3>
           <p className="text-base leading-relaxed text-slate-700">
-            También te puede interesar <a className="text-[var(--color-emphasys-green)] font-semibold" href="/erp-a-la-medida">ERP a la medida</a> o
-            <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/control-de-costos">Control de costos</a>.
+            También puedes leer sobre <a className="text-[var(--color-emphasys-green)] font-semibold" href="/erp-a-la-medida">ERP a la medida</a> o
+            <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/control-de-costos">Control de costos</a>. Qué conviene en tu caso se define después de entender el problema.
           </p>
         </div>
       </Section>

@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
 import CaseCard from "@/components/CaseCard";
-
-const WHATSAPP_URL =
-  "https://wa.me/523311107328?text=Hola%2C%20quiero%20ordenar%20mi%20negocio%20y%20mejorar%20mi%20control%20de%20ventas%20y%20costos.%20%C2%BFPodemos%20revisar%20mi%20caso%3F";
+import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
   title: "Software para controlar negocios en crecimiento | ERP para pymes en expansión | Emphasys",
   description:
-    "ERP para pymes que buscan crecer sin perder control. Recupera claridad operativa, mejora tu estructura y toma decisiones con información confiable.",
+    "Software para controlar un negocio en crecimiento y ERP para pymes. Recupera claridad operativa; Emphasys recomienda tecnología cuando sostiene el control.",
   alternates: {
     canonical: "/software-para-controlar-negocio",
   },
   openGraph: {
     title: "Software para controlar negocios en crecimiento | ERP para pymes en expansión | Emphasys",
     description:
-      "ERP para pymes que buscan crecer sin perder control. Recupera claridad operativa, mejora tu estructura y toma decisiones con información confiable.",
+      "Software para controlar un negocio en crecimiento y ERP para pymes. Recupera claridad operativa; Emphasys recomienda tecnología cuando sostiene el control.",
     url: "https://emphasys.mx/software-para-controlar-negocio",
     type: "website",
     images: [
@@ -22,7 +20,7 @@ export const metadata: Metadata = {
         url: "/social-card.svg",
         width: 1200,
         height: 630,
-        alt: "Software para controlar negocio | Recupera el control operativo",
+        alt: "Software para controlar negocio | ERP para pymes y control operativo",
       },
     ],
   },
@@ -30,19 +28,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Software para controlar negocios en crecimiento | ERP para pymes en expansión | Emphasys",
     description:
-      "ERP para pymes que buscan crecer sin perder control. Recupera claridad operativa, mejora tu estructura y toma decisiones con información confiable.",
+      "Software para controlar un negocio en crecimiento y ERP para pymes. Recupera claridad operativa; Emphasys recomienda tecnología cuando sostiene el control.",
     images: ["/social-card.svg"],
   },
 };
 
 const CTA = () => (
-  <a
-    href={WHATSAPP_URL}
-    target="_blank"
-    rel="noreferrer"
-    className="btn-primary"
-  >
-    Quiero ordenar mi negocio
+  <a href="#contacto" className="btn-primary">
+    Agendar una conversación
   </a>
 );
 
@@ -321,6 +314,8 @@ export default function SoftwareParaControlarNegocioPage() {
           </p>
         </div>
       </section>
+
+      <ContactSection />
     </>
   );
 }

@@ -24,7 +24,7 @@ const Footer = () => {
             <Link href="/#metodo" className="text-white/80 hover:text-white">Cómo trabajamos</Link>
             <Link href="/radiografia-empresarial" className="text-white/80 hover:text-white">Radiografía Empresarial</Link>
             <Link href="/#casos" className="text-white/80 hover:text-white">Casos</Link>
-            <Link href="/#contacto" className="text-white/80 hover:text-white">Contacto</Link>
+            <Link href="#contacto" className="text-white/80 hover:text-white">Contacto</Link>
           </div>
         </div>
         <div>

@@ -5,7 +5,7 @@ import ContactSection from "@/components/ContactSection";
 export const metadata: Metadata = {
   title: "Plataforma Integral de Negocios | ERP a la medida y software empresarial",
   description:
-    "Infraestructura digital que integra ventas, compras y finanzas con ERP a la medida. Control de costos y automatización alineada a la Radiografía 360°.",
+    "Infraestructura digital que integra ventas, compras y finanzas con ERP a la medida. Control de costos y automatización a partir de entender la empresa.",
   alternates: {
     canonical: "/sistema-operativo-empresarial",
   },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Plataforma Integral de Negocios | ERP a la medida y software empresarial",
     description:
-      "Infraestructura estratégica que integra ventas, compras y finanzas con ERP a la medida, posterior a la Radiografía 360°.",
+      "Infraestructura estratégica que integra ventas, compras y finanzas con ERP a la medida, después de entender la operación.",
     url: "https://emphasys.mx/sistema-operativo-empresarial",
     type: "article",
     images: [
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Plataforma Integral de Negocios | ERP a la medida y software empresarial",
     description:
-      "ERP a la medida para integrar ventas, compras y finanzas sobre arquitectura definida en Radiografía 360°.",
+      "ERP a la medida para integrar ventas, compras y finanzas sobre una arquitectura definida con evidencia.",
     images: ["/social-card.svg"],
   },
 };
@@ -88,8 +88,8 @@ const strategicBlocks = [
 
 const methodPhases = [
   {
-    title: "Radiografía 360° (obligatoria)",
-    description: "Trabajo en campo con dirección y áreas clave para entender realidad operativa antes de proponer tecnología.",
+    title: "Radiografía Empresarial",
+    description: "Trabajo en campo con dirección y áreas clave para entender la realidad operativa antes de proponer tecnología.",
   },
   {
     title: "Diseño del modelo operativo",
@@ -130,7 +130,7 @@ const CTAButton = ({ className = "" }: { className?: string }) => (
     href="#contacto"
     className={`btn-primary ${className}`}
   >
-    Iniciar Radiografía Empresarial 360°
+    Agendar una conversación
   </a>
 );
 
@@ -201,7 +201,7 @@ const FocusShiftSection = () => (
         Primero se diseña el modelo. Después se construye el sistema.
       </h2>
       <p className="max-w-4xl text-lg leading-relaxed text-slate-600">
-        Este es el flujo estratégico que seguimos en cada intervención. No es una lista de tareas: es una metodología de arquitectura operativa.
+        Cuando la intervención adecuada incluye construir un sistema, este es el flujo que seguimos. No es una ruta comercial obligatoria: primero conversamos y entendemos el problema.
       </p>
       <div className="grid gap-6 md:grid-cols-4">
         {flowSteps.map((step, index) => (
@@ -314,7 +314,7 @@ const PolicySection = () => (
         Ningún Sistema Operativo se construye sin arquitectura previa.
       </h2>
       <p className="max-w-3xl text-lg leading-relaxed text-slate-100">
-        La Radiografía Empresarial 360° es requisito estructural. No es opcional y no se omite. Solo así garantizamos que la infraestructura digital responde a un diseño sólido, aprobado por dirección y sustentado en evidencia.
+        No construimos un sistema sin entender primero cómo opera la empresa. La Radiografía Empresarial es el método para obtener esa claridad: tiene valor por sí misma y no obliga a continuar con Emphasys.
       </p>
     </div>
   </Section>
@@ -347,12 +347,12 @@ export default function SistemaOperativoEmpresarialPage() {
       <Section background="bg-white">
         <div className="space-y-3">
           <h3 className="text-2xl font-semibold text-[var(--color-emphasys-blue)]">
-            Pasos siguientes
+            Lecturas relacionadas
           </h3>
           <p className="text-base leading-relaxed text-slate-700">
-            Si buscas entrar por otra ruta, revisa <a className="text-[var(--color-emphasys-green)] font-semibold" href="/erp-a-la-medida">ERP a la medida</a>,
+            Si quieres profundizar en capacidades tecnológicas, revisa <a className="text-[var(--color-emphasys-green)] font-semibold" href="/erp-a-la-medida">ERP a la medida</a>,
             <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/automatizacion-ventas">Automatización de ventas</a> o
-            <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/control-de-costos">Control de costos</a>.
+            <a className="text-[var(--color-emphasys-green)] font-semibold ml-2" href="/control-de-costos">Control de costos</a>. La recomendación concreta surge después de entender el problema.
           </p>
         </div>
       </Section>
