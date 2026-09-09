@@ -108,7 +108,7 @@ const Header = () => {
               href="https://wa.me/523311107328?text=Hola%2C%20quiero%20conversar%20sobre%20lo%20que%20est%C3%A1%20pasando%20en%20mi%20empresa.%20%C2%BFPodemos%20revisar%20mi%20caso%3F"
               target="_blank"
               rel="noreferrer"
-              className="btn-primary hidden whitespace-nowrap px-5 py-2.5 text-sm lg:inline-flex"
+              className="btn-primary hidden whitespace-nowrap px-5 py-2.5 text-sm xl:inline-flex"
             >
               Iniciar conversación
             </a>
