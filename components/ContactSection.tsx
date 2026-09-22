@@ -79,7 +79,7 @@ const ContactSection = () => {
               <div className="flex items-center gap-2">
                 <span className="font-semibold text-[var(--color-emphasys-blue)]">Tel / WhatsApp:</span>
                 <a href="https://wa.me/523325905090" className="text-[var(--color-emphasys-green)] underline-offset-4 hover:underline" target="_blank" rel="noreferrer">
-                  +52 33 1288 9584
+                  +52 33 2590 5090
                 </a>
               </div>
               <p className="text-slate-500">Horario de respuesta: L-V 9:00–18:00 (Centro de México).</p>
