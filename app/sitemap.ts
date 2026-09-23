@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
     "/como-ordenar-empresa-en-crecimiento",
+    "/empresa-crecio-perdio-control",
     "/software-para-controlar-negocio",
     "/arquitectura-comercial-integrada",
     "/automatizacion-ventas",
