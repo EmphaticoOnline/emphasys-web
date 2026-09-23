@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import ContactSection from "@/components/ContactSection";
+import OutgrownStructure from "@/components/visual/OutgrownStructure";
 
 export const metadata: Metadata = {
   title: "Mi empresa creció, pero perdió el control | Emphasys",
@@ -108,14 +109,19 @@ export default function EmpresaCrecioPerdioControlPage() {
     <>
       <section className="relative overflow-hidden bg-[#f5f4ef] text-slate-900">
         <div className="wrap relative pb-16 pt-16 lg:pb-24 lg:pt-20">
-          <p className="eyebrow">Cuando crecer ya no se siente como control</p>
-          <h1 className="font-display mt-5 max-w-[820px] text-[34px] font-semibold leading-[1.05] tracking-tight text-[var(--color-emphasys-blue)] sm:text-5xl">
-            Mi empresa creció, pero perdió el control
-          </h1>
-          <p className="mt-6 max-w-[760px] text-lg leading-relaxed text-slate-600 sm:text-xl">
-            Crecer no siempre significa estar mejor organizado. A veces la empresa avanza más
-            rápido que sus procesos, responsabilidades e información.
-          </p>
+          <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+            <div>
+              <p className="eyebrow">Cuando crecer ya no se siente como control</p>
+              <h1 className="font-display mt-5 max-w-[820px] text-[34px] font-semibold leading-[1.05] tracking-tight text-[var(--color-emphasys-blue)] sm:text-5xl">
+                Mi empresa creció, pero perdió el control
+              </h1>
+              <p className="mt-6 max-w-[760px] text-lg leading-relaxed text-slate-600 sm:text-xl">
+                Crecer no siempre significa estar mejor organizado. A veces la empresa avanza más
+                rápido que sus procesos, responsabilidades e información.
+              </p>
+            </div>
+            <OutgrownStructure />
+          </div>
           <div className="mt-14 h-px w-full bg-slate-200" />
         </div>
       </section>
