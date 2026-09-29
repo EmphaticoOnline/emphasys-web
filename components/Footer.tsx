@@ -23,6 +23,7 @@ const Footer = () => {
             <Link href="/" className="text-white/80 hover:text-white">Inicio</Link>
             <Link href="/#metodo" className="text-white/80 hover:text-white">Cómo trabajamos</Link>
             <Link href="/radiografia-empresarial" className="text-white/80 hover:text-white">Radiografía Empresarial</Link>
+            <Link href="/principios-emphasys" className="text-white/80 hover:text-white">Principios de Emphasys</Link>
             <Link href="/#casos" className="text-white/80 hover:text-white">Casos</Link>
             <Link href="#contacto" className="text-white/80 hover:text-white">Contacto</Link>
           </div>

@@ -2,7 +2,12 @@
 
 import { FormEvent, useState } from "react";
 
-const ContactSection = () => {
+type ContactSectionProps = {
+  description?: string;
+  ctaLabel?: string;
+};
+
+const ContactSection = ({ description, ctaLabel = "Enviar mensaje" }: ContactSectionProps) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
@@ -62,12 +67,18 @@ const ContactSection = () => {
             <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-[var(--color-emphasys-blue)] sm:text-4xl">
               Conversemos sobre tu empresa.
             </h2>
-            <p className="text-base leading-relaxed text-slate-600">
-              No necesitas llegar con un diagnóstico ni saber qué solución necesitas. Cuéntanos qué está pasando, qué te preocupa y qué te gustaría cambiar. La primera conversación es para escuchar, entender tu contexto y determinar si tiene sentido profundizar.
-            </p>
-            <p className="text-base font-semibold leading-relaxed text-slate-800">
-              Si vemos que podemos ayudarte, te explicaremos cuál creemos que debe ser el siguiente paso.
-            </p>
+            {description ? (
+              <p className="text-base leading-relaxed text-slate-600">{description}</p>
+            ) : (
+              <>
+                <p className="text-base leading-relaxed text-slate-600">
+                  No necesitas llegar con un diagnóstico ni saber qué solución necesitas. Cuéntanos qué está pasando, qué te preocupa y qué te gustaría cambiar. La primera conversación es para escuchar, entender tu contexto y determinar si tiene sentido profundizar.
+                </p>
+                <p className="text-base font-semibold leading-relaxed text-slate-800">
+                  Si vemos que podemos ayudarte, te explicaremos cuál creemos que debe ser el siguiente paso.
+                </p>
+              </>
+            )}
 
             <div className="space-y-2 pt-2 text-sm text-slate-700">
               <div className="flex items-center gap-2">
@@ -117,7 +128,7 @@ const ContactSection = () => {
               {status === "success" && <p className="text-sm text-[var(--color-emphasys-green)]">Recibido. Te contactaremos en menos de 24h hábiles.</p>}
 
               <button type="submit" className="btn-primary w-full" disabled={status === "loading" || status === "success"}>
-                {status === "loading" ? "Enviando..." : status === "success" ? "Enviado" : "Enviar mensaje"}
+                {status === "loading" ? "Enviando..." : status === "success" ? "Enviado" : ctaLabel}
               </button>
 
               <p className="text-xs text-slate-500">Usaremos tu información solo para atender tu solicitud de contacto.</p>
