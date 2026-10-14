@@ -69,7 +69,7 @@ const Header = () => {
             alt="Emphasys Soluciones"
             width={1493}
             height={848}
-            className="h-[70px] w-auto -my-[7px] md:h-[85px] md:-my-[8.5px]"
+            className="h-[70px] w-auto -my-[7px] md:h-[97.75px] md:-my-[6px]"
             priority
           />
         </button>

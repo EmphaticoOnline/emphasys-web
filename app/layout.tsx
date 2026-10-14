@@ -84,7 +84,7 @@ export default function RootLayout({
           />
           <div className="pl-[8px]">
             <Header />
-            <main className="pt-24">{children}</main>
+            <main className="pt-24 md:pt-[114px]">{children}</main>
             <Footer />
             <StickyCTA />
             <StickyWhatsApp />
