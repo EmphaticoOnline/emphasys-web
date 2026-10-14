@@ -30,7 +30,17 @@ export async function POST(req: Request) {
         text: message.text,
         html: message.html,
       });
-      if (error) throw new Error("resend");
+      if (error) {
+        const safeMessage = error.message
+          .replace(/[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}/g, "[redacted-email]")
+          .replace(/re_[A-Za-z0-9_-]+/g, "[redacted-secret]");
+        console.error("Error de Resend enviando copia de evaluación", {
+          code: error.name,
+          type: error.constructor?.name || "unknown",
+          message: safeMessage,
+        });
+        throw new Error("resend");
+      }
     },
   });
 
