@@ -7,11 +7,11 @@ const Footer = () => {
       <div className="wrap grid gap-10 py-14 md:grid-cols-[1.3fr_1fr_1fr]">
         <div>
           <Image
-            src="/logos/logo-emphasys.png"
+            src="/logos/logo-emphasys-claro.png"
             alt="Emphasys Soluciones"
             width={220}
-            height={64}
-            className="h-12 w-auto brightness-0 invert"
+            height={125}
+            className="h-14 w-auto md:h-[68px]"
           />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/70">
             El negocio siempre va antes que el software. Ayudamos a empresarios a recuperar el control de su empresa.

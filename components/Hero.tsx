@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import HeroComposition from "@/components/visual/HeroComposition";
 
 const Hero = () => {
@@ -24,14 +25,19 @@ const Hero = () => {
             Emphasys ayuda a empresarios a entender qué está frenando a su empresa, recuperar claridad y construir una operación capaz de crecer con mayor control.
           </p>
 
-          <a
-            href="https://wa.me/523325905090?text=Hola%2C%20quiero%20conversar%20sobre%20lo%20que%20est%C3%A1%20pasando%20en%20mi%20empresa.%20%C2%BFPodemos%20revisar%20mi%20caso%3F"
-            target="_blank"
-            rel="noreferrer"
-            className="btn-primary mt-10"
-          >
-            Agendar una conversación
-          </a>
+          <div className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <Link href="/evaluacion-empresarial" className="btn-primary">
+              Evaluar mi empresa gratis
+            </Link>
+            <a
+              href="https://wa.me/523325905090?text=Hola%2C%20quiero%20conversar%20sobre%20lo%20que%20est%C3%A1%20pasando%20en%20mi%20empresa.%20%C2%BFPodemos%20revisar%20mi%20caso%3F"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-ghost"
+            >
+              Agendar una conversación
+            </a>
+          </div>
         </div>
 
         <HeroComposition />
