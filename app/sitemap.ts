@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/erp-para-pymes-mexico",
     "/radiografia-empresarial",
     "/principios-emphasys",
+    "/aviso-de-privacidad",
     "/sistema-operativo-empresarial",
   ];
 

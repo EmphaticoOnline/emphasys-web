@@ -40,8 +40,9 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="wrap flex flex-col gap-2 py-5 text-xs text-white/45 sm:flex-row sm:justify-between">
+        <div className="wrap flex flex-col gap-2 py-5 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Emphasys. Todos los derechos reservados.</p>
+          <Link href="/aviso-de-privacidad" className="text-white/70 hover:text-white">Aviso de privacidad</Link>
           <p>Guadalajara, México</p>
         </div>
       </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 type ContactSectionProps = {
@@ -131,7 +132,12 @@ const ContactSection = ({ description, ctaLabel = "Enviar mensaje" }: ContactSec
                 {status === "loading" ? "Enviando..." : status === "success" ? "Enviado" : ctaLabel}
               </button>
 
-              <p className="text-xs text-slate-500">Usaremos tu información solo para atender tu solicitud de contacto.</p>
+              <p className="text-xs text-slate-500">
+                Usaremos tu información solo para atender tu solicitud de contacto.{" "}
+                <Link href="/aviso-de-privacidad" className="text-[var(--color-emphasys-blue)] underline-offset-4 hover:underline">
+                  Aviso de privacidad
+                </Link>
+              </p>
             </form>
           </div>
         </div>
