@@ -67,9 +67,9 @@ const Header = () => {
           <Image
             src="/logos/logo-emphasys.png"
             alt="Emphasys Soluciones"
-            width={260}
-            height={76}
-            className="h-14 w-auto md:h-[68px]"
+            width={1493}
+            height={848}
+            className="h-[70px] w-auto -my-[7px] md:h-[85px] md:-my-[8.5px]"
             priority
           />
         </button>
