@@ -1,3 +1,4 @@
+import EvaluacionPromo from "@/components/EvaluacionPromo";
 import Hero from "@/components/Hero";
 import ProblemSection from "@/components/ProblemSection";
 import ManifestSection from "@/components/ManifestSection";
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <EvaluacionPromo />
       <ProblemSection />
       <ManifestSection />
       <ArchitectureSection />
