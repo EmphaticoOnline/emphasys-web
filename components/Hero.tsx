@@ -27,7 +27,7 @@ const Hero = () => {
 
           <div className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <Link href="/evaluacion-empresarial" className="btn-primary">
-              Evaluar mi empresa gratis
+              Evalúa tu empresa en 4 min
             </Link>
             <a
               href="https://wa.me/523325905090?text=Hola%2C%20quiero%20conversar%20sobre%20lo%20que%20est%C3%A1%20pasando%20en%20mi%20empresa.%20%C2%BFPodemos%20revisar%20mi%20caso%3F"
@@ -35,7 +35,7 @@ const Hero = () => {
               rel="noreferrer"
               className="btn-ghost"
             >
-              Agendar una conversación
+              Agenda una conversación
             </a>
           </div>
         </div>
