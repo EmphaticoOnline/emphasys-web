@@ -6,6 +6,7 @@ import PageHero from "@/components/PageHero";
 import DirectionMark from "@/components/visual/DirectionMark";
 import EvaluacionCopia from "@/components/evaluacion/EvaluacionCopia";
 import { type Answer, questions, resultCopy, scoreEvaluation } from "@/lib/evaluacion-empresarial";
+import { trackEvent } from "@/lib/analytics";
 
 type Phase = "welcome" | "questions" | "results";
 
@@ -17,6 +18,8 @@ const EvaluacionEmpresarial = () => {
   const [answers, setAnswers] = useState<Array<Answer | null>>(emptyAnswers);
   const questionRef = useRef<HTMLHeadingElement>(null);
   const skipInitialScroll = useRef(true);
+  const startedRef = useRef(false);
+  const completedRef = useRef(false);
 
   const question = questions[step];
   const selected = answers[step];
@@ -32,6 +35,10 @@ const EvaluacionEmpresarial = () => {
   }, [phase, step]);
 
   const begin = () => {
+    if (!startedRef.current) {
+      startedRef.current = true;
+      trackEvent("evaluation_start");
+    }
     setPhase("questions");
     setStep(0);
   };
@@ -47,6 +54,10 @@ const EvaluacionEmpresarial = () => {
 
   const showResults = () => {
     if (!completed) return;
+    if (!completedRef.current) {
+      completedRef.current = true;
+      trackEvent("evaluation_complete");
+    }
     setPhase("results");
   };
 
@@ -245,7 +256,7 @@ const EvaluacionEmpresarial = () => {
 
         <aside className="mt-10 border border-[rgba(29,47,104,0.10)] bg-[#eceff4] p-6 sm:p-8">
           <p className="max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">{resultCopy.radiografia}</p>
-          <Link href="/radiografia-empresarial" className="btn-ghost mt-6">
+          <Link href="/radiografia-empresarial" className="btn-ghost mt-6" onClick={() => trackEvent("radiografia_interest")}>
             {resultCopy.radiografiaCta}
           </Link>
         </aside>

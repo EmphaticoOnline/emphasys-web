@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { type Answer } from "@/lib/evaluacion-empresarial";
 import { isEvaluationEmail } from "@/lib/evaluacion-correo";
+import { trackEvent } from "@/lib/analytics";
 
 type EvaluacionCopiaProps = {
   answers: Answer[];
@@ -35,6 +36,7 @@ const EvaluacionCopia = ({ answers }: EvaluacionCopiaProps) => {
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data?.error || "No se pudo enviar la copia. Inténtalo más tarde.");
       setStatus("sent");
+      trackEvent("results_email_requested");
     } catch (cause: unknown) {
       setError(cause instanceof Error ? cause.message : "No se pudo enviar la copia. Inténtalo más tarde.");
       setStatus("error");

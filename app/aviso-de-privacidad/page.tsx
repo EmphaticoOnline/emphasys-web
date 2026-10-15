@@ -104,7 +104,7 @@ export default function AvisoDePrivacidadPage() {
 
         <Section number="09" title="Cookies y tecnologías similares">
           <p>
-            El sitio no utiliza cookies de analítica ni píxeles publicitarios. Las tipografías se cargan desde el propio sitio.
+            El sitio utiliza Google Analytics 4 únicamente cuando el visitante acepta la analítica. Esta herramienta puede usar cookies y tecnologías similares para medir visitas, procedencia —incluidos parámetros UTM— y eventos agregados de navegación. No se envían a Google Analytics nombres, correos electrónicos, respuestas individuales ni otros datos que identifiquen directamente a una persona. Si el visitante rechaza, la analítica no se carga.
           </p>
           <p>
             Para limitar solicitudes abusivas de la copia por correo, el servidor puede consultar la dirección IP de forma temporal, sin registrarla en una base de datos.
