@@ -41,9 +41,10 @@ Variables necesarias:
 EVALUATION_ANALYTICS_DATABASE_URL=postgresql://usuario:password@host:5432/base
 EVALUATION_ANALYTICS_HMAC_SECRET=secreto-largo-y-aleatorio
 EVALUATION_ANALYTICS_REQUIRE_CONSENT=true
+EVALUATION_ANALYTICS_DETAILED_ENABLED=false
 ```
 
-La medición operativa agregada no depende del consentimiento de GA4 y no usa cookies ni identificadores persistentes. El seguimiento detallado y `email_requests` (HMAC del correo) requieren consentimiento; los eventos no almacenan IP, fingerprint ni respuestas completas. La deduplicación agregada expira en 15 minutos y las solicitudes de correo tienen retención lógica de 90 días; la purga debe ejecutarse como tarea operativa independiente. Si falta la URL, la aplicación conserva su funcionamiento actual y no persiste datos.
+La medición operativa agregada no depende de GA4 ni usa cookies o identificadores persistentes. El seguimiento detallado y `email_requests` (HMAC del correo) requieren consentimiento y además permanecen desactivados mientras `EVALUATION_ANALYTICS_DETAILED_ENABLED` no sea `true`. Los eventos no almacenan IP, fingerprint ni respuestas completas. La deduplicación agregada expira en 15 minutos y las solicitudes de correo tienen retención lógica de 90 días; la purga debe ejecutarse como tarea operativa independiente. Si falta la URL, la aplicación conserva su funcionamiento actual y no persiste datos.
 
 Verificación local: `npm run lint`, `npx tsc --noEmit` y `npm test`.
 

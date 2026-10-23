@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StickyCTA from "@/components/StickyCTA";
 import StickyWhatsApp from "@/components/StickyWhatsApp";
-import Analytics from "@/components/Analytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -89,7 +88,6 @@ export default function RootLayout({
             <Footer />
             <StickyCTA />
             <StickyWhatsApp />
-            <Analytics />
           </div>
         </div>
       </body>

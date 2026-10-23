@@ -104,7 +104,7 @@ export default function AvisoDePrivacidadPage() {
 
         <Section number="09" title="Cookies y tecnologías similares">
           <p>
-            El sitio utiliza Google Analytics 4 únicamente cuando el visitante acepta la analítica. La Evaluación Empresarial también genera contadores operativos agregados —sin cookies, identificadores persistentes, fingerprinting, IP almacenada ni respuestas individuales— para medir visitas, inicios, avances, finalizaciones, solicitudes/envíos de correo y clics hacia Radiografía. El seguimiento detallado de sesiones y la asociación técnica de solicitudes de correo solo se realiza con consentimiento o fundamento aplicable. Si el visitante rechaza Analytics, no se carga GA4 ni se registra seguimiento detallado individual.
+            La Evaluación Empresarial genera únicamente contadores operativos agregados —sin cookies de seguimiento, identificadores persistentes, fingerprinting, IP almacenada ni respuestas individuales— para medir visitas, inicios, avances, finalizaciones, solicitudes/envíos de correo y clics hacia Radiografía. El seguimiento detallado de sesiones y la asociación técnica de solicitudes de correo están desactivados por defecto y solo podrán habilitarse con consentimiento o fundamento aplicable.
           </p>
           <p>
             Para limitar solicitudes abusivas de la copia por correo, el servidor puede consultar la dirección IP de forma temporal, sin registrarla en una base de datos.
@@ -113,7 +113,7 @@ export default function AvisoDePrivacidadPage() {
             Los enlaces a servicios externos, como WhatsApp, se abren fuera del sitio. El tratamiento que ocurra ahí corresponde a ese servicio.
           </p>
           <p>
-            Queda pendiente de revisión legal confirmar la base aplicable para los contadores operativos sin consentimiento, así como definir y publicar sus plazos definitivos de conservación.
+            Queda pendiente de revisión legal confirmar la base aplicable para los contadores operativos sin consentimiento, así como definir y publicar sus plazos definitivos de conservación. Actualmente no se cargan herramientas de analítica de terceros ni se muestra un banner de consentimiento para ellas.
           </p>
         </Section>
 

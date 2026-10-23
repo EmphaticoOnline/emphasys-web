@@ -24,6 +24,7 @@ const aggregateRateWindow = { startedAt: 0, count: 0 };
 
 export const analyticsEnabled = () => Boolean(process.env.EVALUATION_ANALYTICS_DATABASE_URL);
 export const consentRequired = () => process.env.EVALUATION_ANALYTICS_REQUIRE_CONSENT !== "false";
+export const detailedAnalyticsEnabled = () => process.env.EVALUATION_ANALYTICS_DETAILED_ENABLED === "true";
 
 export const hashEmail = (email: string) => {
   const secret = process.env.EVALUATION_ANALYTICS_HMAC_SECRET;
@@ -50,6 +51,7 @@ const validateEvent = (input: EventInput) => {
 };
 
 export const recordEvaluationEvent = async (input: EventInput) => {
+  if (!detailedAnalyticsEnabled()) throw new Error("detailed-analytics-disabled");
   validateEvent(input);
   const db = await getPool();
   if (!db) return { stored: false, duplicate: false };
@@ -101,6 +103,7 @@ export const recordAggregateEvent = async (args: { eventType: AggregateEventType
 };
 
 export const recordEmailRequest = async (args: { requestId?: string; evaluationId?: string; email: string; status: "accepted" | "sent" | "failed" | "rate_limited"; failureCategory?: string }) => {
+  if (!detailedAnalyticsEnabled()) return { stored: false };
   if (!analyticsEnabled()) return { stored: false };
   if (!validUuid(args.evaluationId)) throw new Error("invalid-evaluation-id");
   const db = await getPool(); if (!db) return { stored: false };

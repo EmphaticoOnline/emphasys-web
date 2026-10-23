@@ -6,7 +6,7 @@ import PageHero from "@/components/PageHero";
 import DirectionMark from "@/components/visual/DirectionMark";
 import EvaluacionCopia from "@/components/evaluacion/EvaluacionCopia";
 import { type Answer, questions, resultCopy, scoreEvaluation } from "@/lib/evaluacion-empresarial";
-import { trackEvent, trackEvaluationEvent } from "@/lib/analytics";
+import { trackEvaluationEvent } from "@/lib/analytics";
 
 type Phase = "welcome" | "questions" | "results";
 
@@ -54,7 +54,6 @@ const EvaluacionEmpresarial = () => {
   const begin = () => {
     if (!startedRef.current) {
       startedRef.current = true;
-      trackEvent("evaluation_start");
       trackEvaluationEvent({ eventType: "evaluation_start", evaluationId });
     }
     setPhase("questions");
@@ -76,7 +75,6 @@ const EvaluacionEmpresarial = () => {
     if (!completed) return;
     if (!completedRef.current) {
       completedRef.current = true;
-      trackEvent("evaluation_complete");
       trackEvaluationEvent({ eventType: "evaluation_complete", evaluationId, stepNumber: 8 });
     }
     setPhase("results");
@@ -280,7 +278,7 @@ const EvaluacionEmpresarial = () => {
 
         <aside className="mt-10 border border-[rgba(29,47,104,0.10)] bg-[#eceff4] p-6 sm:p-8">
           <p className="max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">{resultCopy.radiografia}</p>
-          <Link href="/radiografia-empresarial" className="btn-ghost mt-6" onClick={() => { trackEvent("radiografia_interest"); trackEvaluationEvent({ eventType: "commercial_interest", evaluationId, metadata: { interest: "radiografia" } }); }}>
+          <Link href="/radiografia-empresarial" className="btn-ghost mt-6" onClick={() => trackEvaluationEvent({ eventType: "commercial_interest", evaluationId, metadata: { interest: "radiografia" } })}>
             {resultCopy.radiografiaCta}
           </Link>
         </aside>

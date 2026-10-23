@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, ...result });
   } catch (error) {
     const message = error instanceof Error ? error.message : "unknown";
-    if (["analytics-consent-required", "invalid-identifier", "invalid-idempotency-key", "invalid-step", "metadata-too-large"].includes(message)) return NextResponse.json({ error: "Evento rechazado." }, { status: 400 });
+    if (["detailed-analytics-disabled", "analytics-consent-required", "invalid-identifier", "invalid-idempotency-key", "invalid-step", "metadata-too-large"].includes(message)) return NextResponse.json({ error: "Evento rechazado." }, { status: 400 });
     console.error("Evaluation analytics error", message);
     return NextResponse.json({ error: "No se pudo registrar el evento." }, { status: 503 });
   }

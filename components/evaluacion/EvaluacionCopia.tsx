@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { type Answer } from "@/lib/evaluacion-empresarial";
 import { isEvaluationEmail } from "@/lib/evaluacion-correo";
-import { trackEvent, trackEvaluationEvent } from "@/lib/analytics";
+import { trackEvaluationEvent } from "@/lib/analytics";
 
 type EvaluacionCopiaProps = {
   answers: Answer[];
@@ -33,12 +33,12 @@ const EvaluacionCopia = ({ answers, evaluationId }: EvaluacionCopiaProps) => {
       const response = await fetch("/api/evaluacion-empresarial", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ answers, email: recipient, evaluationId, analyticsConsent: typeof window !== "undefined" && window.__emphasysAnalyticsConsent === true }),
+        body: JSON.stringify({ answers, email: recipient, evaluationId }),
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data?.error || "No se pudo enviar la copia. Inténtalo más tarde.");
       setStatus("sent");
-      trackEvent("results_email_requested");
+      trackEvaluationEvent({ eventType: "results_email_requested", evaluationId });
       trackEvaluationEvent({ eventType: "results_email_sent" });
     } catch (cause: unknown) {
       setError(cause instanceof Error ? cause.message : "No se pudo enviar la copia. Inténtalo más tarde.");
