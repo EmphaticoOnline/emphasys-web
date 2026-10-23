@@ -16,3 +16,8 @@ test("visitas y páginas vistas se mantienen como métricas distintas", () => {
   assert.match(MONITOR_DAILY_QUERY, /AS visits/);
   assert.match(MONITOR_DAILY_QUERY, /AS page_views/);
 });
+
+test("el reporte excluye monitor sin borrar sus registros", () => {
+  assert.match(MONITOR_DAILY_QUERY, /page_path NOT LIKE '\/monitor%'/i);
+  assert.match(MONITOR_DAILY_QUERY, /metric_key\s*=\s*'page_view'/i);
+});

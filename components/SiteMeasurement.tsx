@@ -8,10 +8,12 @@ const SiteMeasurement = () => {
   const pathname = usePathname();
 
   useEffect(() => {
+    if (pathname === "/monitor" || pathname.startsWith("/monitor/")) return;
     trackSiteAggregateEvent("page_view", pathname || "/");
   }, [pathname]);
 
   useEffect(() => {
+    if (pathname === "/monitor" || pathname.startsWith("/monitor/")) return;
     const handleClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement | null;
       const link = target?.closest("a");
