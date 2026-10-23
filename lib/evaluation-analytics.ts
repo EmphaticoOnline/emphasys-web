@@ -32,6 +32,39 @@ export const analyticsEnabled = () => Boolean(process.env.EVALUATION_ANALYTICS_D
 export const consentRequired = () => process.env.EVALUATION_ANALYTICS_REQUIRE_CONSENT !== "false";
 export const detailedAnalyticsEnabled = () => process.env.EVALUATION_ANALYTICS_DETAILED_ENABLED === "true";
 
+export type MonitorAnalytics = {
+  from: string;
+  to: string;
+  daily: Array<{ day: string; visits: number; starts: number; completed: number; pageViews: number; contacts: number }>;
+  totals: { visits: number; starts: number; completed: number; resultsRequested: number; contacts: number; contactIntents: number };
+  topPages: Array<{ path: string; views: number }>;
+  events: Array<{ label: string; value: number; kind: "evaluation" | "commercial" | "contact" }>;
+};
+
+export const getMonitorAnalytics = async (from: string, to: string): Promise<MonitorAnalytics> => {
+  const db = await getPool();
+  if (!db) throw new Error("analytics-database-disabled");
+  const [daily, totals, pages, events] = await Promise.all([
+    db.query(`
+      WITH days AS (SELECT generate_series($1::date, $2::date, interval '1 day')::date AS day),
+      site AS (SELECT counter_day, SUM(counter_value) FILTER (WHERE metric_key = 'page_view') AS page_views, SUM(counter_value) FILTER (WHERE metric_key IN ('whatsapp_click','phone_click','email_click')) AS contact_intents FROM evaluation_analytics.site_daily_counters WHERE counter_day BETWEEN $1::date AND $2::date GROUP BY counter_day),
+      aggregate AS (SELECT counter_day, SUM(counter_value) FILTER (WHERE metric_key = 'visits') AS visits, SUM(counter_value) FILTER (WHERE metric_key = 'starts') AS starts, SUM(counter_value) FILTER (WHERE metric_key = 'completed') AS completed FROM evaluation_analytics.aggregate_daily_counters WHERE counter_day BETWEEN $1::date AND $2::date GROUP BY counter_day)
+      SELECT days.day, COALESCE(aggregate.visits,0)::bigint AS visits, COALESCE(aggregate.starts,0)::bigint AS starts, COALESCE(aggregate.completed,0)::bigint AS completed, COALESCE(site.page_views,0)::bigint AS page_views, COALESCE(site.contact_intents,0)::bigint AS contact_intents FROM days LEFT JOIN aggregate USING (day) LEFT JOIN site USING (day) ORDER BY days.day` , [from, to]),
+    db.query(`
+      SELECT
+        COALESCE((SELECT SUM(counter_value) FROM evaluation_analytics.aggregate_daily_counters WHERE metric_key = 'visits' AND counter_day BETWEEN $1::date AND $2::date),0)::bigint AS visits,
+        COALESCE((SELECT SUM(counter_value) FROM evaluation_analytics.aggregate_daily_counters WHERE metric_key = 'starts' AND counter_day BETWEEN $1::date AND $2::date),0)::bigint AS starts,
+        COALESCE((SELECT SUM(counter_value) FROM evaluation_analytics.aggregate_daily_counters WHERE metric_key = 'completed' AND counter_day BETWEEN $1::date AND $2::date),0)::bigint AS completed,
+        COALESCE((SELECT SUM(counter_value) FROM evaluation_analytics.aggregate_daily_counters WHERE metric_key = 'email_requested' AND counter_day BETWEEN $1::date AND $2::date),0)::bigint AS results_requested,
+        COALESCE((SELECT SUM(counter_value) FROM evaluation_analytics.site_daily_counters WHERE metric_key = 'contact_form_sent' AND counter_day BETWEEN $1::date AND $2::date),0)::bigint AS contacts,
+        COALESCE((SELECT SUM(counter_value) FROM evaluation_analytics.site_daily_counters WHERE metric_key IN ('whatsapp_click','phone_click','email_click') AND counter_day BETWEEN $1::date AND $2::date),0)::bigint AS contact_intents`, [from, to]),
+    db.query(`SELECT page_path AS path, SUM(counter_value)::bigint AS views FROM evaluation_analytics.site_daily_counters WHERE metric_key = 'page_view' AND counter_day BETWEEN $1::date AND $2::date GROUP BY page_path ORDER BY views DESC, path LIMIT 8`, [from, to]),
+    db.query(`SELECT metric_key, SUM(counter_value)::bigint AS value FROM evaluation_analytics.aggregate_daily_counters WHERE counter_day BETWEEN $1::date AND $2::date GROUP BY metric_key ORDER BY value DESC`, [from, to]),
+  ]);
+  const labelMap: Record<string, { label: string; kind: "evaluation" | "commercial" | "contact" }> = { starts: { label: "Evaluaciones iniciadas", kind: "evaluation" }, completed: { label: "Evaluaciones completadas", kind: "evaluation" }, email_requested: { label: "Resultados solicitados", kind: "commercial" }, email_sent: { label: "Resultados enviados", kind: "commercial" }, radiografia_click: { label: "Interés en radiografía", kind: "commercial" } };
+  return { from, to, daily: daily.rows.map((row) => ({ day: String(row.day).slice(0, 10), visits: Number(row.visits), starts: Number(row.starts), completed: Number(row.completed), pageViews: Number(row.page_views), contacts: Number(row.contact_intents) })), totals: { visits: Number(totals.rows[0].visits), starts: Number(totals.rows[0].starts), completed: Number(totals.rows[0].completed), resultsRequested: Number(totals.rows[0].results_requested), contacts: Number(totals.rows[0].contacts), contactIntents: Number(totals.rows[0].contact_intents) }, topPages: pages.rows.map((row) => ({ path: row.path, views: Number(row.views) })), events: events.rows.map((row) => labelMap[row.metric_key] ? ({ ...labelMap[row.metric_key], value: Number(row.value) }) : null).filter((event): event is { label: string; value: number; kind: "evaluation" | "commercial" | "contact" } => Boolean(event)) };
+};
+
 export const hashEmail = (email: string) => {
   const secret = process.env.EVALUATION_ANALYTICS_HMAC_SECRET;
   if (!secret) throw new Error("missing-analytics-hmac-secret");
