@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { FormEvent, useState } from "react";
+import { trackSiteAggregateEvent } from "@/lib/analytics";
 
 type ContactSectionProps = {
   description?: string;
@@ -46,6 +47,7 @@ const ContactSection = ({ description, ctaLabel = "Enviar mensaje" }: ContactSec
       if (!res.ok) throw new Error(data?.error || "No se pudo enviar tu mensaje.");
 
       setStatus("success");
+      trackSiteAggregateEvent("contact_form_sent", window.location.pathname);
       setName("");
       setEmail("");
       setCompany("");

@@ -9,6 +9,7 @@ export const EVENT_TYPES = [
 export type EvaluationEventType = (typeof EVENT_TYPES)[number];
 export type ConsentState = "granted" | "denied" | "unknown";
 export type AggregateEventType = EvaluationEventType;
+export type SiteAggregateMetric = "page_view" | "whatsapp_click" | "phone_click" | "email_click" | "contact_form_sent" | "evaluation_cta_click" | "radiografia_click";
 export const AGGREGATE_EVENT_TYPES = ["visit", "evaluation_start", "question_answered", "step_advanced", "evaluation_complete", "results_email_requested", "results_email_sent", "results_email_failed", "commercial_interest"] as const;
 
 type EventInput = {
@@ -21,6 +22,11 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-
 const MAX_METADATA_KEYS = 8;
 const validUuid = (value?: string) => !value || UUID.test(value);
 const aggregateRateWindow = { startedAt: 0, count: 0 };
+const checkAggregateRateLimit = () => {
+  const now = Date.now();
+  if (now - aggregateRateWindow.startedAt > 60_000) { aggregateRateWindow.startedAt = now; aggregateRateWindow.count = 0; }
+  if (++aggregateRateWindow.count > 500) throw new Error("aggregate-rate-limit");
+};
 
 export const analyticsEnabled = () => Boolean(process.env.EVALUATION_ANALYTICS_DATABASE_URL);
 export const consentRequired = () => process.env.EVALUATION_ANALYTICS_REQUIRE_CONSENT !== "false";
@@ -85,9 +91,7 @@ export const recordAggregateEvent = async (args: { eventType: AggregateEventType
   const metric = aggregateMetric(args.eventType, args.stepNumber);
   if (!metric || !args.idempotencyKey || args.idempotencyKey.length > 160) throw new Error("invalid-aggregate-event");
   if (args.stepNumber !== undefined && (!Number.isInteger(args.stepNumber) || args.stepNumber < 1 || args.stepNumber > 8)) throw new Error("invalid-step");
-  const now = Date.now();
-  if (now - aggregateRateWindow.startedAt > 60_000) { aggregateRateWindow.startedAt = now; aggregateRateWindow.count = 0; }
-  if (++aggregateRateWindow.count > 500) throw new Error("aggregate-rate-limit");
+  checkAggregateRateLimit();
   const db = await getPool();
   if (!db) return { stored: false, duplicate: false };
   const client: PoolClient = await db.connect();
@@ -97,6 +101,25 @@ export const recordAggregateEvent = async (args: { eventType: AggregateEventType
     const dedupe = await client.query("INSERT INTO evaluation_analytics.aggregate_event_dedup (dedupe_key, expires_at) VALUES ($1, now() + interval '15 minutes') ON CONFLICT DO NOTHING", [args.idempotencyKey]);
     if (dedupe.rowCount === 0) { await client.query("COMMIT"); return { stored: true, duplicate: true }; }
     await client.query(`INSERT INTO evaluation_analytics.aggregate_daily_counters (counter_day, metric_key, counter_value) VALUES (current_date, $1, 1) ON CONFLICT (counter_day, metric_key) DO UPDATE SET counter_value = evaluation_analytics.aggregate_daily_counters.counter_value + 1, updated_at = now()`, [metric]);
+    await client.query("COMMIT");
+    return { stored: true, duplicate: false };
+  } catch (error) { await client.query("ROLLBACK"); throw error; } finally { client.release(); }
+};
+
+const validPagePath = (value: string) => value.startsWith("/") && value.length <= 200 && !value.includes("\n") && !value.includes("\r");
+
+export const recordSiteAggregateEvent = async (args: { metricKey: SiteAggregateMetric; pagePath: string; idempotencyKey: string }) => {
+  if (!args.idempotencyKey || args.idempotencyKey.length > 160 || !validPagePath(args.pagePath)) throw new Error("invalid-site-aggregate-event");
+  checkAggregateRateLimit();
+  const db = await getPool();
+  if (!db) return { stored: false, duplicate: false };
+  const client: PoolClient = await db.connect();
+  try {
+    await client.query("BEGIN");
+    await client.query("DELETE FROM evaluation_analytics.aggregate_event_dedup WHERE expires_at < now()");
+    const dedupe = await client.query("INSERT INTO evaluation_analytics.aggregate_event_dedup (dedupe_key, expires_at) VALUES ($1, now() + interval '15 minutes') ON CONFLICT DO NOTHING", [`site:${args.idempotencyKey}`]);
+    if (dedupe.rowCount === 0) { await client.query("COMMIT"); return { stored: true, duplicate: true }; }
+    await client.query(`INSERT INTO evaluation_analytics.site_daily_counters (counter_day, metric_key, page_path, counter_value) VALUES (current_date, $1, $2, 1) ON CONFLICT (counter_day, metric_key, page_path) DO UPDATE SET counter_value = evaluation_analytics.site_daily_counters.counter_value + 1, updated_at = now()`, [args.metricKey, args.pagePath]);
     await client.query("COMMIT");
     return { stored: true, duplicate: false };
   } catch (error) { await client.query("ROLLBACK"); throw error; } finally { client.release(); }

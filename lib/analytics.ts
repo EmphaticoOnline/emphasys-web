@@ -4,6 +4,14 @@ export const trackEvaluationEvent = (args: { eventType: string; evaluationId?: s
   if (aggregateEventTypes.has(args.eventType)) trackEvaluationAggregate({ eventType: args.eventType, stepNumber: args.stepNumber });
 };
 
+let siteMeasurementNonce: string | undefined;
+export const trackSiteAggregateEvent = (metricKey: string, pagePath: string) => {
+  if (typeof window === "undefined") return;
+  siteMeasurementNonce ??= crypto.randomUUID();
+  const idempotencyKey = `${siteMeasurementNonce}:${metricKey}:${pagePath}`;
+  void fetch("/api/evaluation-aggregate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ metricKey, pagePath, idempotencyKey, website: "" }), keepalive: true }).catch(() => undefined);
+};
+
 let pageMeasurementNonce: string | undefined;
 const trackEvaluationAggregate = (args: { eventType: string; stepNumber?: number }) => {
   if (typeof window === "undefined") return;

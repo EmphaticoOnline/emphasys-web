@@ -33,7 +33,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Medición propia de la evaluación
 
-La persistencia es opcional y está aislada del ERP. Ejecuta las migraciones `db/migrations/001_evaluation_analytics.sql` y `db/migrations/002_aggregate_evaluation_measurement.sql` en una base PostgreSQL dedicada. No se ejecutan automáticamente ni deben ejecutarse en producción desde la aplicación.
+La persistencia es opcional y está aislada del ERP. Ejecuta, en orden, las migraciones `db/migrations/001_evaluation_analytics.sql`, `db/migrations/002_aggregate_evaluation_measurement.sql` y `db/migrations/003_site_aggregate_measurement.sql` en la base PostgreSQL existente. No se ejecutan automáticamente ni deben ejecutarse desde la aplicación.
 
 Variables necesarias:
 
@@ -44,7 +44,7 @@ EVALUATION_ANALYTICS_REQUIRE_CONSENT=true
 EVALUATION_ANALYTICS_DETAILED_ENABLED=false
 ```
 
-La medición operativa agregada no depende de GA4 ni usa cookies o identificadores persistentes. El seguimiento detallado y `email_requests` (HMAC del correo) requieren consentimiento y además permanecen desactivados mientras `EVALUATION_ANALYTICS_DETAILED_ENABLED` no sea `true`. Los eventos no almacenan IP, fingerprint ni respuestas completas. La deduplicación agregada expira en 15 minutos y las solicitudes de correo tienen retención lógica de 90 días; la purga debe ejecutarse como tarea operativa independiente. Si falta la URL, la aplicación conserva su funcionamiento actual y no persiste datos.
+La medición operativa agregada no depende de GA4 ni usa cookies o identificadores persistentes. Incluye visitas por página, clics de intento a canales de contacto, formularios enviados y CTA comerciales. Un clic no confirma que WhatsApp, teléfono o correo hayan producido contacto efectivo. El seguimiento detallado y `email_requests` (HMAC del correo) requieren consentimiento y además permanecen desactivados mientras `EVALUATION_ANALYTICS_DETAILED_ENABLED` no sea `true`. Los eventos no almacenan IP, fingerprint ni respuestas completas. La deduplicación agregada expira en 15 minutos y las solicitudes de correo tienen retención lógica de 90 días; la purga debe ejecutarse como tarea operativa independiente. Si falta la URL, la aplicación conserva su funcionamiento actual y no persiste datos.
 
 Verificación local: `npm run lint`, `npx tsc --noEmit` y `npm test`.
 

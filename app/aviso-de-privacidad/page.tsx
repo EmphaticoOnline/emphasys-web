@@ -104,7 +104,7 @@ export default function AvisoDePrivacidadPage() {
 
         <Section number="09" title="Cookies y tecnologías similares">
           <p>
-            La Evaluación Empresarial genera únicamente contadores operativos agregados —sin cookies de seguimiento, identificadores persistentes, fingerprinting, IP almacenada ni respuestas individuales— para medir visitas, inicios, avances, finalizaciones, solicitudes/envíos de correo y clics hacia Radiografía. El seguimiento detallado de sesiones y la asociación técnica de solicitudes de correo están desactivados por defecto y solo podrán habilitarse con consentimiento o fundamento aplicable.
+            El sitio genera únicamente contadores operativos agregados —sin cookies de seguimiento, identificadores persistentes, fingerprinting, IP almacenada ni datos personales en eventos— para medir visitas por página, clics de intento hacia WhatsApp, teléfono y correo, envíos exitosos de formularios, botones hacia la Evaluación y clics hacia Radiografía. La Evaluación conserva además sus contadores agregados de inicio, avance, finalización y correo. El seguimiento detallado de sesiones y la asociación técnica de solicitudes de correo están desactivados por defecto y solo podrán habilitarse con consentimiento o fundamento aplicable.
           </p>
           <p>
             Para limitar solicitudes abusivas de la copia por correo, el servidor puede consultar la dirección IP de forma temporal, sin registrarla en una base de datos.

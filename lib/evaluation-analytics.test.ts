@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { aggregateMetric, isAggregateEventType, recordAggregateEvent } from "./evaluation-analytics.ts";
+import { aggregateMetric, isAggregateEventType, recordAggregateEvent, recordSiteAggregateEvent } from "./evaluation-analytics.ts";
 
 test("mapea la medición operativa a contadores agregados", () => {
   assert.equal(aggregateMetric("visit"), "visits");
@@ -9,6 +9,11 @@ test("mapea la medición operativa a contadores agregados", () => {
   assert.equal(aggregateMetric("commercial_interest"), "radiografia_click");
   assert.equal(isAggregateEventType("evaluation_restart"), false);
   assert.equal(isAggregateEventType("evaluation_complete"), true);
+});
+
+test("valida eventos agregados del sitio sin persistir datos personales", async () => {
+  const result = await recordSiteAggregateEvent({ metricKey: "whatsapp_click", pagePath: "/servicios", idempotencyKey: "site-page:whatsapp:/servicios" });
+  assert.deepEqual(result, { stored: false, duplicate: false });
 });
 
 test("la medición agregada no exige consentimiento ni base configurada para validar el evento", async () => {
