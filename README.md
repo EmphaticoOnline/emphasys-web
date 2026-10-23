@@ -31,6 +31,22 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Deploy on Vercel
 
+## Medición propia de la evaluación
+
+La persistencia es opcional y está aislada del ERP. Ejecuta las migraciones `db/migrations/001_evaluation_analytics.sql` y `db/migrations/002_aggregate_evaluation_measurement.sql` en una base PostgreSQL dedicada. No se ejecutan automáticamente ni deben ejecutarse en producción desde la aplicación.
+
+Variables necesarias:
+
+```text
+EVALUATION_ANALYTICS_DATABASE_URL=postgresql://usuario:password@host:5432/base
+EVALUATION_ANALYTICS_HMAC_SECRET=secreto-largo-y-aleatorio
+EVALUATION_ANALYTICS_REQUIRE_CONSENT=true
+```
+
+La medición operativa agregada no depende del consentimiento de GA4 y no usa cookies ni identificadores persistentes. El seguimiento detallado y `email_requests` (HMAC del correo) requieren consentimiento; los eventos no almacenan IP, fingerprint ni respuestas completas. La deduplicación agregada expira en 15 minutos y las solicitudes de correo tienen retención lógica de 90 días; la purga debe ejecutarse como tarea operativa independiente. Si falta la URL, la aplicación conserva su funcionamiento actual y no persiste datos.
+
+Verificación local: `npm run lint`, `npx tsc --noEmit` y `npm test`.
+
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

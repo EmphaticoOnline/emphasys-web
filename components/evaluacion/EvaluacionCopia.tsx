@@ -4,13 +4,14 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { type Answer } from "@/lib/evaluacion-empresarial";
 import { isEvaluationEmail } from "@/lib/evaluacion-correo";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackEvaluationEvent } from "@/lib/analytics";
 
 type EvaluacionCopiaProps = {
   answers: Answer[];
+  evaluationId: string;
 };
 
-const EvaluacionCopia = ({ answers }: EvaluacionCopiaProps) => {
+const EvaluacionCopia = ({ answers, evaluationId }: EvaluacionCopiaProps) => {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -28,15 +29,17 @@ const EvaluacionCopia = ({ answers }: EvaluacionCopiaProps) => {
     try {
       setStatus("sending");
       setError(null);
+      trackEvaluationEvent({ eventType: "results_email_requested", evaluationId });
       const response = await fetch("/api/evaluacion-empresarial", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ answers, email: recipient }),
+        body: JSON.stringify({ answers, email: recipient, evaluationId, analyticsConsent: typeof window !== "undefined" && window.__emphasysAnalyticsConsent === true }),
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data?.error || "No se pudo enviar la copia. Inténtalo más tarde.");
       setStatus("sent");
       trackEvent("results_email_requested");
+      trackEvaluationEvent({ eventType: "results_email_sent" });
     } catch (cause: unknown) {
       setError(cause instanceof Error ? cause.message : "No se pudo enviar la copia. Inténtalo más tarde.");
       setStatus("error");

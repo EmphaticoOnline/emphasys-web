@@ -7,11 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "node --import tsx --test lib/*.test.ts",
     "save": "git add . && git commit -m \"$npm_config_message\" && git push",
     "deploy": "git add . && git diff --cached --quiet || git commit -m \"deploy auto\" && git push && ssh -t ubuntu@148.113.192.7 \"cd /var/www/emphasys-web && ./deploy.sh\""
   },
   "dependencies": {
     "next": "16.1.6",
+    "pg": "^8.23.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "resend": "^4.0.0"
@@ -19,11 +21,13 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

@@ -6,7 +6,7 @@ import PageHero from "@/components/PageHero";
 import DirectionMark from "@/components/visual/DirectionMark";
 import EvaluacionCopia from "@/components/evaluacion/EvaluacionCopia";
 import { type Answer, questions, resultCopy, scoreEvaluation } from "@/lib/evaluacion-empresarial";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackEvaluationEvent } from "@/lib/analytics";
 
 type Phase = "welcome" | "questions" | "results";
 
@@ -20,10 +20,27 @@ const EvaluacionEmpresarial = () => {
   const skipInitialScroll = useRef(true);
   const startedRef = useRef(false);
   const completedRef = useRef(false);
+  const abandonedRef = useRef(false);
+  const [evaluationId, setEvaluationId] = useState(() => crypto.randomUUID());
 
   const question = questions[step];
   const selected = answers[step];
   const completed = answers.every((answer): answer is Answer => answer !== null);
+
+  useEffect(() => {
+    trackEvaluationEvent({ eventType: "visit", evaluationId });
+  }, [evaluationId]);
+
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (document.visibilityState === "hidden" && phase === "questions" && !completedRef.current && !abandonedRef.current) {
+        abandonedRef.current = true;
+        trackEvaluationEvent({ eventType: "evaluation_abandoned", evaluationId, stepNumber: step + 1 });
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => document.removeEventListener("visibilitychange", handleVisibility);
+  }, [evaluationId, phase, step]);
 
   useEffect(() => {
     if (skipInitialScroll.current) {
@@ -38,6 +55,7 @@ const EvaluacionEmpresarial = () => {
     if (!startedRef.current) {
       startedRef.current = true;
       trackEvent("evaluation_start");
+      trackEvaluationEvent({ eventType: "evaluation_start", evaluationId });
     }
     setPhase("questions");
     setStep(0);
@@ -45,9 +63,11 @@ const EvaluacionEmpresarial = () => {
 
   const choose = (answer: Answer) => {
     setAnswers((current) => current.map((value, index) => (index === step ? answer : value)));
+    trackEvaluationEvent({ eventType: "question_answered", evaluationId, stepNumber: step + 1, metadata: { answer } });
   };
 
   const goTo = (nextStep: number) => {
+    if (nextStep > step) trackEvaluationEvent({ eventType: "step_advanced", evaluationId, stepNumber: nextStep + 1 });
     setStep(nextStep);
     setPhase("questions");
   };
@@ -57,14 +77,18 @@ const EvaluacionEmpresarial = () => {
     if (!completedRef.current) {
       completedRef.current = true;
       trackEvent("evaluation_complete");
+      trackEvaluationEvent({ eventType: "evaluation_complete", evaluationId, stepNumber: 8 });
     }
     setPhase("results");
   };
 
   const restart = () => {
+    trackEvaluationEvent({ eventType: "evaluation_restart", evaluationId });
+    setEvaluationId(crypto.randomUUID());
     setAnswers(emptyAnswers());
     setStep(0);
     setPhase("welcome");
+    abandonedRef.current = false;
   };
 
   if (phase === "welcome") {
@@ -256,12 +280,12 @@ const EvaluacionEmpresarial = () => {
 
         <aside className="mt-10 border border-[rgba(29,47,104,0.10)] bg-[#eceff4] p-6 sm:p-8">
           <p className="max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">{resultCopy.radiografia}</p>
-          <Link href="/radiografia-empresarial" className="btn-ghost mt-6" onClick={() => trackEvent("radiografia_interest")}>
+          <Link href="/radiografia-empresarial" className="btn-ghost mt-6" onClick={() => { trackEvent("radiografia_interest"); trackEvaluationEvent({ eventType: "commercial_interest", evaluationId, metadata: { interest: "radiografia" } }); }}>
             {resultCopy.radiografiaCta}
           </Link>
         </aside>
 
-        <EvaluacionCopia answers={answers as Answer[]} />
+        <EvaluacionCopia answers={answers as Answer[]} evaluationId={evaluationId} />
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <button type="button" className="btn-ghost" onClick={() => goTo(0)}>

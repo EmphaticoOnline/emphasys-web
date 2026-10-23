@@ -51,7 +51,9 @@ Emphasys aplicará medidas administrativas, técnicas y físicas apropiadas para
 
 ## 9. Cookies y tecnologías similares
 
-**Pendiente de verificación técnica previa a la publicación:** identificar si https://emphasys.mx utiliza cookies, analítica, píxeles o tecnologías similares; cuáles recaban datos personales, con qué finalidades y qué opciones de control existen. Este apartado deberá completarse de acuerdo con los hallazgos reales y no publicarse como una afirmación genérica sin revisar el sitio.
+La medición propia tiene dos niveles. Los contadores operativos agregados de visitas, inicios, avances, finalizaciones, solicitudes/envíos de correo y clics hacia Radiografía no usan cookies de seguimiento, identificadores persistentes, fingerprinting, IP almacenada ni respuestas individuales. El seguimiento detallado usa un identificador aleatorio de primera parte y se activa únicamente con consentimiento o fundamento aplicable. Ambos niveles se almacenan en una base independiente del ERP.
+
+**Pendiente de revisión legal:** confirmar la base aplicable para los contadores agregados sin consentimiento, confirmar si el identificador aleatorio y el seguimiento detallado requieren consentimiento en cada jurisdicción aplicable, ajustar las finalidades y publicar los plazos definitivos de conservación antes de activar la variable de entorno en producción.
 
 ## 10. Cambios al aviso
 

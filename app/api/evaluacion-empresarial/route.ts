@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { handleEvaluationCopyRequest } from "@/lib/evaluacion-correo";
+import { recordEmailRequest } from "@/lib/evaluation-analytics";
 
 const clientIp = (req: Request) => {
   const forwarded = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
@@ -44,5 +45,10 @@ export async function POST(req: Request) {
     },
   });
 
+  const body = payload as { email?: unknown; evaluationId?: unknown; analyticsConsent?: unknown };
+  if (body.analyticsConsent === true && typeof body.email === "string") {
+    try { await recordEmailRequest({ evaluationId: typeof body.evaluationId === "string" ? body.evaluationId : undefined, email: body.email, status: result.status === 200 ? "sent" : result.status === 429 ? "rate_limited" : "failed", failureCategory: result.status === 200 ? undefined : `http_${result.status}` }); }
+    catch (error) { console.error("Evaluation analytics email record error", error instanceof Error ? error.message : "unknown"); }
+  }
   return NextResponse.json(result.body, { status: result.status });
 }
