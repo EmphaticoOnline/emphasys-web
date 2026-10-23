@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import StickyCTA from "@/components/StickyCTA";
-import StickyWhatsApp from "@/components/StickyWhatsApp";
-import SiteMeasurement from "@/components/SiteMeasurement";
+import AppFrame from "@/components/AppFrame";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -78,20 +74,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${geistSans.variable} ${geistMono.variable} ${sourceSerif.variable} antialiased`}>
-        <div className="relative min-h-screen">
-          <div
-            className="fixed left-0 top-0 z-[60] h-full w-[8px]"
-            style={{ backgroundColor: "var(--color-emphasys-blue)" }}
-          />
-          <div className="pl-[8px]">
-            <Header />
-            <main className="pt-24 md:pt-[114px]">{children}</main>
-            <Footer />
-            <StickyCTA />
-            <StickyWhatsApp />
-            <SiteMeasurement />
-          </div>
-        </div>
+        <AppFrame>{children}</AppFrame>
       </body>
     </html>
   );
