@@ -41,15 +41,17 @@ export type MonitorAnalytics = {
   events: Array<{ label: string; value: number; kind: "evaluation" | "commercial" | "contact" }>;
 };
 
+export const MONITOR_DAILY_QUERY = `
+      WITH days AS (SELECT generate_series($1::date, $2::date, interval '1 day')::date AS day),
+      site AS (SELECT counter_day, SUM(counter_value) FILTER (WHERE metric_key = 'page_view') AS page_views, SUM(counter_value) FILTER (WHERE metric_key IN ('whatsapp_click','phone_click','email_click')) AS contact_intents FROM evaluation_analytics.site_daily_counters WHERE counter_day BETWEEN $1::date AND $2::date GROUP BY counter_day),
+      aggregate AS (SELECT counter_day, SUM(counter_value) FILTER (WHERE metric_key = 'visits') AS visits, SUM(counter_value) FILTER (WHERE metric_key = 'starts') AS starts, SUM(counter_value) FILTER (WHERE metric_key = 'completed') AS completed FROM evaluation_analytics.aggregate_daily_counters WHERE counter_day BETWEEN $1::date AND $2::date GROUP BY counter_day)
+      SELECT days.day, COALESCE(aggregate.visits,0)::bigint AS visits, COALESCE(aggregate.starts,0)::bigint AS starts, COALESCE(aggregate.completed,0)::bigint AS completed, COALESCE(site.page_views,0)::bigint AS page_views, COALESCE(site.contact_intents,0)::bigint AS contact_intents FROM days LEFT JOIN aggregate ON aggregate.counter_day = days.day LEFT JOIN site ON site.counter_day = days.day ORDER BY days.day`;
+
 export const getMonitorAnalytics = async (from: string, to: string): Promise<MonitorAnalytics> => {
   const db = await getPool();
   if (!db) throw new Error("analytics-database-disabled");
   const [daily, totals, pages, events] = await Promise.all([
-    db.query(`
-      WITH days AS (SELECT generate_series($1::date, $2::date, interval '1 day')::date AS day),
-      site AS (SELECT counter_day, SUM(counter_value) FILTER (WHERE metric_key = 'page_view') AS page_views, SUM(counter_value) FILTER (WHERE metric_key IN ('whatsapp_click','phone_click','email_click')) AS contact_intents FROM evaluation_analytics.site_daily_counters WHERE counter_day BETWEEN $1::date AND $2::date GROUP BY counter_day),
-      aggregate AS (SELECT counter_day, SUM(counter_value) FILTER (WHERE metric_key = 'visits') AS visits, SUM(counter_value) FILTER (WHERE metric_key = 'starts') AS starts, SUM(counter_value) FILTER (WHERE metric_key = 'completed') AS completed FROM evaluation_analytics.aggregate_daily_counters WHERE counter_day BETWEEN $1::date AND $2::date GROUP BY counter_day)
-      SELECT days.day, COALESCE(aggregate.visits,0)::bigint AS visits, COALESCE(aggregate.starts,0)::bigint AS starts, COALESCE(aggregate.completed,0)::bigint AS completed, COALESCE(site.page_views,0)::bigint AS page_views, COALESCE(site.contact_intents,0)::bigint AS contact_intents FROM days LEFT JOIN aggregate USING (day) LEFT JOIN site USING (day) ORDER BY days.day` , [from, to]),
+    db.query(MONITOR_DAILY_QUERY, [from, to]),
     db.query(`
       SELECT
         COALESCE((SELECT SUM(counter_value) FROM evaluation_analytics.aggregate_daily_counters WHERE metric_key = 'visits' AND counter_day BETWEEN $1::date AND $2::date),0)::bigint AS visits,
