@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import { getMonitorAnalytics } from "@/lib/evaluation-analytics";
 import { monitorDateRange } from "@/lib/business-date";
 
-export const metadata: Metadata = { title: "Monitor privado | Emphasys", robots: { index: false, follow: false, nocache: true } };
+export const metadata: Metadata = {
+  title: "Monitor privado | Emphasys",
+  robots: { index: false, follow: false, nocache: true },
+  icons: { apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }] },
+  appleWebApp: { capable: true, title: "Monitor Emphasys", statusBarStyle: "default" },
+};
 
 const n = (value: number) => new Intl.NumberFormat("es-MX").format(value);
 const pct = (a: number, b: number) => b ? `${Math.round(a / b * 100)}%` : "—";
