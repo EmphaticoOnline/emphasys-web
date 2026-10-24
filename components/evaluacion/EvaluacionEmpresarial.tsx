@@ -2,18 +2,16 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import PageHero from "@/components/PageHero";
-import DirectionMark from "@/components/visual/DirectionMark";
 import EvaluacionCopia from "@/components/evaluacion/EvaluacionCopia";
 import { type Answer, questions, resultCopy, scoreEvaluation } from "@/lib/evaluacion-empresarial";
 import { trackEvaluationEvent } from "@/lib/analytics";
 
-type Phase = "welcome" | "questions" | "results";
+type Phase = "questions" | "results";
 
 const emptyAnswers = (): Array<Answer | null> => Array(questions.length).fill(null);
 
 const EvaluacionEmpresarial = () => {
-  const [phase, setPhase] = useState<Phase>("welcome");
+  const [phase, setPhase] = useState<Phase>("questions");
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Array<Answer | null>>(emptyAnswers);
   const questionRef = useRef<HTMLHeadingElement>(null);
@@ -51,16 +49,11 @@ const EvaluacionEmpresarial = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [phase, step]);
 
-  const begin = () => {
-    if (!startedRef.current) {
+  const choose = (answer: Answer) => {
+    if (step === 0 && !startedRef.current) {
       startedRef.current = true;
       trackEvaluationEvent({ eventType: "evaluation_start", evaluationId });
     }
-    setPhase("questions");
-    setStep(0);
-  };
-
-  const choose = (answer: Answer) => {
     setAnswers((current) => current.map((value, index) => (index === step ? answer : value)));
     trackEvaluationEvent({ eventType: "question_answered", evaluationId, stepNumber: step + 1, metadata: { answer } });
   };
@@ -85,29 +78,11 @@ const EvaluacionEmpresarial = () => {
     setEvaluationId(crypto.randomUUID());
     setAnswers(emptyAnswers());
     setStep(0);
-    setPhase("welcome");
+    setPhase("questions");
+    startedRef.current = false;
+    completedRef.current = false;
     abandonedRef.current = false;
   };
-
-  if (phase === "welcome") {
-    return (
-      <PageHero
-        eyebrow="Evaluación Empresarial en 4 Minutos"
-        title="¿Qué tan claro tienes el funcionamiento de tu empresa?"
-        visual={<DirectionMark />}
-        actions={
-          <button type="button" className="btn-primary" onClick={begin}>
-            Comenzar evaluación
-          </button>
-        }
-      >
-        <p>
-          Responde ocho preguntas sobre el control, la rentabilidad y la operación de tu negocio. En aproximadamente cuatro minutos obtendrás una primera orientación sobre tus fortalezas y aspectos que conviene revisar. Sin registro y sin compromiso.
-        </p>
-        <p className="text-base text-slate-500">Es una evaluación orientativa, no un diagnóstico empresarial definitivo.</p>
-      </PageHero>
-    );
-  }
 
   if (phase === "questions") {
     return (
