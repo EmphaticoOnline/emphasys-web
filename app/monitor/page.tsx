@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import { getMonitorAnalytics } from "@/lib/evaluation-analytics";
+import { monitorDateRange } from "@/lib/business-date";
 
 export const metadata: Metadata = { title: "Monitor privado | Emphasys", robots: { index: false, follow: false, nocache: true } };
 
-const iso = (date: Date) => date.toISOString().slice(0, 10);
-const range = (key: string | undefined) => { const end = new Date(); const start = new Date(end); const days = key === "yesterday" ? 1 : key === "7d" ? 6 : key === "30d" ? 29 : 0; if (key === "yesterday") start.setDate(start.getDate() - 1); else start.setDate(start.getDate() - days); return { from: iso(start), to: iso(key === "yesterday" ? start : end) }; };
 const n = (value: number) => new Intl.NumberFormat("es-MX").format(value);
 const pct = (a: number, b: number) => b ? `${Math.round(a / b * 100)}%` : "—";
 
 export default async function MonitorPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
-  const params = await searchParams; const preset = typeof params.preset === "string" ? params.preset : "today"; const defaults = range(preset); const from = typeof params.from === "string" ? params.from : defaults.from; const to = typeof params.to === "string" ? params.to : defaults.to; const data = await getMonitorAnalytics(from, to); const max = Math.max(...data.daily.map((day) => day.visits + day.pageViews), 1);
+  const params = await searchParams; const preset = typeof params.preset === "string" ? params.preset : "today"; const defaults = monitorDateRange(preset); const from = typeof params.from === "string" ? params.from : defaults.from; const to = typeof params.to === "string" ? params.to : defaults.to; const data = await getMonitorAnalytics(from, to); const max = Math.max(...data.daily.map((day) => day.visits + day.pageViews), 1);
   return <div className="monitor-shell"><header className="monitor-header"><div><p className="monitor-kicker">Emphasys · monitor privado</p><h1>Actividad comercial</h1><p className="monitor-subtitle">Lectura operativa de la medición agregada del sitio.</p></div><span className="monitor-lock">Servidor protegido</span></header>
     <main className="monitor-main"><nav className="monitor-filters" aria-label="Rango de fechas">{[["today","Hoy"],["yesterday","Ayer"],["7d","7 días"],["30d","30 días"]].map(([key,label]) => <a className={preset === key && !params.from ? "active" : ""} href={`/monitor?preset=${key}`} key={key}>{label}</a>)}<form><label>Desde<input type="date" name="from" defaultValue={from}/></label><label>Hasta<input type="date" name="to" defaultValue={to}/></label><button type="submit">Aplicar</button></form></nav>
       <div className="monitor-note">Visitas = eventos agregados. No se calculan visitantes únicos: este modelo no identifica visitantes. Contactos efectivos = formularios enviados; los clics se muestran como intención separada.</div>

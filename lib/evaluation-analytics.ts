@@ -47,6 +47,8 @@ export const MONITOR_DAILY_QUERY = `
       aggregate AS (SELECT counter_day, SUM(counter_value) FILTER (WHERE metric_key = 'visits') AS visits, SUM(counter_value) FILTER (WHERE metric_key = 'starts') AS starts, SUM(counter_value) FILTER (WHERE metric_key = 'completed') AS completed FROM evaluation_analytics.aggregate_daily_counters WHERE counter_day BETWEEN $1::date AND $2::date GROUP BY counter_day)
       SELECT days.day, COALESCE(aggregate.visits,0)::bigint AS visits, COALESCE(aggregate.starts,0)::bigint AS starts, COALESCE(aggregate.completed,0)::bigint AS completed, COALESCE(site.page_views,0)::bigint AS page_views, COALESCE(site.contact_intents,0)::bigint AS contact_intents FROM days LEFT JOIN aggregate ON aggregate.counter_day = days.day LEFT JOIN site ON site.counter_day = days.day ORDER BY days.day`;
 
+export const BUSINESS_DATE_SQL = "(now() AT TIME ZONE 'America/Mexico_City')::date";
+
 export const getMonitorAnalytics = async (from: string, to: string): Promise<MonitorAnalytics> => {
   const db = await getPool();
   if (!db) throw new Error("analytics-database-disabled");
@@ -136,7 +138,7 @@ export const recordAggregateEvent = async (args: { eventType: AggregateEventType
     await client.query("DELETE FROM evaluation_analytics.aggregate_event_dedup WHERE expires_at < now()");
     const dedupe = await client.query("INSERT INTO evaluation_analytics.aggregate_event_dedup (dedupe_key, expires_at) VALUES ($1, now() + interval '15 minutes') ON CONFLICT DO NOTHING", [args.idempotencyKey]);
     if (dedupe.rowCount === 0) { await client.query("COMMIT"); return { stored: true, duplicate: true }; }
-    await client.query(`INSERT INTO evaluation_analytics.aggregate_daily_counters (counter_day, metric_key, counter_value) VALUES (current_date, $1, 1) ON CONFLICT (counter_day, metric_key) DO UPDATE SET counter_value = evaluation_analytics.aggregate_daily_counters.counter_value + 1, updated_at = now()`, [metric]);
+    await client.query(`INSERT INTO evaluation_analytics.aggregate_daily_counters (counter_day, metric_key, counter_value) VALUES (${BUSINESS_DATE_SQL}, $1, 1) ON CONFLICT (counter_day, metric_key) DO UPDATE SET counter_value = evaluation_analytics.aggregate_daily_counters.counter_value + 1, updated_at = now()`, [metric]);
     await client.query("COMMIT");
     return { stored: true, duplicate: false };
   } catch (error) { await client.query("ROLLBACK"); throw error; } finally { client.release(); }
@@ -155,7 +157,7 @@ export const recordSiteAggregateEvent = async (args: { metricKey: SiteAggregateM
     await client.query("DELETE FROM evaluation_analytics.aggregate_event_dedup WHERE expires_at < now()");
     const dedupe = await client.query("INSERT INTO evaluation_analytics.aggregate_event_dedup (dedupe_key, expires_at) VALUES ($1, now() + interval '15 minutes') ON CONFLICT DO NOTHING", [`site:${args.idempotencyKey}`]);
     if (dedupe.rowCount === 0) { await client.query("COMMIT"); return { stored: true, duplicate: true }; }
-    await client.query(`INSERT INTO evaluation_analytics.site_daily_counters (counter_day, metric_key, page_path, counter_value) VALUES (current_date, $1, $2, 1) ON CONFLICT (counter_day, metric_key, page_path) DO UPDATE SET counter_value = evaluation_analytics.site_daily_counters.counter_value + 1, updated_at = now()`, [args.metricKey, args.pagePath]);
+    await client.query(`INSERT INTO evaluation_analytics.site_daily_counters (counter_day, metric_key, page_path, counter_value) VALUES (${BUSINESS_DATE_SQL}, $1, $2, 1) ON CONFLICT (counter_day, metric_key, page_path) DO UPDATE SET counter_value = evaluation_analytics.site_daily_counters.counter_value + 1, updated_at = now()`, [args.metricKey, args.pagePath]);
     await client.query("COMMIT");
     return { stored: true, duplicate: false };
   } catch (error) { await client.query("ROLLBACK"); throw error; } finally { client.release(); }

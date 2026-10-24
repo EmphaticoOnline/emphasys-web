@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { MONITOR_DAILY_QUERY } from "./evaluation-analytics";
+import { BUSINESS_DATE_SQL } from "./evaluation-analytics";
 
 test("el monitor une cada fecha con counter_day en ambas tablas", () => {
   assert.doesNotMatch(MONITOR_DAILY_QUERY, /USING\s*\(\s*day\s*\)/i);
@@ -8,6 +9,11 @@ test("el monitor une cada fecha con counter_day en ambas tablas", () => {
   assert.match(MONITOR_DAILY_QUERY, /site\.counter_day\s*=\s*days\.day/i);
   assert.match(MONITOR_DAILY_QUERY, /site_daily_counters/);
   assert.match(MONITOR_DAILY_QUERY, /aggregate_daily_counters/);
+});
+
+test("la escritura de contadores usa el día de negocio de México", () => {
+  assert.match(BUSINESS_DATE_SQL, /America\/Mexico_City/);
+  assert.doesNotMatch(BUSINESS_DATE_SQL, /current_date/);
 });
 
 test("visitas y páginas vistas se mantienen como métricas distintas", () => {
