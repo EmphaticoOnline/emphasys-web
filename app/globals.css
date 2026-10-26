@@ -169,6 +169,66 @@ body {
   background-size: 56px 56px;
 }
 
+.perspective-prose {
+  font-family: var(--font-source-serif), "Iowan Old Style", Georgia, serif;
+  font-size: 1.1875rem;
+  line-height: 1.7;
+  color: #1f2633;
+}
+
+.perspective-prose p {
+  margin: 0 0 1.2em;
+}
+
+.perspective-prose h2 {
+  margin: 2.2em 0 0.7em;
+  font-size: 1.625rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-emphasys-blue);
+  text-wrap: balance;
+  scroll-margin-top: 7.5rem;
+}
+
+.perspective-prose strong {
+  font-weight: 600;
+  color: var(--color-emphasys-blue);
+}
+
+.perspective-prose .perspective-key {
+  margin: 1.4em 0;
+  font-size: 1.3125rem;
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--color-emphasys-blue);
+}
+
+.perspective-prose > :last-child::after {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-left: 10px;
+  background: var(--color-emphasys-green);
+}
+
+@media (min-width: 768px) {
+  .perspective-prose {
+    font-size: 1.25rem;
+    line-height: 1.72;
+  }
+
+  .perspective-prose h2 {
+    font-size: 1.9375rem;
+    scroll-margin-top: 9rem;
+  }
+
+  .perspective-prose .perspective-key {
+    font-size: 1.4375rem;
+  }
+}
+
 .monitor-shell { min-height: 100vh; overflow-x: hidden; background: #eef1f4; color: #16203f; }
 .monitor-header, .monitor-main { width: min(1180px, calc(100% - 1.25rem)); margin-inline: auto; }
 .monitor-header { display: flex; justify-content: space-between; gap: .75rem; align-items: center; padding: .9rem 0 .75rem; }
