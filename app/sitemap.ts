@@ -22,8 +22,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...perspectives.map(perspectivePath),
   ];
 
-  return routes.map((path) => ({
-    url: `${baseUrl}${path}`,
-    lastModified: new Date(),
-  }));
+  return routes.map((path) => ({ url: `${baseUrl}${path}` }));
 }

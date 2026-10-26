@@ -21,6 +21,7 @@ import {
 type PageProps = { params: Promise<{ slug: string }> };
 
 export const dynamicParams = false;
+const editorialDate = "Octubre de 2026";
 
 export function generateStaticParams() {
   return perspectives.map((article) => ({ slug: article.slug }));
@@ -29,7 +30,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const article = getPerspective((await params).slug);
   if (!article) return {};
-  const title = `${article.title} | Perspectivas empresariales | Emphasys`;
+  const title = `${article.title} | Emphasys`;
   const url = `https://emphasys.mx${perspectivePath(article)}`;
   return {
     title,
@@ -134,6 +135,7 @@ export default async function PerspectivaPage({ params }: PageProps) {
                 </div>
               </div>
               <p className="text-sm text-[var(--muted)]">{minutes} min de lectura</p>
+              <p className="text-sm text-[var(--muted)]">{editorialDate}</p>
             </div>
           </div>
         </header>
