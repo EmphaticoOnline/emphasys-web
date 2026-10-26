@@ -3,11 +3,13 @@
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import ReadingProgress from "@/components/perspectivas/ReadingProgress";
 
 const navItems = [
   { label: "Inicio", href: "/" },
   { label: "Cómo trabajamos", href: "/principios-emphasys" },
   { label: "Radiografía", href: "/radiografia-empresarial" },
+  { label: "Perspectivas", href: "/perspectivas" },
   { label: "Casos", href: "/#casos" },
   { label: "Contacto", href: "#contacto" },
 ];
@@ -17,6 +19,8 @@ const Header = () => {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const isActive = (href: string) => href !== "/" && !href.includes("#") && (pathname === href || pathname.startsWith(`${href}/`));
+  const isArticle = pathname.startsWith("/perspectivas/");
 
   const handleNav = useCallback(
     (href: string) => {
@@ -80,7 +84,8 @@ const Header = () => {
               <button
                 key={item.href}
                 onClick={() => handleNav(item.href)}
-                className="border-b-2 border-transparent pb-1 text-[13px] font-semibold uppercase tracking-[0.12em] text-[var(--color-emphasys-blue)] transition-colors duration-200 hover:border-[var(--color-emphasys-green)] hover:text-[var(--color-emphasys-green)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                aria-current={isActive(item.href) ? "page" : undefined}
+                className="border-b-2 border-transparent pb-1 text-[13px] font-semibold uppercase tracking-[0.12em] text-[var(--color-emphasys-blue)] aria-[current=page]:border-[var(--color-emphasys-green)] aria-[current=page]:text-[var(--color-emphasys-green)] transition-colors duration-200 hover:border-[var(--color-emphasys-green)] hover:text-[var(--color-emphasys-green)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-emphasys-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
                 {item.label}
               </button>
@@ -108,7 +113,8 @@ const Header = () => {
               <button
                 key={item.href}
                 onClick={() => handleNav(item.href)}
-                className="border-b border-slate-100 pb-3 text-left text-base font-semibold uppercase tracking-[0.12em] text-[var(--color-emphasys-blue)]"
+                aria-current={isActive(item.href) ? "page" : undefined}
+                className="border-b border-slate-100 pb-3 text-left text-base font-semibold uppercase tracking-[0.12em] text-[var(--color-emphasys-blue)] aria-[current=page]:text-[var(--color-emphasys-green)]"
               >
                 {item.label}
               </button>
@@ -119,6 +125,7 @@ const Header = () => {
           </div>
         </div>
       )}
+      {isArticle && <ReadingProgress />}
     </header>
   );
 };

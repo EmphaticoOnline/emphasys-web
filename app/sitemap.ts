@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { perspectivePath, perspectives } from "@/lib/perspectivas";
 
 const baseUrl = "https://emphasys.mx";
 
@@ -17,6 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/principios-emphasys",
     "/aviso-de-privacidad",
     "/sistema-operativo-empresarial",
+    "/perspectivas",
+    ...perspectives.map(perspectivePath),
   ];
 
   return routes.map((path) => ({
