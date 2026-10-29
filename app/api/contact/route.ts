@@ -18,13 +18,18 @@ export async function POST(req: Request) {
     const toEmail = process.env.CONTACT_TO_EMAIL || "diazantonio37@emphaticoonline.com";
     const subject = `Nuevo contacto: ${name}${topic ? ` | ${topic}` : ""}`;
 
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: "Emphasys <no-reply@emphasys.mx>",
       to: toEmail,
       replyTo: email,
       subject,
       text: `Nombre: ${name}\nEmail: ${email}\nEmpresa: ${company || "(no indicado)"}\nTema: ${topic || "(no indicado)"}\n\nMensaje:\n${message}`,
     });
+
+    if (error) {
+      console.error("Error enviando contacto con Resend", error.name);
+      return NextResponse.json({ error: "No se pudo enviar el mensaje. Inténtalo más tarde." }, { status: 500 });
+    }
 
     return NextResponse.json({ ok: true });
   } catch (error) {
