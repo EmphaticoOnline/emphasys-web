@@ -1,6 +1,8 @@
-import { perspectives, type Perspective, type PerspectiveBlock } from "./perspectivas-contenido";
+import { perspectives as basePerspectives, type Perspective, type PerspectiveBlock } from "./perspectivas-contenido";
+import { perspectivaCinco } from "./perspectiva-cinco";
 
-export { perspectives };
+export const allPerspectives: Perspective[] = [...basePerspectives, perspectivaCinco];
+export { allPerspectives as perspectives };
 export type { Perspective, PerspectiveBlock };
 
 export const PERSPECTIVES_PATH = "/perspectivas";
@@ -25,17 +27,18 @@ const blockText = (block: PerspectiveBlock) => (block.type === "heading" ? block
 export const countWords = (text: string) => text.match(/[\p{L}\p{N}]+/gu)?.length ?? 0;
 
 export const readingMinutes = (article: Perspective) => {
+  if (article.readingMinutes) return article.readingMinutes;
   const words = countWords(article.title) + article.blocks.reduce((sum, block) => sum + countWords(blockText(block)), 0);
   return Math.max(1, Math.ceil(words / WORDS_PER_MINUTE));
 };
 
 export const perspectivePath = (article: Perspective) => `${PERSPECTIVES_PATH}/${article.slug}`;
 
-export const getPerspective = (slug: string) => perspectives.find((article) => article.slug === slug);
+export const getPerspective = (slug: string) => allPerspectives.find((article) => article.slug === slug);
 
 export const getNeighbors = (article: Perspective) => {
-  const index = perspectives.findIndex((item) => item.slug === article.slug);
-  return { previous: perspectives[index - 1], next: perspectives[index + 1] };
+  const index = allPerspectives.findIndex((item) => item.slug === article.slug);
+  return { previous: allPerspectives[index - 1], next: allPerspectives[index + 1] };
 };
 
 export const getSections = (article: Perspective) =>

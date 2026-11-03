@@ -2,10 +2,10 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { countWords, getNeighbors, getPerspective, getSections, perspectives, readingMinutes } from "./perspectivas";
 
-test("hay cuatro artículos con slugs únicos y en orden", () => {
-  assert.equal(perspectives.length, 4);
-  assert.deepEqual(perspectives.map((article) => article.number), [1, 2, 3, 4]);
-  assert.equal(new Set(perspectives.map((article) => article.slug)).size, 4);
+test("hay cinco artículos con slugs únicos y en orden", () => {
+  assert.equal(perspectives.length, 5);
+  assert.deepEqual(perspectives.map((article) => article.number), [1, 2, 3, 4, 5]);
+  assert.equal(new Set(perspectives.map((article) => article.slug)).size, 5);
 });
 
 test("cuenta palabras con acentos y signos de interrogación", () => {
@@ -13,12 +13,12 @@ test("cuenta palabras con acentos y signos de interrogación", () => {
 });
 
 test("los tiempos de lectura salen del texto real a 200 palabras por minuto", () => {
-  assert.deepEqual(perspectives.map(readingMinutes), [7, 7, 10, 10]);
+  assert.deepEqual(perspectives.map(readingMinutes), [7, 7, 10, 10, 7]);
 });
 
 test("la navegación entre artículos respeta los extremos de la serie", () => {
   const first = getPerspective(perspectives[0].slug)!;
-  const last = getPerspective(perspectives[3].slug)!;
+  const last = getPerspective(perspectives[4].slug)!;
   assert.equal(getNeighbors(first).previous, undefined);
   assert.equal(getNeighbors(first).next?.number, 2);
   assert.equal(getNeighbors(last).next, undefined);

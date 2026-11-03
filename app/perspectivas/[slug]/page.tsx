@@ -21,7 +21,7 @@ import {
 type PageProps = { params: Promise<{ slug: string }> };
 
 export const dynamicParams = false;
-const editorialDate = "Octubre de 2026";
+const editorialDate = (articleNumber: number) => articleNumber === 5 ? "Noviembre de 2026" : "Octubre de 2026";
 
 export function generateStaticParams() {
   return perspectives.map((article) => ({ slug: article.slug }));
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description: article.excerpt,
-    alternates: { canonical: perspectivePath(article) },
+    alternates: { canonical: url },
     authors: [{ name: author.name }],
     openGraph: {
       title: article.title,
@@ -44,9 +44,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: "article",
       authors: [author.name],
       section: "Perspectivas empresariales",
-      images: [{ url: "/social-card.svg", width: 1200, height: 630, alt: article.title }],
+      images: [{ url: article.image?.src ?? "/social-card.svg", width: 1200, height: 630, alt: article.image?.alt ?? article.title }],
     },
-    twitter: { card: "summary_large_image", title: article.title, description: article.excerpt, images: ["/social-card.svg"] },
+    twitter: { card: "summary_large_image", title: article.title, description: article.excerpt, images: [article.image?.src ?? "/social-card.svg"] },
   };
 }
 
@@ -73,7 +73,7 @@ export default async function PerspectivaPage({ params }: PageProps) {
         inLanguage: "es-MX",
         timeRequired: `PT${minutes}M`,
         articleSection: "Perspectivas empresariales",
-        image: `https://emphasys.mx${author.portrait}`,
+        image: `https://emphasys.mx${article.image?.src ?? author.portrait}`,
         author: {
           "@type": "Person",
           name: author.name,
@@ -135,7 +135,7 @@ export default async function PerspectivaPage({ params }: PageProps) {
                 </div>
               </div>
               <p className="text-sm text-[var(--muted)]">{minutes} min de lectura</p>
-              <p className="text-sm text-[var(--muted)]">{editorialDate}</p>
+              <p className="text-sm text-[var(--muted)]">{editorialDate(article.number)}</p>
             </div>
           </div>
         </header>
@@ -150,11 +150,14 @@ export default async function PerspectivaPage({ params }: PageProps) {
               <div className="perspective-prose">
                 {article.blocks.map((block, index) => {
                   if (block.type === "heading") {
-                    return (
-                      <h2 key={block.id} id={block.id}>
-                        {block.text}
-                      </h2>
-                    );
+                    return <div key={block.id}>
+                      {index === 2 && article.image ? (
+                        <figure className="mb-10 overflow-hidden">
+                          <Image src={article.image.src} alt={article.image.alt} width={1672} height={941} sizes="(min-width: 1024px) 680px, 100vw" className="h-auto w-full" priority />
+                        </figure>
+                      ) : null}
+                      <h2 id={block.id}>{block.text}</h2>
+                    </div>;
                   }
                   return (
                     <p
