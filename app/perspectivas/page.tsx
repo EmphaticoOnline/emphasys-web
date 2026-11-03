@@ -7,7 +7,7 @@ import { author, formatNumber, perspectivePath, perspectives, readingMinutes } f
 
 const title = "Perspectivas empresariales | Emphasys";
 const description =
-  "Reflexiones de Antonio Díaz sobre cómo funcionan las empresas, cómo se ordenan sus procesos y cuándo la tecnología realmente aporta.";
+  "Reflexiones de Antonio Díaz, fundador de Emphasys Soluciones, sobre cómo funcionan las empresas, cómo se ordenan sus procesos y cuándo la tecnología realmente aporta.";
 
 export const metadata: Metadata = {
   title,
