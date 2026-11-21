@@ -1,7 +1,8 @@
 import { perspectives as basePerspectives, type Perspective, type PerspectiveBlock } from "./perspectivas-contenido";
 import { perspectivaCinco } from "./perspectiva-cinco";
+import { perspectivaSeis } from "./perspectiva-seis";
 
-export const allPerspectives: Perspective[] = [...basePerspectives, perspectivaCinco];
+export const allPerspectives: Perspective[] = [...basePerspectives, perspectivaCinco, perspectivaSeis];
 export { allPerspectives as perspectives };
 export type { Perspective, PerspectiveBlock };
 
@@ -43,5 +44,8 @@ export const getNeighbors = (article: Perspective) => {
 
 export const getSections = (article: Perspective) =>
   article.blocks.flatMap((block) => (block.type === "heading" ? [{ id: block.id, text: block.text }] : []));
+
+const COUNT_WORDS = ["cero", "una", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"];
+export const countLabel = (n: number) => COUNT_WORDS[n] ?? String(n);
 
 export const formatNumber = (n: number) => String(n).padStart(2, "0");

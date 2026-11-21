@@ -8,6 +8,7 @@ import EvaluacionDiscreta from "@/components/perspectivas/EvaluacionDiscreta";
 import JsonLd from "@/components/perspectivas/JsonLd";
 import {
   author,
+  countLabel,
   formatNumber,
   getNeighbors,
   getPerspective,
@@ -21,7 +22,7 @@ import {
 type PageProps = { params: Promise<{ slug: string }> };
 
 export const dynamicParams = false;
-const editorialDate = (articleNumber: number) => articleNumber === 5 ? "Noviembre de 2026" : "Octubre de 2026";
+const editorialDate = (articleNumber: number) => articleNumber >= 5 ? "Noviembre de 2026" : "Octubre de 2026";
 
 export function generateStaticParams() {
   return perspectives.map((article) => ({ slug: article.slug }));
@@ -169,6 +170,12 @@ export default async function PerspectivaPage({ params }: PageProps) {
                 })}
               </div>
 
+              {article.cta ? (
+                <p className="mt-2">
+                  <Link href={article.cta.href} className="btn-primary">{article.cta.label}</Link>
+                </p>
+              ) : null}
+
               <AuthorBio />
               <EvaluacionDiscreta />
             </div>
@@ -204,7 +211,7 @@ export default async function PerspectivaPage({ params }: PageProps) {
             </Link>
           </div>
 
-          <p className="mt-14 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--muted)]">Las cuatro perspectivas</p>
+          <p className="mt-14 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--muted)]">Las {countLabel(perspectives.length)} perspectivas</p>
           <ol className="mt-4 border-t border-[var(--line)]">
             {perspectives.map((item) => {
               const current = item.slug === article.slug;

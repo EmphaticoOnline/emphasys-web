@@ -14,6 +14,7 @@ export type Perspective = {
   blocks: PerspectiveBlock[];
   image?: { src: string; alt: string };
   readingMinutes?: number;
+  cta?: { href: string; label: string };
 };
 
 export const perspectives: Perspective[] = [
