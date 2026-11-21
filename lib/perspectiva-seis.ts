@@ -6,6 +6,10 @@ export const perspectivaSeis: Perspective = {
   title: "Mi empresa vende, pero ¿dónde está el dinero?",
   excerpt: "Una empresa puede ser rentable en el papel y, al mismo tiempo, vivir con el efectivo justo, o sin él.",
   readingMinutes: 7,
+  image: {
+    src: "/perspectivas/empresa-vende-donde-esta-el-dinero.webp",
+    alt: "Empresario revisando un estado de cuenta en su oficina, con el almacén lleno de mercancía al fondo",
+  },
   cta: { href: "https://wa.me/523325905090?text=Hola%2C%20le%C3%AD%20el%20art%C3%ADculo%20%C2%ABMi%20empresa%20vende%2C%20pero%20%C2%BFd%C3%B3nde%20est%C3%A1%20el%20dinero%3F%C2%BB%20y%20me%20gustar%C3%ADa%20platicar%20sobre%20mi%20empresa.", label: "Hablemos de tu empresa" },
   blocks: [
     { type: "paragraph", html: "Hay una frase que he escuchado muchas veces en conversaciones con empresarios, en giros y tamaños de empresa muy distintos: “Estamos vendiendo, pero no sé dónde está el dinero”. Casi nunca la dicen al principio de la plática. Suele salir después de un rato, cuando ya hablamos de los clientes, del equipo y de los planes para el siguiente año. La dicen con una mezcla de frustración y cansancio, como quien lleva meses haciéndose la misma pregunta sin encontrar una respuesta que lo convenza." },
