@@ -172,7 +172,11 @@ export default async function PerspectivaPage({ params }: PageProps) {
 
               {article.cta ? (
                 <p className="mt-2">
-                  <Link href={article.cta.href} className="btn-primary">{article.cta.label}</Link>
+                  {article.cta.href.startsWith("http") ? (
+                    <a href={article.cta.href} target="_blank" rel="noreferrer" className="btn-primary">{article.cta.label}</a>
+                  ) : (
+                    <Link href={article.cta.href} className="btn-primary">{article.cta.label}</Link>
+                  )}
                 </p>
               ) : null}
 
