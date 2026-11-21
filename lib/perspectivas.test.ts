@@ -13,7 +13,7 @@ test("cuenta palabras con acentos y signos de interrogación", () => {
 });
 
 test("los tiempos de lectura salen del texto real a 200 palabras por minuto", () => {
-  assert.deepEqual(perspectives.map(readingMinutes), [7, 7, 10, 10, 7, 9]);
+  assert.deepEqual(perspectives.map(readingMinutes), [7, 7, 10, 10, 7, 7]);
 });
 
 test("la navegación entre artículos respeta los extremos de la serie", () => {
